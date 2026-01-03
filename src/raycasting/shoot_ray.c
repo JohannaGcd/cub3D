@@ -20,6 +20,10 @@ static void	set_xy_pos_and_delta(t_ray_utils *utils, t_level *level)
 	utils->delta[Y] = -sin(deg_to_rad(utils->angle_deg));
 }
 
+//TODO: Potential bug in set_xy_ds_and_next
+//What if deltaX or deltaY is close to 0 (aka we only travel in one direction)
+//I'll tell you: Dividing by 0 leads to complications for utils->dsX/Y
+
 static void	set_xy_ds_and_next(t_ray_utils *utils)
 {
 	utils->next[X] = find_gridline(utils->pos[X], utils->delta[X]);
@@ -28,13 +32,23 @@ static void	set_xy_ds_and_next(t_ray_utils *utils)
 	utils->ds[Y] = utils->next[X] / utils->delta[Y];
 }
 
+/*
+ * I can not stress this enough. Be aware of Cartesian notation
+ * and matrix/programming notation. Matrix[Y][X] stands for
+ * Cartesian point (X,Y). I use macro's for readability.
+ * Please check in the header what values the macro's for X and Y have
+ * when debugging the program. Otherwise this might lead to
+ * some serious confusion!
+*/
+
 void	shoot_ray(t_ray *ray, t_ray_utils *u, t_level *level)
 {
+	ray->length = 0;
 	set_xy_pos_and_delta(u, level);
 	while (true)
 	{
 		set_xy_ds_and_next(u);
-		if (fabs(u->delta[X]) > fabs(u->delta[Y]))
+		if (fabs(u->ds[X]) > fabs(u->ds[Y]))
 		{
 			ray->length += fabs(u->ds[Y]);
 			u->pos[Y] += u->next[Y];

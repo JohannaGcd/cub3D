@@ -11,7 +11,13 @@ SRC := \
 	   main.c \
 	   init_data.c \
 	   mock_parser.c \
-	   hook_events.c
+	   hook_events.c \
+	   deg_to_rad.c \
+	   raycasting/shoot_ray.c \
+	   raycasting/detect_wall.c \
+	   raycasting/finalize_ray.c \
+	   raycasting/find_gridline.c \
+	   raycasting/out_of_bounds.c 
 
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 

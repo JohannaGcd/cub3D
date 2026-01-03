@@ -478,3 +478,7 @@ Simply put I rewrote a lot of my previous entry in to actual code. One of the bi
 
 ## 03-01
 With the ray casting more or less done.  (at least the prototype) It's time to put it to the test. I don't need to draw anything on screen just yet. A simple terminal IO will do. Which first means I will have to see where I call the command in regards to the main loop.
+
+For some reason the raycaster is not working completely as expected. I wrote some code to test with in `mock_parser` that can be deleted once the parser is completed by Johanna. This function file is my "lab" where I need not worry about norminette or any other issues since it will all be deleted when the actual parser is here.
+
+Will have to look at the code another time however :( No idea as to why it is not working. My implementation seems sound so I think it is merely a small typo in the code.

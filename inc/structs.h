@@ -56,9 +56,9 @@ typedef struct s_level
 	char	**map;
 	int		x_row;
 	int		y_col;
-	int		player_pos_x;
-	int		player_pos_y;
-	int		player_dir_deg;
+	double	player_pos_x;
+	double	player_pos_y;
+	double	player_dir_deg;
 }	t_level;
 
 /*
@@ -74,7 +74,7 @@ typedef struct s_level
  *  similarly textures.mlx_img[NO/EA/SO/WE]
  *
  *  TODO: When loading in an image I will need to know
- *  their width and height for the raytracing.
+ *  their width and height (in pixels!) for the raytracing.
 */
 
 typedef struct s_textures

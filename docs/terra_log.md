@@ -475,3 +475,6 @@ Well... That is it for now I think! See you in the next year :)
 
 ## 02-01
 Simply put I rewrote a lot of my previous entry in to actual code. One of the biggest contributing factors was writing a `ray_utils` structure that holds all variables I like to use in my `calc_ray_length_with_tex` function (I renamed this to `shoot_ray` in the newer version)
+
+## 03-01
+With the ray casting more or less done.  (at least the prototype) It's time to put it to the test. I don't need to draw anything on screen just yet. A simple terminal IO will do. Which first means I will have to see where I call the command in regards to the main loop.

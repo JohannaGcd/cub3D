@@ -28,8 +28,8 @@ static void	set_xy_ds_and_next(t_ray_utils *utils)
 {
 	utils->next[X] = find_gridline(utils->pos[X], utils->delta[X]);
 	utils->ds[X] = utils->next[X] / utils->delta[X];
-	utils->next[Y] = find_gridline(utils->pos[X], utils->delta[Y]);
-	utils->ds[Y] = utils->next[X] / utils->delta[Y];
+	utils->next[Y] = find_gridline(utils->pos[Y], utils->delta[Y]);
+	utils->ds[Y] = utils->next[Y] / utils->delta[Y];
 }
 
 /*

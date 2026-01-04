@@ -482,3 +482,6 @@ With the ray casting more or less done.  (at least the prototype) It's time to p
 For some reason the raycaster is not working completely as expected. I wrote some code to test with in `mock_parser` that can be deleted once the parser is completed by Johanna. This function file is my "lab" where I need not worry about norminette or any other issues since it will all be deleted when the actual parser is here.
 
 Will have to look at the code another time however :( No idea as to why it is not working. My implementation seems sound so I think it is merely a small typo in the code.
+
+## 04-01
+Fixed a small but annoying bug. When rewriting my code on the second of Januari I must have fallen asleep cause I swapped X and Y in some calculations. Some simple print statements for the intermediate calculations showed where the error took place. Really happy to have fixed this bug with the resistance I felt for working on a Sunday evening but this should significantly impact tomorrows working hours!

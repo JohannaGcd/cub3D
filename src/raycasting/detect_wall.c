@@ -12,6 +12,11 @@
 
 #include "../../inc/cub3d.h"
 
+/*
+ * NB: Cartesian coordinate (X, Y) is located at
+ * map[Y][X].
+*/
+
 int	detect_wall_vert(t_ray_utils *utils, t_level *level)
 {
 	int	x;
@@ -22,9 +27,9 @@ int	detect_wall_vert(t_ray_utils *utils, t_level *level)
 	if (out_of_bounds(x, y, level))
 		return (0);
 	if (utils->delta[X] > 0)
-		return (level->map[x][y] == '1');
+		return (level->map[y][x] == '1');
 	else
-		return (level->map[x - 1][y] == '1');
+		return (level->map[y][x - 1] == '1');
 }
 
 int	detect_wall_hori(t_ray_utils *utils, t_level *level)
@@ -37,7 +42,7 @@ int	detect_wall_hori(t_ray_utils *utils, t_level *level)
 	if (out_of_bounds(x, y, level))
 		return (0);
 	if (utils->delta[Y] > 0)
-		return (level->map[x][y] == '1');
+		return (level->map[y][x] == '1');
 	else
-		return (level->map[x][y - 1] == '1');
+		return (level->map[y - 1][x] == '1');
 }

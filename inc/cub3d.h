@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 11:07:29 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/02 16:30:04 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/05 10:33:13 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -103,5 +103,28 @@ int		detect_wall_vert(t_ray_utils *utils, t_level *level);
 //I like degrees because I never had one, so I prefer to think in degrees
 //and then convert to radians when needed.
 double	deg_to_rad(double degree);
+
+// -- MY MLX FUNCTIONS --
+// Functions to either make working with the mlx library easy or functional.
+
+// The infamous pixel_put function from Harm Smits' github! What does
+// this function do? Well, from what I understand, this is primarily 
+// an optimization technique. Instead of pushing every pixel to the 
+// screen, we place pixels on an image (one big pixel matrix) and
+// then push that image to the screen. Thus this really needs no
+// usage of any mlx functions. It merely sets the color of a pixel
+// on an image. You can sort of compare it to image_matrix[y][x] = color.
+void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
+
+// This is more a lazy function. It calls the mlx_get_data_addr after initializing.
+// so:			mlx_create_image -> mlx_get_data_addr. 
+// Because we create quite alot of images (for the textures), this is a way to
+// some lines and headspace.
+//
+// NB: The data addres is of high importance due to
+// the my_mlx_pixel_put function.
+//
+// PS: the mlx instance pointer is wanted here. Not the mlx window pointer.
+void	my_mlx_create_image(void *mlx, t_img *img, int width, int height);
 
 #endif

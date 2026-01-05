@@ -20,6 +20,7 @@ int	main(void)
 	if (init_data(&mlx_data, &cub3d) != 0)
 		return (-1);
 	mock_parser(&cub3d);
+	test_image(&mlx_data, &mlx_data.frame);
 	hook_events(&mlx_data, &cub3d);
 	mlx_loop(mlx_data.instance);
 	//clean_up();

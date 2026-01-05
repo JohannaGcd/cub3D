@@ -10,9 +10,12 @@ MLX := $(MLX_PATH)/libmlx_Linux.a -lXext -lX11 -lm -lz
 SRC := \
 	   main.c \
 	   init_data.c \
-	   mock_parser.c \
 	   hook_events.c \
 	   deg_to_rad.c \
+	   test/test_image.c \
+	   test/mock_parser.c \
+	   my_mlx/my_mlx_pixel_put.c \
+	   my_mlx/my_mlx_create_image.c \
 	   raycasting/shoot_ray.c \
 	   raycasting/detect_wall.c \
 	   raycasting/finalize_ray.c \

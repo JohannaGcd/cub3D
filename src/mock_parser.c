@@ -79,10 +79,6 @@ static char	**create_square_test_map(int size)
 			exit(EXIT_FAILURE);
 	}
 	result[1][5] = result[5][4] = '1';
-	result[5][5] = 'N';
-	//TODO remove for loop. Only for current debugging purposes
-	for (i = 0; i < size; i++)
-		printf("%s\n", result[i]);
 	return (result);
 }
 
@@ -116,20 +112,44 @@ void	shoot_ray_EA_SO_WE_NO(t_ray *ray, t_ray_utils *u, t_level *level)
 	}
 }
 
+void	set_player_in_map(char **map, double x, double y)
+{
+	map[(int) y][(int) x] = 'P';
+	printf("player is on location (x:%f, y:%f)\n", x, y);
+}
+
+void	set_level_values(t_level *level)
+{
+	level->map = create_square_test_map(10);
+	level->x_row = 10;
+	level->y_col = 10;
+	level->player_pos_x = 5.8;
+	level->player_pos_y = 5;
+	level->player_dir_deg = 90.0;
+	set_player_in_map(level->map, level->player_pos_x, level->player_pos_y);
+}
+
+void	print_map(char **map)
+{
+	int	i;
+	int	j;
+
+	i = -1;
+	while (map[++i] != NULL)
+	{
+		j = -1;
+		while (map[i][++j] != '\0')
+			printf("%c", map[i][j]);
+		printf("\n");
+	}
+}
+
 void	mock_parser(t_cub3d *data)
 {
-	data->level.map = create_square_test_map(10);
-	data->level.x_row = 10;
-	data->level.y_col = 10;
-	data->level.player_pos_x = 5.8;
-	data->level.player_pos_y = 5;
-	data->level.player_dir_deg = 90.0;
-	t_ray ray_test;
-	t_ray_utils utils_test;
-	if (data->level.map
-			[(int) data->level.player_pos_x]
-			[(int) data->level.player_pos_y] == 'N')
-		printf("player is on location (x:%f, y:%f)\n",
-			data->level.player_pos_x, data->level.player_pos_y);
+	t_ray 		ray_test;
+	t_ray_utils	utils_test;
+
+	set_level_values(&data->level);
+	print_map(data->level.map);
 	shoot_ray_EA_SO_WE_NO(&ray_test, &utils_test, &data->level);
 }

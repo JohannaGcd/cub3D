@@ -29,7 +29,8 @@
  *  the most important part for us.
 */
 
-typedef struct	s_img {
+typedef struct s_img
+{
 	void	*instance;
 	char	*addr;
 	int		bits_per_pixel;
@@ -68,7 +69,6 @@ typedef struct s_mlx
 	int		win_h;
 	int		win_l;
 }	t_mlx;
-
 
 /*	-- LEVEL STRUCTURE --
  * Metadata of the level given from the parser.

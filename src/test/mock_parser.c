@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   create_map.c                                       :+:      :+:    :+:   */
+/*   mock_parser.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 13:47:25 by zivanov           #+#    #+#             */
-/*   Updated: 2025/12/28 13:58:07 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/05 11:16:28 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../../inc/cub3d.h"
 
 static char	*first_or_last_row(int size)
 {
@@ -152,4 +152,5 @@ void	mock_parser(t_cub3d *data)
 	set_level_values(&data->level);
 	print_map(data->level.map);
 	shoot_ray_EA_SO_WE_NO(&ray_test, &utils_test, &data->level);
+	//mock_textures
 }

@@ -485,3 +485,6 @@ Will have to look at the code another time however :( No idea as to why it is no
 
 ## 04-01
 Fixed a small but annoying bug. When rewriting my code on the second of Januari I must have fallen asleep cause I swapped X and Y in some calculations. Some simple print statements for the intermediate calculations showed where the error took place. Really happy to have fixed this bug with the resistance I felt for working on a Sunday evening but this should significantly impact tomorrows working hours!
+
+## 05-01
+From what I can see, raycasting works. There is a small point of attention what happens when the player is next to a wall since our current DDA might glitch/noclip through the wall but I will leave this when dealing with wall collision after the player movement has been implemented. Thus for now I would say the most important part is creation of images and loading of textures so we can get something on the screen with our raycasting. 

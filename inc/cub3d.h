@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 11:07:29 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/05 10:33:13 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/05 11:17:43 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,12 @@
 // Dimensions of the window for the game.
 # define WINDOWLENGTH 1920
 # define WINDOWHEIGHT 1080
+
+// Some colors for testing
+# define RED      0xFF0000
+# define GREEN    0x00FF00
+# define BLUE     0x0000FF
+# define YELLOW   0xFFFF00
 
 //I like to use an array holding the X and the Y value of something.
 //Coming from a mathematical background, I prefer the first value
@@ -57,10 +63,14 @@
 //		and the mlx metadata. See the relevant structures for more explanation.
 int		init_data(t_mlx *data, t_cub3d *cub3d);
 
-//ONLY FOR TESTING WITHOUT PARSING
+// -- TEST FUNCTIONS --
 //This is just for Zachaar to develop raytracing before the 
-//parser is (completely) finished.
+//parser is (completely) finished and to check whether stuff
+//works as expected. The idea is that all functions below
+//are in the /test/ folder and can be deleted for the final
+//version of the program.
 void	mock_parser(t_cub3d *cub3d);
+void	test_image(t_mlx *mlx_data);
 
 // Events are actions a user can perform in the game. They range from
 // keypresses (wasd) to mouse movement to pressing the 'x' button onscreen.
@@ -114,12 +124,15 @@ double	deg_to_rad(double degree);
 // then push that image to the screen. Thus this really needs no
 // usage of any mlx functions. It merely sets the color of a pixel
 // on an image. You can sort of compare it to image_matrix[y][x] = color.
+//
+// PS: color is 0x00RRGGBB
 void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 
-// This is more a lazy function. It calls the mlx_get_data_addr after initializing.
-// so:			mlx_create_image -> mlx_get_data_addr. 
+// This is more a lazy function. It calls the mlx_get_data_addr 
+// after initializing.
 // Because we create quite alot of images (for the textures), this is a way to
-// some lines and headspace.
+// save some lines and headspace.
+// so: mlx_create_image -> mlx_get_data_addr. 
 //
 // NB: The data addres is of high importance due to
 // the my_mlx_pixel_put function.

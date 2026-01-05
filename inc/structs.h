@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 17:05:59 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/02 15:56:32 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/05 10:30:00 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,25 @@
 // (because we can't pass a hundred
 // 		parameters to a function)
 
+/*
+ * -- IMAGE STRUCTURE --
+ *  Image structure for mlx images. 
+ *   `mlx_create_image()`
+ *
+ *  Most of this is handled by mlx
+ *  so I won't (and can't) go into
+ *  detail. The instance pointer is
+ *  the most important part for us.
+*/
+
+typedef struct	s_img {
+	void	*instance;
+	char	*addr;
+	int		bits_per_pixel;
+	int		line_length;
+	int		endian;
+}				t_img;
+
 /*	-- MLX STRUCTURE --
  * Simple structure holding relevant data
  * for the graphical library mlx.
@@ -25,6 +44,12 @@
  * Main usage of the library is
  * the creation and maintenance 
  * of windows, events and images
+ *
+ * The `frame` variable will hold an image
+ * used to calculate the frame on (from
+ * the calculations from the raycaster)
+ * This is done primarily as an optimization
+ * technique as suggested by Harm Smits.
 
  * More info on this library can be found
  * in the mlx/mlx.h header.
@@ -39,9 +64,11 @@ typedef struct s_mlx
 {
 	void	*instance;
 	void	*window;
+	t_img	frame;
 	int		win_h;
 	int		win_l;
 }	t_mlx;
+
 
 /*	-- LEVEL STRUCTURE --
  * Metadata of the level given from the parser.
@@ -80,7 +107,7 @@ typedef struct s_level
 typedef struct s_textures
 {
 	char	*paths[4];
-	void	*mlx_img[4];
+	t_img	mlx_img[4];
 	int		width[4];
 	int		height[4];
 }	t_textures;

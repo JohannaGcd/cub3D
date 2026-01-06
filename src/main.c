@@ -17,10 +17,10 @@ int	main(void)
 	t_mlx	mlx_data;
 	t_cub3d	cub3d;
 
+	mock_parser(&cub3d);
 	if (init_data(&mlx_data, &cub3d) != 0)
 		return (-1);
-	mock_parser(&cub3d);
-	test_image(&mlx_data, &mlx_data.frame);
+	test_image(&mlx_data, &cub3d);
 	hook_events(&mlx_data, &cub3d);
 	mlx_loop(mlx_data.instance);
 	//clean_up();

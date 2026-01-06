@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 17:05:59 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/05 10:30:00 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/06 15:48:05 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,6 +132,7 @@ typedef struct s_ray
 	double	length;
 	double	pos_wall_hit;
 	t_dir	side;
+	int		pixels;
 }	t_ray;
 
 /*

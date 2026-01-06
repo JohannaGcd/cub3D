@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 11:07:29 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/05 11:17:43 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/06 16:29:49 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -107,6 +107,11 @@ int		out_of_bounds(int x, int y, t_level *level);
 int		detect_wall_hori(t_ray_utils *utils, t_level *level);
 int		detect_wall_vert(t_ray_utils *utils, t_level *level);
 
+//Out of the WINDOWWIDTH lines we draw, this function draws one of them.
+//Note the row index stating which line will be drawn. The 0'th row
+//will be drawn completely to the left of the window.
+void	draw_textured_line(int row, t_ray *ray, t_textures *tex, t_img *frame);
+
 // -- MATH UTILS --
 
 //Cos() and sin() functions work with radians, humans are known to use degrees
@@ -139,5 +144,9 @@ void	my_mlx_pixel_put(t_img *img, int x, int y, int color);
 //
 // PS: the mlx instance pointer is wanted here. Not the mlx window pointer.
 void	my_mlx_create_image(void *mlx, t_img *img, int width, int height);
+
+// The opposite of my_mlx_pixel_put. Instead of placing a color value
+// on a pixel position, it retrieves the color value of a pixel position.
+unsigned int	my_mlx_get_pixel_color(t_img *data, int x, int y);
 
 #endif

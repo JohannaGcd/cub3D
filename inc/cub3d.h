@@ -70,7 +70,7 @@ int		init_data(t_mlx *data, t_cub3d *cub3d);
 //are in the /test/ folder and can be deleted for the final
 //version of the program.
 void	mock_parser(t_cub3d *cub3d);
-void	test_image(t_mlx *mlx_data);
+void	test_image(t_mlx *mlx_data, t_cub3d *cub3d);
 
 // Events are actions a user can perform in the game. They range from
 // keypresses (wasd) to mouse movement to pressing the 'x' button onscreen.

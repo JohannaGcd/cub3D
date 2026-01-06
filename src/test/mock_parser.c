@@ -144,12 +144,22 @@ void	print_map(char **map)
 	}
 }
 
+//Hardcode some textures to test with.
+void	mock_texture_paths(t_textures *texture)
+{
+	texture->path[NO] = "./textures/cloud.xpm";
+	texture->path[EA] = "./textures/cobble.xpm";
+	texture->path[SO] = "./textures/sun.xpm";
+	texture->path[WE] = "./textures/wood.xpm";
+}
+
 void	mock_parser(t_cub3d *data)
 {
 	t_ray 		ray_test;
 	t_ray_utils	utils_test;
 
 	set_level_values(&data->level);
+	mock_texture_paths(&data->texture);
 	print_map(data->level.map);
 	shoot_ray_EA_SO_WE_NO(&ray_test, &utils_test, &data->level);
 	//mock_textures

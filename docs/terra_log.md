@@ -492,3 +492,22 @@ From what I can see, raycasting works. There is a small point of attention what 
 Ok after a little while I got most mlx functions in the project working. I still have to load the textures but the our main frame seems to work. You can check because when you run the program, you see a pretty big red square on the screen. This was done by pushing the image (mainframe) to the window.
 
 Next is probably loading the textures. I'll see if I can quickly upload some xpm files for this.
+
+## 06-01
+Textures have been loaded in so we should be able to continue with the raycasting now and get our first official frame. This is quite some code but if we can fix this today I will save myself significant amounts of effort next session!
+
+So, just to do some brainstorming. What I want in the end is a function called `render_frame`. It will need to have pretty much all data imaginable. The `mlx_data` for putting the final image to the window, the `cub3d` structure for the textures, the `level` structure for the map and the player position.
+Then we should do something along the following:
+```c
+for (i in WINDOWWIDTH)
+{
+    shoot_ray in FOV;   //This will need to know the users direction
+    draw_texture_line;  //This will need the texture, the image to draw on and the ray to calculate from.
+}
+put_image_to_window;
+```
+Looks pretty simple right?
+
+Weeeeelll I mean yes sure in a way. But we first need to know in what direction we need to shoot our ray. Let's say we want an FOV of 90 degrees. That means that we will need to shoot a ray for every pixel in our window_width and give it the direction of our user minus (or plus) the offset so that we get the correct FOV direction for that specific ray with respect to our user's current direction. So to put some numbers to these abstract ideas, let's say our user is looking completely to the right (direction = 0). Then the ray representing the most left (first) row on our screen will have a direction of -45 degrees. and the ray representing the most right (final, if you count from left to right) will have a direction of 45 degrees. 
+
+To draw the texture correctly we need to know a bunch of other stuff first too! 

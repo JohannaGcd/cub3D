@@ -106,7 +106,7 @@ typedef struct s_level
 
 typedef struct s_textures
 {
-	char	*paths[4];
+	char	*path[4];
 	t_img	mlx_img[4];
 	int		width[4];
 	int		height[4];

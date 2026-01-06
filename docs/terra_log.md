@@ -511,3 +511,5 @@ Looks pretty simple right?
 Weeeeelll I mean yes sure in a way. But we first need to know in what direction we need to shoot our ray. Let's say we want an FOV of 90 degrees. That means that we will need to shoot a ray for every pixel in our window_width and give it the direction of our user minus (or plus) the offset so that we get the correct FOV direction for that specific ray with respect to our user's current direction. So to put some numbers to these abstract ideas, let's say our user is looking completely to the right (direction = 0). Then the ray representing the most left (first) row on our screen will have a direction of -45 degrees. and the ray representing the most right (final, if you count from left to right) will have a direction of 45 degrees. 
 
 To draw the texture correctly we need to know a bunch of other stuff first too! 
+I used a bunch of code from my previous attempt at writing this function so take a look at that (or not)
+(`draw_textured_line`)

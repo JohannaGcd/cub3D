@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 13:47:25 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/05 11:16:28 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/07 14:29:36 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -156,10 +156,22 @@ void	mock_texture_paths(t_textures *texture)
 	texture->path[WE] = "./textures/wood.xpm";
 }
 
+//Hardcoding the floor red and the ceiling blue.
+void	set_floor_ceiling(t_cub3d *cub3d)
+{
+	cub3d->floor.r = 255;
+	cub3d->floor.g = 12;
+	cub3d->floor.b = 12;
+	cub3d->ceiling.r = 12;
+	cub3d->ceiling.g = 12;
+	cub3d->ceiling.b = 255;
+}
+
 void	mock_parser(t_cub3d *data)
 {
 	
 	set_level_values(&data->level);
+	set_floor_ceiling(data);
 	mock_texture_paths(&data->texture);
 	print_map(data->level.map);
 	//shoot_ray_EA_SO_WE_NO(&data->level);

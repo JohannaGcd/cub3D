@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 17:05:59 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/06 15:48:05 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/07 11:23:13 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -192,7 +192,6 @@ typedef struct s_cub3d
 	t_textures	texture;
 	t_colors	floor;
 	t_colors	ceiling;
-	t_mlx		mlx_data;
 	t_level		level;
 }	t_cub3d;
 #endif

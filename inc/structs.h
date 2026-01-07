@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 17:05:59 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/07 11:23:13 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/07 13:25:53 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -185,6 +185,12 @@ typedef struct s_color
  *  data needed for the cub3d program to run.
  *  Most structures have their descriptions given
  *  in the comments above.
+ *
+ *  NB: We need the mlx_data pointer for the
+ *  keyboard handler since we can only pass
+ *  one parameter to the functions and we 
+ *  need the mlx structure for rendering
+ *  and a bunch of other stuff.
 */
 
 typedef struct s_cub3d
@@ -193,5 +199,6 @@ typedef struct s_cub3d
 	t_colors	floor;
 	t_colors	ceiling;
 	t_level		level;
+	t_mlx		*mlx_data;
 }	t_cub3d;
 #endif

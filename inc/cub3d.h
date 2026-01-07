@@ -109,7 +109,7 @@ void	shoot_ray(t_ray *ray, t_ray_utils *u, t_level *level);
 // If the ray hits a wall (on either the x or the y side)
 // we update the ray with some final parameters. (where the wall
 // was hit, which side of the wall was hit etc)
-void	finalize_ray(t_ray *ray, t_ray_utils *utils, int x_or_y);
+void	finalize_ray(t_ray *ray, t_ray_utils *utils, int x_or_y, t_level *l);
 
 // This is a safety check to see whether the position in the map
 // we are trying to access/check actually exists (in case we

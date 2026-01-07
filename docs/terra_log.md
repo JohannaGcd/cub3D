@@ -515,4 +515,6 @@ I used a bunch of code from my previous attempt at writing this function so take
 (`draw_textured_line`)
 
 ## 07-01
-Easier said then done but we have something on screen!
+Easier said than done but we have something on screen!
+<img width="1916" height="1122" alt="image" src="https://github.com/user-attachments/assets/7f406912-a99f-4a8c-80b4-dc18776a099b" />
+

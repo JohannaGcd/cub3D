@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 11:07:29 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/07 11:16:46 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/07 11:55:41 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,9 @@ void	test_image(t_mlx *mlx_data, t_cub3d *cub3d);
 // In simple terms we connect input from the player to the
 // corresponding action. (we hook events to specific functions)
 void	hook_events(t_mlx *mlx_data, t_cub3d *cub3d);
+
+//TODO Write description
+void	render_frame(t_cub3d *cub3d, t_mlx *mlx_data);
 
 // -- RAYCASTING FUNCTIONS --
 // Functions relevant for the casting of rays and

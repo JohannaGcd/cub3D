@@ -16,6 +16,7 @@
 //Draw floor and ceiling.
 //Shoot a ray for every column
 //draw that ray to the screen with draw_textured_line.
+//TODO>: Norminette proof
 
 void	render_frame(t_cub3d *cub3d, t_mlx *mlx_data)
 {

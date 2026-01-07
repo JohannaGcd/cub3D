@@ -12,6 +12,7 @@ SRC := \
 	   init_data.c \
 	   hook_events.c \
 	   deg_to_rad.c \
+	   create_rgb.c \
 	   render_frame.c \
 	   test/test_image.c \
 	   test/mock_parser.c \
@@ -21,6 +22,7 @@ SRC := \
 	   raycasting/shoot_ray.c \
 	   raycasting/draw_textured_line.c \
 	   raycasting/detect_wall.c \
+	   raycasting/draw_walls.c \
 	   raycasting/finalize_ray.c \
 	   raycasting/find_gridline.c \
 	   raycasting/out_of_bounds.c 

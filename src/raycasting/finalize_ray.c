@@ -23,7 +23,7 @@ void	finalize_ray(t_ray *ray, t_ray_utils *utils, int x_or_y, t_level *l)
 			ray->side = NO;
 		else
 			ray->side = SO;
-		ray->pos_wall_hit = fmod(utils->pos[X], 1);
+		ray->pos_wall_hit = fmod(utils->pos[Y], 1);
 	}
 	else
 	{
@@ -31,7 +31,7 @@ void	finalize_ray(t_ray *ray, t_ray_utils *utils, int x_or_y, t_level *l)
 			ray->side = EA;
 		else
 			ray->side = WE;
-		ray->pos_wall_hit = fmod(utils->pos[Y], 1);
+		ray->pos_wall_hit = fmod(utils->pos[X], 1);
 	}
 	ray->length *= cos(deg_to_rad(utils->angle_deg - l->player_dir_deg));
 }

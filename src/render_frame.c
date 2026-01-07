@@ -6,44 +6,41 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/07 10:57:15 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/07 11:38:10 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/07 13:22:04 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
 
+//Upper half of screen must be filled with cub3d->ceiling colors (RGB)
+//Lower half of screen must be filled with cub3d->floor colors (RGB)
+//Function serves also as a frame wiper (wiping out the previous frame)
+
+void	draw_floor_and_ceiling(t_cub3d *cub3d)
+{
+	void *f;
+	void *c;
+
+	f = my_mlx_rgb_converter(r, g, b);
+	c = my_mlx_rgb_converter(r, g, b);
+}
+
 //Clear the frame (optional)
 //Draw floor and ceiling.
 //Shoot a ray for every column
 //draw that ray to the screen with draw_textured_line.
-//TODO>: Norminette proof
 
 void	render_frame(t_cub3d *cub3d, t_mlx *mlx_data)
 {
-	double		angle_step;
-	double		angle_start;
 	t_level		*level;
-	t_ray		ray;
-	t_ray_utils	ray_utils;
 	t_img		*frame;
-	int			i;
 	t_textures	*tex;
 
+	tex = &cub3d->texture;
 	level = &cub3d->level;
 	frame = &mlx_data->frame;
-	tex = &cub3d->texture;
-
-	angle_step = (double) FOV / WINDOWLENGTH;
-	angle_start = level->player_dir_deg - ((double) FOV / 2);
-
-	i = 0;
-	while (i < WINDOWLENGTH)
-	{
-		ray_utils.angle_deg = angle_start + (angle_step * i);
-		shoot_ray(&ray, &ray_utils, level);
-		draw_textured_line(i, &ray, tex, frame);
-		i++;
-	}
+	draw_floor_and_ceiling();
+	draw_walls(tex, level, frame);
 	mlx_put_image_to_window(mlx_data->instance, mlx_data->window,
 		frame->instance, 0, 0);
 	return ;

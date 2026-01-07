@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:19:22 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/02 13:49:21 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/07 13:48:05 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	keyboard_handler(int keynum, void *voided_cub3d)
 
 	cub3d = (t_cub3d *) voided_cub3d;
 	level = &cub3d->level;
-	mlx_data = &cub3d->mlx_data;
+	mlx_data = cub3d->mlx_data;
 	if (keynum == 65307)
 		close_window(mlx_data->instance);
 	else

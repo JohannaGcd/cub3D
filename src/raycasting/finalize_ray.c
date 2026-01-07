@@ -12,10 +12,10 @@
 
 #include "../../inc/cub3d.h"
 
-// TODO: Include fisheye correction.
+// The last calculation done in this function is to fix the fisheye effect.
 // ray.length * cos(deg_to_rad(ray_utils.angle_deg - level->player_dir_deg));
 
-void	finalize_ray(t_ray *ray, t_ray_utils *utils, int x_or_y)
+void	finalize_ray(t_ray *ray, t_ray_utils *utils, int x_or_y, t_level *l)
 {
 	if (x_or_y == X)
 	{
@@ -33,4 +33,5 @@ void	finalize_ray(t_ray *ray, t_ray_utils *utils, int x_or_y)
 			ray->side = WE;
 		ray->pos_wall_hit = fmod(utils->pos[Y], 1);
 	}
+	ray->length *= cos(deg_to_rad(utils->angle_deg - l->player_dir_deg));
 }

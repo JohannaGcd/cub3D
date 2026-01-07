@@ -68,7 +68,7 @@ void	shoot_ray(t_ray *ray, t_ray_utils *u, t_level *level)
 			u->pos[Y] += u->next[Y];
 			u->pos[X] += u->ds[Y] * u->delta[X];
 			if (detect_wall_hori(u, level))
-				return (finalize_ray(ray, u, Y));
+				return (finalize_ray(ray, u, Y, level));
 		}
 		else
 		{
@@ -76,7 +76,7 @@ void	shoot_ray(t_ray *ray, t_ray_utils *u, t_level *level)
 			u->pos[X] += u->next[X];
 			u->pos[Y] += u->ds[X] * u->delta[Y];
 			if (detect_wall_vert(u, level))
-				return (finalize_ray(ray, u, X));
+				return (finalize_ray(ray, u, X, level));
 		}
 	}
 }

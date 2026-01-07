@@ -6,11 +6,19 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/02 13:07:41 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/02 16:17:02 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/07 11:33:49 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
+
+/*
+ * We modify the position of the ray.
+ * While they all share the same starting condition
+ * the values get modified as we trace the ray.
+ * Thus I deem it wise to set the starting
+ * position in this function.
+*/
 
 static void	set_xy_pos_and_delta(t_ray_utils *utils, t_level *level)
 {

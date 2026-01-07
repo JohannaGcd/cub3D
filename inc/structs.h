@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 17:05:59 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/07 13:25:53 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/07 13:45:32 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -159,6 +159,7 @@ typedef struct s_ray_utils
 	double	ds[2];
 	double	next[2];
 }	t_ray_utils;
+
 /*
  * -- COLOR STRUCTURE --
  *  In essence this is a simple array of three integers

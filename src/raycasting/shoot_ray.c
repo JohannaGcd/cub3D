@@ -28,16 +28,22 @@ static void	set_xy_pos_and_delta(t_ray_utils *utils, t_level *level)
 	utils->delta[Y] = -sin(deg_to_rad(utils->angle_deg));
 }
 
-//TODO: Potential bug in set_xy_ds_and_next
+//Potential bug in set_xy_ds_and_next [FIXED]
 //What if deltaX or deltaY is close to 0 (aka we only travel in one direction)
 //I'll tell you: Dividing by 0 leads to complications for utils->dsX/Y
 
 static void	set_xy_ds_and_next(t_ray_utils *utils)
 {
 	utils->next[X] = find_gridline(utils->pos[X], utils->delta[X]);
-	utils->ds[X] = utils->next[X] / utils->delta[X];
+	if (utils->delta[X] == 0)
+		utils->ds[X] = INFINITY;
+	else
+		utils->ds[X] = utils->next[X] / utils->delta[X];
 	utils->next[Y] = find_gridline(utils->pos[Y], utils->delta[Y]);
-	utils->ds[Y] = utils->next[Y] / utils->delta[Y];
+	if (utils->delta[Y] == 0)
+		utils->ds[Y] = INFINITY;
+	else
+		utils->ds[Y] = utils->next[Y] / utils->delta[Y];
 }
 
 /*

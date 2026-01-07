@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 11:07:29 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/07 13:16:44 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/07 14:16:06 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,13 @@ int		init_data(t_mlx *data, t_cub3d *cub3d);
 //version of the program.
 void	mock_parser(t_cub3d *cub3d);
 void	test_image(t_mlx *mlx_data, t_cub3d *cub3d);
+// -- END OF TEST FUNCTIONS! -- 
+
+//MLX works with colors by usage of
+//0x00RRGGBB. Thus we convert our three different
+//color values to one RGB value that we can pass
+//to mlx functions.
+int	create_rgb(int r, int g, int b);
 
 // Events are actions a user can perform in the game. They range from
 // keypresses (wasd) to mouse movement to pressing the 'x' button onscreen.

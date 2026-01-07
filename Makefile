@@ -12,11 +12,14 @@ SRC := \
 	   init_data.c \
 	   hook_events.c \
 	   deg_to_rad.c \
+	   render_frame.c \
 	   test/test_image.c \
 	   test/mock_parser.c \
 	   my_mlx/my_mlx_pixel_put.c \
 	   my_mlx/my_mlx_create_image.c \
+	   my_mlx/my_mlx_get_pixel_color.c \
 	   raycasting/shoot_ray.c \
+	   raycasting/draw_textured_line.c \
 	   raycasting/detect_wall.c \
 	   raycasting/finalize_ray.c \
 	   raycasting/find_gridline.c \

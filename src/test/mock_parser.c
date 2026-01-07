@@ -100,15 +100,18 @@ static char	**create_square_test_map(int size)
  * 		- deltaX = 0, deltaY = 1;
 */
 
-void	shoot_ray_EA_SO_WE_NO(t_ray *ray, t_ray_utils *u, t_level *level)
+void	shoot_ray_EA_SO_WE_NO(t_level *level)
 {
-	u->angle_deg = 0;
-	while (u->angle_deg < 360)	
+	t_ray 		ray;
+	t_ray_utils	u;
+
+	u.angle_deg = 0;
+	while (u.angle_deg < 360)	
 	{
-		shoot_ray(ray, u, level);
-		printf("angle %f, length: %f\n", u->angle_deg, ray->length);
-		printf("\tdeltaX %f, deltaY %f\n", u->delta[X], u->delta[Y]);
-		u->angle_deg += 90;
+		shoot_ray(&ray, &u, level);
+		printf("angle %f, length: %f\n", u.angle_deg, ray.length);
+		printf("\tdeltaX %f, deltaY %f\n", u.delta[X], u.delta[Y]);
+		u.angle_deg += 90;
 	}
 }
 
@@ -155,12 +158,9 @@ void	mock_texture_paths(t_textures *texture)
 
 void	mock_parser(t_cub3d *data)
 {
-	t_ray 		ray_test;
-	t_ray_utils	utils_test;
-
+	
 	set_level_values(&data->level);
 	mock_texture_paths(&data->texture);
 	print_map(data->level.map);
-	shoot_ray_EA_SO_WE_NO(&ray_test, &utils_test, &data->level);
-	//mock_textures
+	//shoot_ray_EA_SO_WE_NO(&data->level);
 }

@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 11:07:29 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/06 16:29:49 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/07 11:16:46 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,11 @@
 // Dimensions of the window for the game.
 # define WINDOWLENGTH 1920
 # define WINDOWHEIGHT 1080
+
+// Field Of View in degrees for the player
+// (how wide your view is) 60 degrees is standard
+// angle_start = level->player.
+# define FOV 60
 
 // Some colors for testing
 # define RED      0xFF0000

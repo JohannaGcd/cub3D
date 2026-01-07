@@ -528,3 +528,10 @@ Well... our time is almost up. It seems next up will be movement and wall collis
 - [ ] Cleaning up the program.
 - [ ] Cleaning up in case of errors.
 - [ ] Creating minimap (for bonus)
+
+I let AI draw a (very buggy) game loop just so I could move around to test the raycasting. The textures are still fucked and I now consider this a bug I need to fix. What is wrong I do not yet know but I'll find out :)
+<img width="1933" height="1130" alt="image" src="https://github.com/user-attachments/assets/23539375-f22d-49ca-8550-a66706c00959" />
+
+Creating the gameloop is going to take a while. From what AI wrote, I will have to do some brainstorming again to be able to make my own implementation. Yeeeeeeeeh....
+
+I expect this to take 1 to 2 weeks depending on how much headspace I will have.

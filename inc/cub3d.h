@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 11:07:29 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/07 11:55:41 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/07 13:16:44 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,7 +83,8 @@ void	test_image(t_mlx *mlx_data, t_cub3d *cub3d);
 // corresponding action. (we hook events to specific functions)
 void	hook_events(t_mlx *mlx_data, t_cub3d *cub3d);
 
-//TODO Write description
+// Calls all relevant raycasting functions in order to render
+// an image of the player's view.
 void	render_frame(t_cub3d *cub3d, t_mlx *mlx_data);
 
 // -- RAYCASTING FUNCTIONS --
@@ -120,6 +121,10 @@ int		detect_wall_vert(t_ray_utils *utils, t_level *level);
 //will be drawn completely to the left of the window.
 void	draw_textured_line(int row, t_ray *ray, t_textures *tex, t_img *frame);
 
+//A combination of shoot_ray and draw_textured_line.
+//In essence a simple while loop that shoots a ray for every
+//pixel line on our screen.
+void	draw_walls(t_textures *tex, t_level *level, t_img *frame);
 // -- MATH UTILS --
 
 //Cos() and sin() functions work with radians, humans are known to use degrees

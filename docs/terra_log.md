@@ -513,3 +513,6 @@ Weeeeelll I mean yes sure in a way. But we first need to know in what direction 
 To draw the texture correctly we need to know a bunch of other stuff first too! 
 I used a bunch of code from my previous attempt at writing this function so take a look at that (or not)
 (`draw_textured_line`)
+
+## 07-01
+Easier said then done but we have something on screen!

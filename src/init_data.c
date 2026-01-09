@@ -6,11 +6,16 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 11:09:49 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/09 18:47:25 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/09 19:16:50 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+//WARNING:	Turning autorepeat off will also
+//			remove autorepeat even after program is finished
+//			This is kind of cool to learn nvim motions with though
+//			mlx_do_key_autorepeatoff(d->instance);
 
 /*
  * init for mlx_data to split the main init function.
@@ -49,11 +54,7 @@ static int	init_mlx(t_mlx *d)
 		mlx_destroy_display(d->instance);
 		return (-1);
 	}
-	//WARNING: Turning autorepeat off will also
-	//remove autorepeat even after program is finished
-	//This is kind of cool to learn nvim motions with though
-	mlx_do_key_autorepeaton(d->instance);
-	return (0);
+		return (0);
 }
 
 void	get_data_addr(t_img *img)
@@ -90,6 +91,16 @@ static int	init_textures(t_mlx *mlx, t_textures *t)
 	return (0);
 }
 
+void	init_movement(t_movement *m)
+{
+	m->forward = 0;
+	m->backward = 0;
+	m->left = 0;
+	m->right = 0;
+	m->rotate_left = 0;
+	m->rotate_right = 0;
+}
+
 /*
  * Main initialization of all data for execution part.
  * This includes:
@@ -112,5 +123,6 @@ int	init_data(t_mlx *mlx_data, t_cub3d *cub3d)
 		perror("init_textures failed\n");
 		return (-1);
 	}
+	init_movement(&cub3d->movement);
 	return (0);
 }

@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 17:07:04 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/09 17:54:34 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/09 17:55:39 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,7 @@ typedef enum e_events
  * and LEFT and RIGHT for rotating.
 */
 
-typedef enum e_keycodes
+typedef enum e_keynums
 {
 	KEY_ESC = 65307,
 	KEY_W = 119,
@@ -79,7 +79,7 @@ typedef enum e_keycodes
 	KEY_D = 100,
 	KEY_LEFT_ARROW = 65361,
 	KEY_RIGHT_ARROW = 65363
-}	t_keycodes;
+}	t_keynums;
 
 /*
  * To make the texture structure more readable

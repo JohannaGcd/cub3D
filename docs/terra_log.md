@@ -596,3 +596,5 @@ move_ANY_DIRECTION(player, delta_t)
 Hope that makes some kind of sense.
 
 Ooooohkay, I now have the game loop sort of working so we should be able to slowly implement movement.
+
+Pfffffffffffffffffffffffffffffffffffffffffffffff. Three hours later but we're on our way. I have the gameloop and our events. I just need to calculate the new player positions and check for collisions.

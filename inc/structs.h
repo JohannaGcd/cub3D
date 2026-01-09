@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 17:05:59 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/09 17:50:50 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/09 18:22:40 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,18 +187,18 @@ typedef struct s_color
  * of what movements we should process.
  * This allows us to have multiple movements
  * at the same time. We simply need to turn
- * the movement bools on or off whenever a 
+ * the movement bools on or off (1/0) whenever a 
  * movement key is pressed or released.
 */
 
 typedef struct s_movement
 {
-	bool	forward;
-	bool	backward;
-	bool	left;
-	bool	right;
-	bool	rotate_left;
-	bool	rotate_right;
+	int	forward;
+	int	backward;
+	int	left;
+	int	right;
+	int	rotate_left;
+	int	rotate_right;
 }	t_movement;
 
 /*

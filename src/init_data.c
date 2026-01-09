@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 11:09:49 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/09 17:02:04 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/09 18:47:25 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,6 +49,10 @@ static int	init_mlx(t_mlx *d)
 		mlx_destroy_display(d->instance);
 		return (-1);
 	}
+	//WARNING: Turning autorepeat off will also
+	//remove autorepeat even after program is finished
+	//This is kind of cool to learn nvim motions with though
+	mlx_do_key_autorepeaton(d->instance);
 	return (0);
 }
 

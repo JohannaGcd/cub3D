@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 11:07:29 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/07 14:16:06 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/09 16:57:22 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include <stdio.h>
 # include <stdbool.h>
 # include <stdlib.h>
+# include <sys/time.h>
 
 // - - - - M A C R O S - - - -
 // - - - - - - - - - - - - - -
@@ -82,7 +83,13 @@ void	test_image(t_mlx *mlx_data, t_cub3d *cub3d);
 //0x00RRGGBB. Thus we convert our three different
 //color values to one RGB value that we can pass
 //to mlx functions.
-int	create_rgb(int r, int g, int b);
+int		create_rgb(int r, int g, int b);
+
+// Game loop that constantly checks for player input
+// and renders the frames continuously (even when no
+// input from the user is given). This creates smoother
+// movement at the cost of power consumption)
+int		game_loop(t_cub3d *cub3d);
 
 // Events are actions a user can perform in the game. They range from
 // keypresses (wasd) to mouse movement to pressing the 'x' button onscreen.
@@ -93,6 +100,11 @@ void	hook_events(t_mlx *mlx_data, t_cub3d *cub3d);
 // Calls all relevant raycasting functions in order to render
 // an image of the player's view.
 void	render_frame(t_cub3d *cub3d, t_mlx *mlx_data);
+
+//Simple function from philosophers.
+//uses gettimeofday() from sys/time.h lib
+//returns time passed since epoch in ms
+long	get_time_ms(void);
 
 // -- RAYCASTING FUNCTIONS --
 // Functions relevant for the casting of rays and

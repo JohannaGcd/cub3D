@@ -14,6 +14,8 @@ SRC := \
 	   deg_to_rad.c \
 	   create_rgb.c \
 	   render_frame.c \
+	   get_time_ms.c \
+	   game_loop.c \
 	   test/test_image.c \
 	   test/mock_parser.c \
 	   my_mlx/my_mlx_pixel_put.c \

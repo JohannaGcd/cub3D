@@ -593,5 +593,6 @@ move_ANY_DIRECTION(player, delta_t)
     }
 }
 ```
-
 Hope that makes some kind of sense.
+
+Ooooohkay, I now have the game loop sort of working so we should be able to slowly implement movement.

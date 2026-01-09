@@ -6,11 +6,34 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 16:34:07 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/09 17:30:18 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/09 19:14:09 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../inc/cub3d.h"
+
+void	update_player_movement(long delta_t_ms, t_cub3d *cub3d)
+{
+	t_movement *move;
+	t_level		*level;
+
+	move = &cub3d->movement;
+	level = &cub3d->level;
+	(void) delta_t_ms;
+
+	if (move->forward)
+		printf("we would be moving forward!\n");
+	if (move->backward)
+		printf("we would be moving backward\n");
+	if (move->left)
+		printf("we would be moving left\n");
+	if (move->right)
+		printf("right\n");
+	if (move->rotate_left)
+		printf("rot left\n");
+	if (move->rotate_right)
+		printf("rot right\n");
+}
 
 int	game_loop(t_cub3d *cub3d)
 {
@@ -30,7 +53,7 @@ int	game_loop(t_cub3d *cub3d)
 	//people can see this.
 	if (delta_t_ms == 0)
 		return (0);
-	//update_player_movement(cub3d);	TODO
+	update_player_movement(delta_t_ms, cub3d);
 	render_frame(cub3d, cub3d->mlx_data);
 	last_frame_time = current_frame_time;
 	return (0);

@@ -535,3 +535,63 @@ I let AI draw a (very buggy) game loop just so I could move around to test the r
 Creating the gameloop is going to take a while. From what AI wrote, I will have to do some brainstorming again to be able to make my own implementation. Yeeeeeeeeh....
 
 I expect this to take 1 to 2 weeks depending on how much headspace I will have.
+## 09-01
+Fresh and ready to get started! My mind is set on the player movement. There are multiple aspects of it, especially since I want to do it ever so slightly different with continious rendering (rendering even when we're not moving) instead of static rendering (only update the screen if necessary).
+
+With the todolist from yesterday in mind, I should probably start with remaking the todo list in more detail.
+
+The first part is thinking of the game loop. The idea is that we continuously render frames and every time we render the frame we check if our player has moved, if yes we update the position and start rendering the frame.
+
+```c
+{
+    update_player_position();
+    render_frame();
+}
+```
+
+Sounds easy right? Well it kind of is. We just have to think a little different. Let's think of the following two scenarios. We have a beefy computer that easily runs the game on 30 fps (frames per second) and another one that has a bit more trouble and only runs at 15 fps.
+
+Our first computer is able to draw 30 frames per second, thus it "updates" the screen (draws a new frame) every 1/30th of a second. If we want to move at a constant speed, we will have to multiply our player's velocity with a time. (remember velocity is in meter per second. Multiplying by a time gives us the distance (v = ds/dt) -> ds = v * dt). Well what is dt in this case? You guessed it! The time passed from our previous frame; In coding time this is equivalent to `game.current_frame_time - game.previous_frame_time`. In the second scenario the calculation is exactly the same only this time the time between the frames will be bigger (since this time we only render a frame every 1/15th of a second). This way we have smooth movement regardless of framerate. (of course, the less fps we have the slower/janky the game will feel).
+
+So, in `update_player_position()` we will have:
+```c
+update_player_position()
+{
+    get_current_time;
+    delta_t = current_time - previous_time;
+    if (game.key.w == 1)
+        move_forward();
+    if (game.key.s == 1)
+        move_backward();
+    if (game.key.a == 1)
+        move_left();
+    if (game.key.d == 1)
+        move_right();
+    if (game.key.left == 1)
+        rotate_left();
+    if game.key.right == 1)
+        rotate_right();
+    
+    previous_time = current_time;
+    return ;
+}
+
+//The basic idea of moving.
+//DEGR_DIR is a constant that is dependent
+//on the direction of movement
+// (for example backwards would be 180degrees,
+//to the left = 90 and to the right 270)
+move_ANY_DIRECTION(player, delta_t)
+{
+    new_x = player.x + (cos(player.dir + DEGR_DIR) * VELOCITY * delta_t);
+    new_y = player.y + (sin(player.dir + DEGR_DIR) * VELOCITY * delta_t);
+    
+    if (check_wall_collision(new_x, new_y, map) == false)
+    {
+        player.x = new_x;
+        player.y = new_y;
+    }
+}
+```
+
+Hope that makes some kind of sense.

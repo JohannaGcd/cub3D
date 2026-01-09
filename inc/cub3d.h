@@ -6,20 +6,16 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 11:07:29 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/09 16:57:22 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/09 17:50:50 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef CUB3D_H
 # define CUB3D_H
+# include "includes.h"
 # include "../mlx/mlx.h"
 # include "enums.h"
 # include "structs.h"
-# include <math.h>
-# include <stdio.h>
-# include <stdbool.h>
-# include <stdlib.h>
-# include <sys/time.h>
 
 // - - - - M A C R O S - - - -
 // - - - - - - - - - - - - - -
@@ -43,6 +39,7 @@
 # define BLUE     0x0000FF
 # define YELLOW   0xFFFF00
 
+
 //I like to use an array holding the X and the Y value of something.
 //Coming from a mathematical background, I prefer the first value
 //to be X and the second value to be Y when separating the two.
@@ -50,6 +47,11 @@
 //
 //So: position[2] would hold the x value in 
 //position[0] and y in position[1]
+//--- (me a week later) ---
+//Yes, I could also use a struct and thight might even be better
+//but this is the way I did it. Though unconventional I find it
+//rather creative.
+//---
 # define X 0
 # define Y 1
 

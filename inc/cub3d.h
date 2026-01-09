@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 11:07:29 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/09 17:50:50 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/09 18:26:43 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,8 @@
 # define BLUE     0x0000FF
 # define YELLOW   0xFFFF00
 
+// Player speed
+# define VELOCITY 10
 
 //I like to use an array holding the X and the Y value of something.
 //Coming from a mathematical background, I prefer the first value

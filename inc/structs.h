@@ -6,13 +6,15 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 17:05:59 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/07 13:45:32 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/09 17:50:50 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef STRUCTS_H
 # define STRUCTS_H
 # include "enums.h"
+# include "includes.h"
+
 // --- --- --- S T R U C T U R E S --- --- ---
 // - - - - - - - - - - - - - - - - - - - - - -
 // (because we can't pass a hundred
@@ -180,6 +182,25 @@ typedef struct s_color
 	int	b;
 }	t_colors;
 
+/* -- MOVEMENT STRUCTURE -- 
+ * A structure that keeps track
+ * of what movements we should process.
+ * This allows us to have multiple movements
+ * at the same time. We simply need to turn
+ * the movement bools on or off whenever a 
+ * movement key is pressed or released.
+*/
+
+typedef struct s_movement
+{
+	bool	forward;
+	bool	backward;
+	bool	left;
+	bool	right;
+	bool	rotate_left;
+	bool	rotate_right;
+}	t_movement;
+
 /*
  * -- CUB3D STRUCTURE --
  *  A big meta structure that holds all the
@@ -201,5 +222,6 @@ typedef struct s_cub3d
 	t_colors	ceiling;
 	t_level		level;
 	t_mlx		*mlx_data;
+	t_movement	movement;
 }	t_cub3d;
 #endif

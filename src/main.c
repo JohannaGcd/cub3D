@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/27 13:57:38 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/07 11:59:56 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/09 16:57:31 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,8 @@ int	main(void)
 		return (-1);
 	test_main(&mlx_data, &cub3d);
 	hook_events(&mlx_data, &cub3d);
+
+	mlx_loop_hook(mlx_data.instance, game_loop, &cub3d);
 	mlx_loop(mlx_data.instance);
 	//clean_up();
 	return (0);

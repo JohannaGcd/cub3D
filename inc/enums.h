@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 17:07:04 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/02 13:27:55 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/09 17:54:34 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,25 @@ typedef enum e_events
 	ON_MOUSEMOVE = 6,
 	ON_DESTROY = 17
 }	t_events;
+
+/*
+ * X11 Key codes. This is for readability.
+ * When a key is pressed we don't have
+ * to memorize the keycode. 
+ * WASD are for movement, ESC for exiting
+ * and LEFT and RIGHT for rotating.
+*/
+
+typedef enum e_keycodes
+{
+	KEY_ESC = 65307,
+	KEY_W = 119,
+	KEY_A = 97,
+	KEY_S = 115,
+	KEY_D = 100,
+	KEY_LEFT_ARROW = 65361,
+	KEY_RIGHT_ARROW = 65363
+}	t_keycodes;
 
 /*
  * To make the texture structure more readable

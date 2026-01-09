@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 11:09:49 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/05 11:28:47 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/09 17:02:04 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,6 +102,7 @@ int	init_data(t_mlx *mlx_data, t_cub3d *cub3d)
 		perror("init_mlx failed\n");
 		return (-1);
 	}
+	cub3d->mlx_data = mlx_data;
 	if (init_textures(mlx_data, &cub3d->texture) != 0)
 	{
 		perror("init_textures failed\n");

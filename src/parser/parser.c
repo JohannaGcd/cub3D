@@ -1,5 +1,35 @@
 # include "cub3d.h"
 
+static void init_cub3d_data(t_cub3d *data)
+{
+    data->textures.north = NULL;
+    data->textures.south = NULL;
+    data->textures.west = NULL;
+    data->textures.east = NULL;
+    data->floor.r = -1;
+    data->floor.g = -1;
+    data->floor.b = -1;
+    data->ceiling.r = -1;
+    data->ceiling.g = -1;
+    data->ceiling.b = -1;
+    data->map.grid = NULL;
+    data->map.width = 0;
+    data->map.height = 0;
+    data->map.player_x = -1;
+    data->map.player_y = -1;
+    data->map.player_dir = '\0';
+    data->metadata_flags = 0;
+}
+static bool has_cub_extension(const char *filename)
+{
+    size_t  len;
+
+    len = ft_strlen(filename);
+    if (len < 4)
+        return (false);
+    return (ft_strncmp(&filename[len - 4], ".cub", 4) == 0);
+}
+
 /*
 * Main parser function - entry point for parsing .cub files.
 * Orchestrates the 4 steps of the parsing process:
@@ -32,13 +62,13 @@ int parse_cub_file(char *filename, t_cub3d *data)
     fd = open(filename, O_RDONLY);
     if (fd == -1)
     {
-        perror("Error\nCannot open file");
+        perror("Error\nCannot open file\n");
         return (-1);
     }
     if (read_file_line_by_line(fd, data) == -1)
     {
         close(fd);
-        free_oarser_data(data);
+        free_parser_data(data);
         return (-1);
     }
     close(fd);

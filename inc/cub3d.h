@@ -185,4 +185,9 @@ void	my_mlx_create_image(void *mlx, t_img *img, int width, int height);
 // on a pixel position, it retrieves the color value of a pixel position.
 unsigned int	my_mlx_get_pixel_color(t_img *data, int x, int y);
 
+/* PARSER FUNCTIONS*/
+
+int     parse_cub_file(char *filename, t_cub3d *data);
+void    free_parser_data(t_cub3d *data);
+
 #endif

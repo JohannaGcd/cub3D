@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 16:34:07 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/09 19:14:09 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/10 12:43:38 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	update_player_movement(long delta_t_ms, t_cub3d *cub3d)
 	(void) delta_t_ms;
 
 	if (move->forward)
-		printf("we would be moving forward!\n");
+		move_forward(level, delta_t_ms);
 	if (move->backward)
 		printf("we would be moving backward\n");
 	if (move->left)
@@ -44,7 +44,7 @@ int	game_loop(t_cub3d *cub3d)
 	if (last_frame_time == 0)
 	{
 		last_frame_time = get_time_ms();
-		return (0);						//Technically unneccesary since we check
+		return (0);						//Technically unneccesary since we check whether delta_t == 0
 	}
 	current_frame_time = get_time_ms();
 	delta_t_ms = current_frame_time - last_frame_time;

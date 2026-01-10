@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 11:07:29 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/09 18:26:43 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/10 12:43:38 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -148,6 +148,12 @@ void	draw_textured_line(int row, t_ray *ray, t_textures *tex, t_img *frame);
 //In essence a simple while loop that shoots a ray for every
 //pixel line on our screen.
 void	draw_walls(t_textures *tex, t_level *level, t_img *frame);
+// -- MOVEMENT FUNCTIONS--
+// Functions for moving (and updating) the players position in the game
+// relies also on wall collision. Thus considered part of the movement
+// function.s
+
+void	move_forward(t_level *level, long time);
 // -- MATH UTILS --
 
 //Cos() and sin() functions work with radians, humans are known to use degrees

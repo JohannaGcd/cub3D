@@ -31,6 +31,87 @@ static bool has_cub_extension(const char *filename)
 }
 
 /*
+* Reads file line-by-line and processes metadata (textures, colors) and map.
+* Implements the parsing in two steps:
+* Phase 1: Metadata parsing
+* - skips empty lines
+* - parses texture and color lines
+* - tracks completion with bit flags
+* - transitions to map when ALL_METADATA flag is set and a map line is detected
+* Phase 2: Map parsing
+* - detects map start (first line with valid map chars after ALL_METADATA is set)
+* - dynamically grows map array as lines are read
+* - skips empty lines in map section
+* - calculates dimensions and finds player position after all lines have been read
+*/
+static int  read_file_line_by_line(int fd, t_cub3d *data)
+{
+    char    *line;
+    int     line_num;
+    bool    map_started;
+
+    line_num = 1;
+    map_started = false;
+    line = get_next_line(fd);
+    while (line)
+    {
+        if (!map_started)
+        {
+            if (is_empty_line(line))
+            {
+                free(line);
+                line = get_next_line(fd);
+                line_num++;
+                continue;
+            }
+            if (parse_metadata_line(line, data, line_num) == -1)
+            {
+                free(line);
+                return (-1);
+            }
+            if (is_metadata_complete(data) && is_map_line(line))
+            {
+                map_started = true;
+                grow_map(&data->map, line);
+                free(line);
+                line = get_next_line(fd);
+                line_num++;
+                continue:
+            }
+        }
+        else
+        {
+            if (is_map_line(line) || is_empty_line(line))
+            {
+                if (!is_empty_line(line))
+                    grow_map(&data->map, line);
+            }
+            else
+            {
+                free(line);
+                printf("Error\nIvalid character in map\n");
+                return (-1);
+            }
+        }
+        free(line);
+        line = get_next_line(fd);
+        line_num++;
+    }
+    if (!is_metadata_complete(data))
+    {
+        printf("Error\nMetadata is incomplete.\n");
+        return (-1);
+    }
+    if (!map_started || data->map.height == 0)
+    {
+        printf("Error\nMap not found or empty.\n");
+        return (-1);
+    }
+    calculate_map_dimensions(&data->map);
+    return (find_player_position(data));
+}
+
+/*
 * Main parser function - entry point for parsing .cub files.
 * Orchestrates the 4 steps of the parsing process:
 * 1. File reading (opens file, uses get_next_line)

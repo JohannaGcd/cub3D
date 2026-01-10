@@ -96,4 +96,23 @@ typedef enum e_dir
 	SO = 2,
 	WE = 3
 }	t_dir;
+
+/*
+* Metadata flags used by the parser to track
+* which required elements have been encountered so far.
+* These are bit flags (one bit inside an integer which we use as an "on/off switch") 
+* They can be combined into an integer, ALL_METADATA
+*/
+typedef enum e_metadata_flags
+{
+	META_NO = (1 << 0), // 000001 -> 1
+	META_SO = (1 << 1), // 000010 -> 2
+	META_WE = (1 << 3), // 000100 -> 3
+	META_EA = (1 << 3), // 001000 -> 8
+	META_F = (1 << 4),  // 010000 -> 16
+	META_C = (1 << 5)   // 100000 -> 32
+}	t_meta_flags;
+
+# define ALL_METADATA (META_NO | META_SO | META_WE | META_EA | META_F | META_C)
+
 #endif

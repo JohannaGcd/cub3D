@@ -215,12 +215,31 @@ typedef struct s_movement
  *  and a bunch of other stuff.
 */
 
+typedef struct s_colors
+{
+	int r;
+	int g;
+	int b;
+}	t_colors;
+
+typedef struct s_map
+ {
+	char	**grid;
+	int		width;
+	int		height;
+	int		player_x;
+	int		player_y;
+	char	player_dir;
+ }	t_map;
+
 typedef struct s_cub3d
 {
 	t_textures	texture;
 	t_colors	floor;
 	t_colors	ceiling;
 	t_level		level;
+	t_map		map;
+	int			metadata_flags;
 	t_mlx		*mlx_data;
 	t_movement	movement;
 }	t_cub3d;

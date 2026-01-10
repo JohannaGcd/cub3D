@@ -28,9 +28,19 @@ int	main(void)
 	t_cub3d	cub3d;
 
 	//PART OF THE TESTER!
-	mock_parser(&cub3d);
-	if (init_data(&mlx_data, &cub3d) != 0)
-		return (-1);
+	if (argc != 2)
+	{
+		printf("Error\nUse: ./cub3d <map_file.cub>\n");
+		return (1);
+	}
+	if (parse_cub_file(argv[1]), &cub3d) == -1)
+	{
+		free_parser_data(&cub3d);
+		return (1);
+	}
+	//mock_parser(&cub3d);
+	//if (init_data(&mlx_data, &cub3d) != 0)
+	//	return (-1);
 	test_main(&mlx_data, &cub3d);
 	hook_events(&mlx_data, &cub3d);
 

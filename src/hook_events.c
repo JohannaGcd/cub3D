@@ -22,7 +22,6 @@ int	key_press_handler(int keynum, t_cub3d *cub3d)
 {
 	t_mlx		*mlx_data;
 
-	printf("hel");
 	mlx_data = cub3d->mlx_data;
 	if (keynum == KEY_ESC)
 		close_window(mlx_data->instance);

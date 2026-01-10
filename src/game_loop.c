@@ -19,20 +19,19 @@ void	update_player_movement(long delta_t_ms, t_cub3d *cub3d)
 
 	move = &cub3d->movement;
 	level = &cub3d->level;
-	(void) delta_t_ms;
 
 	if (move->forward)
 		move_forward(level, delta_t_ms);
 	if (move->backward)
-		printf("we would be moving backward\n");
+		move_backward(level, delta_t_ms);
 	if (move->left)
-		printf("we would be moving left\n");
+		move_left(level, delta_t_ms);
 	if (move->right)
-		printf("right\n");
+		move_right(level, delta_t_ms);
 	if (move->rotate_left)
-		printf("rot left\n");
+		rotate_left(level, delta_t_ms);
 	if (move->rotate_right)
-		printf("rot right\n");
+		rotate_right(level, delta_t_ms);
 }
 
 int	game_loop(t_cub3d *cub3d)

@@ -598,3 +598,17 @@ Hope that makes some kind of sense.
 Ooooohkay, I now have the game loop sort of working so we should be able to slowly implement movement.
 
 Pfffffffffffffffffffffffffffffffffffffffffffffff. Three hours later but we're on our way. I have the gameloop and our events. I just need to calculate the new player positions and check for collisions.
+
+## 10-01
+Massive brainfog today. Found a BUNCH of bugs which seem to question as to whether I was on the right track.
+
+Image seems to be flipped; In our current test map we are looking upwards (north) and we should have a wall directly to our left. However, it is directly to our right.
+Also, when changing the textures to something a little less visual and more eligible (like textures with words on them) I see that on the one side they are flipped (so NO would show everything correctly but then SO would have it flipped and vice versa. Same counts for WE/EA)
+
+Rendering of textures goes haywire when I get too close to the walls. And don't even get me started on the hooking for movement. That shit is super super weird (a lot of hazzle with parsing delta_t_ms as a long????) I wish I could understand this stuff but it would be outside of the scope.
+
+I'm starting to wonder whether to switch back to static rendering since that makes this hooking easier....
+
+I am going to take a break for the next two days. I hit a wall and need some time to recharge.
+
+Oh the mirroring must be due to a miscommunication in shoot ray and draw_walls! I am drawing the most left column on my screen when shooting the most right ray!

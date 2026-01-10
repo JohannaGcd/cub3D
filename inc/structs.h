@@ -215,6 +215,14 @@ typedef struct s_movement
  *  and a bunch of other stuff.
 */
 
+typedef struct s_textures
+{
+	char	*north;
+	char	*south;
+	char	*west;
+	char	*east;
+}	t_textures;
+
 typedef struct s_colors
 {
 	int r;

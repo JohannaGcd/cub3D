@@ -1,5 +1,17 @@
 #include "cub3d.h"
 
+bool    is_empty_line(char *line)
+{
+    if (!line)
+        return (true);
+    while (*line)
+    {
+        if (*line != ' ' && *line != '\t' && *line != '\n')
+            return (false);
+        line++;
+    }
+    return (true);
+}
 int ft_strncmp(const char *s1, const char *s2, size_t n)
 {
     size_t  i;
@@ -12,7 +24,7 @@ int ft_strncmp(const char *s1, const char *s2, size_t n)
     return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
-void    free_parer_data(t_cub3d *data)
+void    free_parser_data(t_cub3d *data)
 {
     int i;
     

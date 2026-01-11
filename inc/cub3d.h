@@ -188,7 +188,13 @@ unsigned int	my_mlx_get_pixel_color(t_img *data, int x, int y);
 /* PARSER FUNCTIONS*/
 
 int     parse_cub_file(char *filename, t_cub3d *data);
+char    *get_next_line(int fd):
+int     parse_metadata_line(char *line, t_cub3d *data, int line_num);
+int     parse_texture(char *line, t_cub3d *data, int flag);
 bool    is_empty_line(char *line);
+void    skip_spaces(char **line);
+char    *trim_whitespace(char *str);
+size_t  ft_strlen(const char *s);
 int     ft_strncmp(const char *s1, const char *s2, size_t n);
 void    free_parser_data(t_cub3d *data);
 

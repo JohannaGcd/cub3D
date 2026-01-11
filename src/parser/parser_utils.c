@@ -1,5 +1,9 @@
 #include "cub3d.h"
 
+// split string
+// atoi
+// free split? then replace in parse_rgb_value
+
 bool    is_empty_line(char *line)
 {
     if (!line)

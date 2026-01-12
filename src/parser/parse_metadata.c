@@ -1,5 +1,9 @@
 #include "cub3d.h"
 
+bool    is_metadata_complete(t_cub3d *data)
+{
+    return (data->metadata_flags == ALL_METADATA);
+}
 /*
 * Parses RGB values from string format "R,G,B"
 * - splits by comma

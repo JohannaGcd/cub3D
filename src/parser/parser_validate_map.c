@@ -67,6 +67,22 @@ int validate_texture_files(t_cub3d *data)
     close(fd);
     return (0);
 }
+
+/*
+* Helper function for flood_fill implementation
+* to measure the length of the line.
+*/
+static int  get_line_width(char *line)
+{
+    int len;
+
+    if (!line)
+        return (0);
+    len = 0;
+    while (line[len] && line[len] != '\n')
+        len++;
+    return (len);
+}
 /*
 * Recursive function for flood fill:
 * Base case: checks if outside of boundaries (rows, then columns)

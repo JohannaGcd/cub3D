@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "../../inc/cub3d.h"
 
 # define BUFFER_SIZE 1024
 
@@ -37,7 +37,7 @@ static char *extract_line(char *buffer, int *pos)
         return (NULL);
     len = 0;
     while (start < *pos)
-        len[len++] = buffer[start++];
+        line[len++] = buffer[start++];
     line[len] = '\0';
     return (line);
 }

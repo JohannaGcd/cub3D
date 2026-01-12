@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   cub3d.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
+/*   By: jojo <jojo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 11:07:29 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/09 18:26:43 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/12 19:31:55 by jojo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -188,12 +188,15 @@ unsigned int	my_mlx_get_pixel_color(t_img *data, int x, int y);
 /* PARSER FUNCTIONS*/
 
 int     parse_cub_file(char *filename, t_cub3d *data);
-char    *get_next_line(int fd):
+char    *get_next_line(int fd);
 int     parse_metadata_line(char *line, t_cub3d *data, int line_num);
 int     parse_texture(char *line, t_cub3d *data, int flag);
 bool    is_empty_line(char *line);
 void    skip_spaces(char **line);
 char    *trim_whitespace(char *str);
+int     ft_atoi(const char *str);
+char    **split_string(char *str, char delimiter);
+char    *ft_strdup(const char *s1);
 size_t  ft_strlen(const char *s);
 int     ft_strncmp(const char *s1, const char *s2, size_t n);
 void    free_parser_data(t_cub3d *data);

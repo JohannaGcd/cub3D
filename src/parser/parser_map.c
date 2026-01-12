@@ -1,4 +1,4 @@
-# include "cub3d.h"
+# include "../../inc/cub3d.h"
 
 /*
 * Detects if a line is a valid map line, ie:
@@ -18,7 +18,7 @@ bool    is_map_line(char *line)
         if (line[i] == '0' || line[i] == '1' || line[i] == 'N'
             || line[i] == 'S' || line[i] == 'E' || line[i] == 'W')
             has_map_char = true;
-        else if (line[i] != ' ' && line[i] == != '\t')
+        else if (line[i] != ' ' && line[i] != '\t')
                 return (false);
         i++;
     }
@@ -111,7 +111,7 @@ int find_player_position(t_cub3d *data)
     while (data->map.grid[y])
     {
         x = 0;
-        while (map->grid[y][x])
+        while (data->map.grid[y][x])
         {
             if (data->map.grid[y][x] == 'N' || data->map.grid[y][x] == 'S'
                 || data->map.grid[y][x] == 'E' || data->map.grid[y][x] == 'W')
@@ -125,7 +125,7 @@ int find_player_position(t_cub3d *data)
                 data->map.player_y = y;
                 data->map.player_dir = data->map.grid[y][x];
                 data->map.grid[y][x] = '0';
-                player_count++:
+                player_count++;
             }
             x++;
         }

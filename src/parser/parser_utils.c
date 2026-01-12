@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "../../inc/cub3d.h"
 
 // free split? then replace in parse_rgb_value and split string
 // ft_memcpy
@@ -17,14 +17,32 @@ int ft_atoi(const char *str)
     {
         if (*str == '-')
             sign = -1;
-        str++:
+        str++;
     }
     while (*str >= '0' && *str <= '9')
     {
-        result = result * 10 + (*str - '0')
-        str++:
+        result = result * 10 + (*str - '0');
+        str++;
     }
     return (result * sign);
+}
+char    *ft_strdup(const char *s1)
+{
+    char    *dup;
+    size_t  len;
+    size_t  i;
+
+    len = ft_strlen(s1);
+    dup = malloc(sizeof(char) * (len + 1));
+    if (!dup)
+        return (NULL);
+    i = 0;
+    while (i <= len)
+    {
+        dup[i] = s1[i];
+        i++;
+    }
+    return (dup);
 }
 
 char    **split_string(char *str, char delimiter)
@@ -60,7 +78,7 @@ char    **split_string(char *str, char delimiter)
             if (!result[count])
             {
                 while (j-- > 0)
-                    free(result[j])
+                    free(result[j]);
                 free(result);
                 return (NULL);
             }

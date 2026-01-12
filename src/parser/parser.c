@@ -1,4 +1,4 @@
-# include "cub3d.h"
+# include "../../inc/cub3d.h"
 
 static void init_cub3d_data(t_cub3d *data)
 {

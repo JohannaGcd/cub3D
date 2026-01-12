@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "../../inc/cub3d.h"
 
 /*
 * Checks each map character, one by one.
@@ -35,33 +35,33 @@ int validate_texture_files(t_cub3d *data)
 {
     int fd;
 
-    if (!data->texture.north)
+    if (!data->textures.north)
         return (-1);
-    fd = open(data->texture.north, O_RDONLY);
+    fd = open(data->textures.north, O_RDONLY);
     if (fd == -1)
     {
-        printf("Error\nCannot open texture file: %s\n", data->texture.north)
-        return (-1);
-    }
-    close(fd);
-    fd = open(data->texture.south, O_RDONLY);
-    if (fd == -1)
-    {
-        printf("Error\nCannot open texture file: %s\n", data->texture.south)
+        printf("Error\nCannot open texture file: %s\n", data->textures.north)
         return (-1);
     }
     close(fd);
-    fd = open(data->texture.west, O_RDONLY);
+    fd = open(data->textures.south, O_RDONLY);
     if (fd == -1)
     {
-        printf("Error\nCannot open texture file: %s\n", data->texture.west)
+        printf("Error\nCannot open texture file: %s\n", data->textures.south)
+        return (-1);
+    }
+    close(fd);
+    fd = open(data->textures.west, O_RDONLY);
+    if (fd == -1)
+    {
+        printf("Error\nCannot open texture file: %s\n", data->textures.west)
         return (-1);
     }
     close(fd);
     fd = open(data->texture.east, O_RDONLY);
     if (fd == -1)
     {
-        printf("Error\nCannot open texture file: %s\n", data->texture.east)
+        printf("Error\nCannot open texture file: %s\n", data->textures.east)
         return (-1);
     }
     close(fd);
@@ -142,7 +142,7 @@ int flood_fill_validation(t_cub3d *data)
             free(visited);
             return (-1);
         }
-        memset(visited[x], 0, sizeof(int) * data->map.width);
+        memset(visited[x], 0, sizeof(int) * data->map.width); // FORBIDDEN FUNCTION, USE LIBFT
         x++;
     }
     result = flood_fill_recursive(data->map.grid, visited,

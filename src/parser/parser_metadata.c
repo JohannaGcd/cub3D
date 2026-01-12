@@ -1,4 +1,4 @@
-#include "cub3d.h"
+#include "../../inc/cub3d.h"
 
 bool    is_metadata_complete(t_cub3d *data)
 {

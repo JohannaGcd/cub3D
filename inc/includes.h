@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   includes.h                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
+/*   By: jojo <jojo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/09 17:49:21 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/09 17:52:46 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/12 19:21:57 by jojo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,4 +23,6 @@
 # include <stdbool.h>
 # include <stdlib.h>
 # include <sys/time.h>
+#include <sys/types.h>
+#include <unistd.h>
 #endif

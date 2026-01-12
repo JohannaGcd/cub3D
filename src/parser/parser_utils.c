@@ -2,6 +2,7 @@
 
 // free split? then replace in parse_rgb_value and split string
 // ft_memcpy
+// ft_strdup
 
 int ft_atoi(const char *str)
 {

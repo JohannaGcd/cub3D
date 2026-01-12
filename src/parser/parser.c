@@ -72,7 +72,7 @@ static int  read_file_line_by_line(int fd, t_cub3d *data)
             if (is_metadata_complete(data) && is_map_line(line))
             {
                 map_started = true;
-                grow_map(&data->map, line);
+                build_map(&data->map, line);
                 free(line);
                 line = get_next_line(fd);
                 line_num++;
@@ -84,7 +84,7 @@ static int  read_file_line_by_line(int fd, t_cub3d *data)
             if (is_map_line(line) || is_empty_line(line))
             {
                 if (!is_empty_line(line))
-                    grow_map(&data->map, line);
+                    build_map(&data->map, line);
             }
             else
             {

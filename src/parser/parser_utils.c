@@ -1,8 +1,80 @@
 #include "cub3d.h"
 
-// split string
-// atoi
-// free split? then replace in parse_rgb_value
+// free split? then replace in parse_rgb_value and split string
+// ft_memcpy
+
+int ft_atoi(const char *str)
+{
+    int sign;
+    int result;
+
+    sign = 1;
+    result = 0;
+    while (*str == ' ' || (*str >= 9 && *str <= 13))
+        str++;
+    if (*str == '-' || *str == '+')
+    {
+        if (*str == '-')
+            sign = -1;
+        str++:
+    }
+    while (*str >= '0' && *str <= '9')
+    {
+        result = result * 10 + (*str - '0')
+        str++:
+    }
+    return (result * sign);
+}
+
+char    **split_string(char *str, char delimiter)
+{
+    char    **result;
+    int     count;
+    int     i;
+    int     start;
+
+    if (!str)
+        return (NULL);
+    
+    count = 1;
+    i = 0;
+    while (str[i])
+    {
+        if (str[i] == delimiter)
+            count++;
+        i++;
+    }
+    result = malloc(sizeof(char *) * (count + 1));
+    if (!result)
+        return (NULL);
+    
+    i = 0;
+    start = 0;
+    count = 0;
+    while (1)
+    {
+        if (str[i] == delimiter || str[i] == '\0')
+        {
+            result[count] = malloc(sizeof(char) * (i - start + 1));
+            if (!result[count])
+            {
+                while (j-- > 0)
+                    free(result[j])
+                free(result);
+                return (NULL);
+            }
+            ft_memcpy(result[count], str + start, i - start);
+            result[count][i - start] = '\0';
+            count++;
+            start = i + 1;
+            if (str[i] == '\0')
+                break;
+        }
+        i++;
+    }
+    result[count] = NULL;
+    return (result);
+}
 
 bool    is_empty_line(char *line)
 {

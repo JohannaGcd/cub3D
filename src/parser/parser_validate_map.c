@@ -40,28 +40,28 @@ int validate_texture_files(t_cub3d *data)
     fd = open(data->textures.north, O_RDONLY);
     if (fd == -1)
     {
-        printf("Error\nCannot open texture file: %s\n", data->textures.north)
+        printf("Error\nCannot open texture file: %s\n", data->textures.north);
         return (-1);
     }
     close(fd);
     fd = open(data->textures.south, O_RDONLY);
     if (fd == -1)
     {
-        printf("Error\nCannot open texture file: %s\n", data->textures.south)
+        printf("Error\nCannot open texture file: %s\n", data->textures.south);
         return (-1);
     }
     close(fd);
     fd = open(data->textures.west, O_RDONLY);
     if (fd == -1)
     {
-        printf("Error\nCannot open texture file: %s\n", data->textures.west)
+        printf("Error\nCannot open texture file: %s\n", data->textures.west);
         return (-1);
     }
     close(fd);
-    fd = open(data->texture.east, O_RDONLY);
+    fd = open(data->textures.east, O_RDONLY);
     if (fd == -1)
     {
-        printf("Error\nCannot open texture file: %s\n", data->textures.east)
+        printf("Error\nCannot open texture file: %s\n", data->textures.east);
         return (-1);
     }
     close(fd);
@@ -100,7 +100,7 @@ static int  flood_fill_recursive(char **map, int **visited, int x, int y, int he
         return (1);
     if (visited[x][y] || map[x][y] == '1')
         return (0);
-    if (map[x][y] == ' ' || map[x][y] == \'n' || map[x][y] == '\0')
+    if (map[x][y] == ' ' || map[x][y] == '\n' || map[x][y] == '\0')
         return (1);
     visited[x][y] = 1;
     if (flood_fill_recursive(map, visited, x, y + 1, height))
@@ -142,11 +142,11 @@ int flood_fill_validation(t_cub3d *data)
             free(visited);
             return (-1);
         }
-        memset(visited[x], 0, sizeof(int) * data->map.width); // FORBIDDEN FUNCTION, USE LIBFT
+        ft_intset(visited[x], 0, sizeof(int) * data->map.width); // FORBIDDEN FUNCTION, USE LIBFT
         x++;
     }
     result = flood_fill_recursive(data->map.grid, visited,
-        data->player_x, data->player_y, data->map.height);
+        data->map.player_x, data->map.player_y, data->map.height);
     
         x = 0;
     while(x < data->map.height)

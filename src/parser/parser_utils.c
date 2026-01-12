@@ -26,6 +26,19 @@ int ft_atoi(const char *str)
     }
     return (result * sign);
 }
+
+void    ft_intset(int *array, int value, int len)
+{
+    int i;
+
+    i = 0;
+    while (i < len)
+    {
+        array[i] = value;
+        i++;
+    }
+}
+
 char    *ft_strdup(const char *s1)
 {
     char    *dup;
@@ -43,6 +56,41 @@ char    *ft_strdup(const char *s1)
         i++;
     }
     return (dup);
+}
+
+size_t  ft_strlen(const char *s)
+{
+    size_t  len;
+
+    len = 0;
+    while(s[len])
+        len++;
+    return (len);
+}
+
+int ft_strncmp(const char *s1, const char *s2, size_t n)
+{
+    size_t  i;
+
+    if (n == 0)
+        return (0);
+    i = 0;
+    while (i < n - 1 && s1[i] && s2[i] && s1[i] == s2[i])
+        i++;
+    return ((unsigned char)s1[i] - (unsigned char)s2[i]);
+}
+
+void    *ft_memcpy(void *dest, const void *src, size_t len)
+{
+    size_t  i;
+
+    i = 0;
+    while (i < len)
+    {
+        ((char *)dest)[i] = ((char *)src)[i];
+        i++;
+    }
+    return (dest);
 }
 
 char    **split_string(char *str, char delimiter)
@@ -77,8 +125,8 @@ char    **split_string(char *str, char delimiter)
             result[count] = malloc(sizeof(char) * (i - start + 1));
             if (!result[count])
             {
-                while (j-- > 0)
-                    free(result[j]);
+                while (count-- > 0)
+                    free(result[count]);
                 free(result);
                 return (NULL);
             }
@@ -106,27 +154,6 @@ bool    is_empty_line(char *line)
         line++;
     }
     return (true);
-}
-size_t  ft_strlen(const char *s)
-{
-    size_t  len;
-
-    len = 0;
-    while(s[len])
-        len++;
-    return (len);
-}
-
-int ft_strncmp(const char *s1, const char *s2, size_t n)
-{
-    size_t  i;
-
-    if (n == 0)
-        return (0);
-    i = 0;
-    while (i < n - 1 && s1[i] && s2[i] && s1[i] == s2[i])
-        i++;
-    return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
 void    skip_spaces(char **line)
@@ -165,6 +192,12 @@ char    *trim_whitespace(char *str)
         trimmed[len] = start[len];
     return (trimmed);
 }
+
+bool    is_valid_map_char(char c)
+{
+    return (c == '0' || c == '1' || c == 'N' || c == 'S' 
+        || c == 'W' || c == 'E' || c == ' ' || c == '\t');
+}
 void    free_parser_data(t_cub3d *data)
 {
     int i;
@@ -182,12 +215,12 @@ void    free_parser_data(t_cub3d *data)
     if (data->map.grid)
     {
         i = 0;
-        while (data->map.grid[i]);
+        while (data->map.grid[i])
         {
             free(data->map.grid[i]);
             i++;
         }
-        free(data->map.grid)
+        free(data->map.grid);
     }
 
 }

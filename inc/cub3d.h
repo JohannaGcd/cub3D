@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 11:07:29 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/12 19:31:55 by jojo             ###   ########.fr       */
+/*   Updated: 2026/01/12 20:16:45 by jojo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -190,12 +190,21 @@ unsigned int	my_mlx_get_pixel_color(t_img *data, int x, int y);
 int     parse_cub_file(char *filename, t_cub3d *data);
 char    *get_next_line(int fd);
 int     parse_metadata_line(char *line, t_cub3d *data, int line_num);
-int     parse_texture(char *line, t_cub3d *data, int flag);
+bool    is_metadata_complete(t_cub3d *data);
+int     parse_texture(char *line, t_cub3d *data, t_meta_flags flag, t_dir dir);
+bool    is_map_line(char *line);
+void    build_map(t_map  *map, char *line);
+void    calculate_map_dimensions(t_map *map);
+int     find_player_position(t_cub3d *data);
+int     validate_map(t_cub3d *data);
 bool    is_empty_line(char *line);
 void    skip_spaces(char **line);
 char    *trim_whitespace(char *str);
+bool    is_valid_map_char(char c);
 int     ft_atoi(const char *str);
+void    ft_intset(int *array, int value, int len);
 char    **split_string(char *str, char delimiter);
+void    *ft_memcpy(void *dest, const void *src, size_t len);
 char    *ft_strdup(const char *s1);
 size_t  ft_strlen(const char *s);
 int     ft_strncmp(const char *s1, const char *s2, size_t n);

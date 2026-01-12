@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   structs.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
+/*   By: jojo <jojo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 17:05:59 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/09 18:22:40 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/12 19:39:56 by jojo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,13 +106,13 @@ typedef struct s_level
  *  their width and height (in pixels!) for the raytracing.
 */
 
-typedef struct s_textures
+/*typedef struct s_textures
 {
 	char	*path[4];
 	t_img	mlx_img[4];
 	int		width[4];
 	int		height[4];
-}	t_textures;
+}	t_textures; --> BUG: ALREADY EXISTS IN PARSER*/ 
 
 /*
  * -- RAY STRUCTURE --
@@ -175,7 +175,7 @@ typedef struct s_ray_utils
  *  (this is a pointer and not an array)
 */
 
-typedef struct s_color
+typedef struct s_colors
 {
 	int	r;
 	int	g;
@@ -223,13 +223,6 @@ typedef struct s_textures
 	char	*east;
 }	t_textures;
 
-typedef struct s_colors
-{
-	int r;
-	int g;
-	int b;
-}	t_colors;
-
 typedef struct s_map
  {
 	char	**grid;
@@ -242,7 +235,7 @@ typedef struct s_map
 
 typedef struct s_cub3d
 {
-	t_textures	texture;
+	t_textures	textures;
 	t_colors	floor;
 	t_colors	ceiling;
 	t_level		level;

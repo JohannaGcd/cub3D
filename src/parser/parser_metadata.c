@@ -50,6 +50,21 @@ static int  parse_rgb_value(char *rgb_str, t_colors *color)
     free(parts);
     return (0);
 }
+
+static char *extract_path(char *line, int skip_len)
+{
+    char    *path;
+    char    *start;
+    char    *trimmed;
+
+    start = line + skip_len;
+    skip_spaces(&start);
+    if (!*start || *start == '\n')
+        return (NULL);
+    trimmed = trim_whitespace(start);
+    return (trimmed);
+}
+
 /*
 * Parses a color line (F or C)
 * - Checks for duplicates using bit flag ('&')
@@ -89,19 +104,7 @@ int parse_color(char *line, t_cub3d *data, t_meta_flags flag)
     data->metadata_flags |= flag;
     return (0);
 }
-static char *extract_path(char *line, int skip_len)
-{
-    char    *path;
-    char    *start;
-    char    *trimmed;
 
-    start = line + skip_len;
-    skip_spaces(&start);
-    if (!*start || *start == '\n')
-        return (NULL);
-    trimmed = trim_whitespace(start);
-    return (trimmed);
-}
 /*
 * Parses a texture line
 * - Checks for duplicates using bit flag ('& flag' is the 'and' operator)
@@ -125,7 +128,19 @@ int parse_texture(char *line, t_cub3d *data, t_meta_flags flag, t_dir dir)
         free(path);
         return (-1);
     }
-    data->textures.paths[dir] = path;
+    if (dir == NO)
+        data->textures.north = path;
+    else if (dir == SO)
+        data->textures.north = path; 
+    else if (dir == WE)
+        data->textures.north = path;
+    else if (dir == EA)
+        data->textures.north = path;
+    else
+    {
+        free(path);
+        return (-1);
+    }
     data->metadata_flags |= flag;
     return (0);
 }

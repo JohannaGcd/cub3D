@@ -76,7 +76,7 @@ static int  read_file_line_by_line(int fd, t_cub3d *data)
                 free(line);
                 line = get_next_line(fd);
                 line_num++;
-                continue:
+                continue;
             }
         }
         else
@@ -153,7 +153,7 @@ int parse_cub_file(char *filename, t_cub3d *data)
         return (-1);
     }
     close(fd);
-    if (validata_map(data) == -1)
+    if (validate_map(data) == -1)
     {
         free_parser_data(data);
         return (-1);

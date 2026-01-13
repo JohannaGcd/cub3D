@@ -142,7 +142,7 @@ int flood_fill_validation(t_cub3d *data)
             free(visited);
             return (-1);
         }
-        ft_intset(visited[x], 0, sizeof(int) * data->map.width); // FORBIDDEN FUNCTION, USE LIBFT
+        ft_intset(visited[x], 0, sizeof(int) * data->map.width);
         x++;
     }
     result = flood_fill_recursive(data->map.grid, visited,

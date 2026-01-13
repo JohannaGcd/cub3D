@@ -116,7 +116,7 @@ int find_player_position(t_cub3d *data)
             if (data->map.grid[y][x] == 'N' || data->map.grid[y][x] == 'S'
                 || data->map.grid[y][x] == 'E' || data->map.grid[y][x] == 'W')
             {
-                if (player_count > 0)
+                if (player_count == 1)
                 {
                     printf("Error\nMultiple player positions found\n");
                     return (-1);

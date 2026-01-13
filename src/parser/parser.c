@@ -160,3 +160,12 @@ int parse_cub_file(char *filename, t_cub3d *data)
     }
     return (0);
 }
+
+// TO_DO:
+// 1. CUB3D START
+// 2. player_pos_x -> use a float instead of int .5 (middle of the square).
+// 3. GET RECTANGULAR MAP 
+// 4. PUSH TO GITHUB
+// 5. NORMINETTE
+// 6. REPLACE PRINTF:
+// IF IT'S OUR FUNCTION, USE FT_ERROR, OTHERWISE (LIKE OPEN) USE PERROR

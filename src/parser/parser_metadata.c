@@ -131,11 +131,11 @@ int parse_texture(char *line, t_cub3d *data, t_meta_flags flag, t_dir dir)
     if (dir == NO)
         data->textures.north = path;
     else if (dir == SO)
-        data->textures.north = path; 
+        data->textures.south = path; 
     else if (dir == WE)
-        data->textures.north = path;
+        data->textures.west = path;
     else if (dir == EA)
-        data->textures.north = path;
+        data->textures.east = path;
     else
     {
         free(path);

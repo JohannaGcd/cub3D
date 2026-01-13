@@ -612,3 +612,6 @@ I'm starting to wonder whether to switch back to static rendering since that mak
 I am going to take a break for the next two days. I hit a wall and need some time to recharge.
 
 Oh the mirroring must be due to a miscommunication in shoot ray and draw_walls! I am drawing the most left column on my screen when shooting the most right ray!
+
+## 13-01
+On the mirroring of the images; I have to remember that my gridline will be from 0 to N but from the other side from N to 0. So I will always have one side mirrored with my current implementation!

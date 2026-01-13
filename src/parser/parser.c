@@ -6,7 +6,7 @@
 /*   By: jguacide <jguacide@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:21:58 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/13 14:22:00 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/13 14:27:35 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -174,8 +174,6 @@ int parse_cub_file(char *filename, t_cub3d *data)
 }
 
 // TO_DO:
-// 1. CUB3D START
-// 2. player_pos_x -> use a float instead of int .5 (middle of the square).
 // 3. GET RECTANGULAR MAP 
 // 4. PUSH TO GITHUB
 // 5. NORMINETTE

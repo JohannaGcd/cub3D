@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   structs.h                                          :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jojo <jojo@student.42.fr>                  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/30 17:05:59 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/13 10:58:49 by jojo             ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   structs.h                                          :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jojo <jojo@student.42.fr>                    +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/12/30 17:05:59 by zivanov       #+#    #+#                 */
+/*   Updated: 2026/01/13 14:24:36 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -228,8 +228,8 @@ typedef struct s_map
 	char	**grid;
 	int		width;
 	int		height;
-	int		player_x;
-	int		player_y;
+	double	player_x;
+	double	player_y;
 	char	player_dir;
  }	t_map;
 

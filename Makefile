@@ -28,7 +28,14 @@ SRC := \
 	   raycasting/draw_walls.c \
 	   raycasting/finalize_ray.c \
 	   raycasting/find_gridline.c \
-	   raycasting/out_of_bounds.c 
+	   raycasting/out_of_bounds.c \
+	   parser/parser.c \
+	   parser/parser_validate_map.c \
+	   parser/parser_utils.c \
+	   parser/parser_metadata.c \
+	   parser/parser_map.c \
+	   parser/parser_file_reader.c \
+
 
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 

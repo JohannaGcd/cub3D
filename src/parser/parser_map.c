@@ -6,7 +6,7 @@
 /*   By: jguacide <jguacide@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:09 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/13 14:22:11 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/13 14:30:34 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,6 +51,7 @@ void    build_map(t_map  *map, char *line)
     if (!map || !line)
         return;
     line_copy = ft_strdup(line);
+    printf("line_copy in build map: %s", line_copy);
     if (!line_copy)
         return;
     if (map->grid == NULL)
@@ -76,6 +77,7 @@ void    build_map(t_map  *map, char *line)
     while (i < map->height)
     {
         new_map[i] = map->grid[i];
+        printf("in loop, new_map[%d] is %s", i, new_map[i]);
         i++;
     }
     new_map[i] = line_copy;
@@ -108,7 +110,8 @@ void    calculate_map_dimensions(t_map *map)
 /*
 * Finds player's starting position in the map.
 * - Scans the entire map for N,S,E,W characters
-* - Records coordinates and direction
+* - Records coordinates and direction. 
+* - Adds '+ (1 / 2)' to place the player in the center of the square
 * - Replaces player char with '0' in map
 * - Validate that there is exactly one player
 */
@@ -133,8 +136,8 @@ int find_player_position(t_cub3d *data)
                     printf("Error\nMultiple player positions found\n");
                     return (-1);
                 }
-                data->map.player_x = x;
-                data->map.player_y = y;
+                data->map.player_x = x + (1 / 2);
+                data->map.player_y = y + (1 / 2);
                 data->map.player_dir = data->map.grid[y][x];
                 data->map.grid[y][x] = '0';
                 player_count++;

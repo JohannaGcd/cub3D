@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/30 14:19:22 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/09 19:13:47 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/10 12:50:07 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,8 @@ int	key_press_handler(int keynum, t_cub3d *cub3d)
 		cub3d->movement.rotate_left = 1;
 	else if (keynum == KEY_RIGHT_ARROW)
 		cub3d->movement.rotate_right = 1;
+	else
+		printf("keynum: %i\n", keynum);
 	return (0);
 }
 

@@ -20,7 +20,13 @@
 
 static void	convert_length_to_pixels(double length, int *pixels)
 {
+	if (length <= 0.0)
+		*pixels = WINDOWHEIGHT;
 	*pixels = WINDOWHEIGHT / length;
+	if (*pixels > WINDOWHEIGHT * 2)
+		*pixels = WINDOWHEIGHT * 2;
+	else if (*pixels < 1)
+		*pixels = 1;
 }
 
 /*
@@ -37,9 +43,11 @@ static int	calc_y(int j, int pixels, int stepsize, int max_pixels)
 {
 	int	result;
 
-	result = (j + ((double) pixels / 2)) * stepsize;
+	result = (int)(j + ((double) pixels / 2)) * stepsize;
 	if (result >= max_pixels)
-		result = max_pixels - 1;
+		return (max_pixels - 1);
+	else if (result < 0)
+		return (0);
 	return (result);
 }
 
@@ -67,12 +75,16 @@ void	draw_textured_line(int row, t_ray *ray, t_textures *tex, t_img *frame)
 	int				j;
 
 	convert_length_to_pixels(ray->length, &ray->pixels);
+	if (ray->pixels <= 0)
+		return ;
 	j = -(ray->pixels / 2);
 	tex_x = ray->pos_wall_hit * tex->width[ray->side];
+	if (tex_x >= tex->width[ray->side])
+		tex_x = tex->width[ray->side] - 1;
 	stepsize = (double) tex->height[ray->side] / ray->pixels;
 	while (j < (ray->pixels / 2))
 	{
-		tex_y = calc_y(j, ray->pixels, stepsize, tex->width[ray->side]);
+		tex_y = calc_y(j, ray->pixels, stepsize, tex->height[ray->side]);
 		color = my_mlx_get_pixel_color(&tex->mlx_img[ray->side], tex_x, tex_y);
 		my_mlx_pixel_put(frame, row, (WINDOWHEIGHT / 2) + j, color);
 		j++;

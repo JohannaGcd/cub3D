@@ -6,7 +6,11 @@
 /*   By: jojo <jojo@student.42.fr>                  +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/12/28 11:07:29 by zivanov           #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2026/01/12 20:16:45 by jojo             ###   ########.fr       */
+=======
+/*   Updated: 2026/01/10 12:43:38 by zivanov          ###   ########.fr       */
+>>>>>>> d3fee5c9d0afee23874481c8c365990f1072da25
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,8 +43,8 @@
 # define BLUE     0x0000FF
 # define YELLOW   0xFFFF00
 
-// Player speed
 # define VELOCITY 10
+# define ROTATE_SPEED 30
 
 //I like to use an array holding the X and the Y value of something.
 //Coming from a mathematical background, I prefer the first value
@@ -148,6 +152,18 @@ void	draw_textured_line(int row, t_ray *ray, t_textures *tex, t_img *frame);
 //In essence a simple while loop that shoots a ray for every
 //pixel line on our screen.
 void	draw_walls(t_textures *tex, t_level *level, t_img *frame);
+// -- MOVEMENT FUNCTIONS--
+// Functions for moving (and updating) the players position in the game
+// relies also on wall collision. Thus considered part of the movement
+// function.s
+
+void	move_forward(t_level *level, long time_ms);
+void	move_backward(t_level *level, long time_ms);
+void	move_left(t_level *level, long time_ms);
+void	move_right(t_level *level, long time_ms);
+
+void	rotate_left(t_level *level, long time_ms);
+void	rotate_right(t_level *level, long time_ms);
 // -- MATH UTILS --
 
 //Cos() and sin() functions work with radians, humans are known to use degrees

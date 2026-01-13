@@ -615,3 +615,7 @@ Oh the mirroring must be due to a miscommunication in shoot ray and draw_walls! 
 
 ## 13-01
 On the mirroring of the images; I have to remember that my gridline will be from 0 to N but from the other side from N to 0. So I will always have one side mirrored with my current implementation!
+<img width="1111" height="1153" alt="image" src="https://github.com/user-attachments/assets/e4b914e0-8379-4a5a-af5b-1c100e97a14d" />
+Whereas the other side will have:
+<img width="1292" height="1331" alt="image" src="https://github.com/user-attachments/assets/6bd14897-e13c-4c93-953a-492979466dfa" />
+

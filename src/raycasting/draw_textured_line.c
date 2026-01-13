@@ -37,13 +37,16 @@ static void	convert_length_to_pixels(double length, int *pixels)
  * beforehand since it is the same for the whole line.
  * This function just gives you the y_index for which
  * pixel to grab from your texture!
+ *
+ * So we want to know what color from the texture we pick
+ * to draw our current pixel from.
 */
 
-static int	calc_y(int j, int pixels, int stepsize, int max_pixels)
+static int	calc_y(int j, int pixels, double stepsize, int max_pixels)
 {
 	int	result;
 
-	result = (int)(j + ((double) pixels / 2)) * stepsize;
+	result = (j + ((double) pixels / 2)) * stepsize;
 	if (result >= max_pixels)
 		return (max_pixels - 1);
 	else if (result < 0)

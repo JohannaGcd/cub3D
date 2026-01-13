@@ -16,12 +16,19 @@ SRC := \
 	   render_frame.c \
 	   get_time_ms.c \
 	   game_loop.c \
-	   movement.c \
 	   test/test_image.c \
 	   test/mock_parser.c \
 	   my_mlx/my_mlx_pixel_put.c \
 	   my_mlx/my_mlx_create_image.c \
 	   my_mlx/my_mlx_get_pixel_color.c \
+	   movement/move_player.c \
+	   movement/check_collision.c \
+	   movement/move_backward.c \
+	   movement/move_forward.c \
+	   movement/move_left.c \
+	   movement/move_right.c \
+	   movement/rotate_left.c \
+	   movement/rotate_right.c \
 	   raycasting/shoot_ray.c \
 	   raycasting/draw_textured_line.c \
 	   raycasting/detect_wall.c \

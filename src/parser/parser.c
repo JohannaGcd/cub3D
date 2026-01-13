@@ -6,7 +6,7 @@
 /*   By: jguacide <jguacide@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:21:58 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/13 15:10:41 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/13 15:51:26 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 
 static void init_cub3d_data(t_cub3d *data)
 {
-    data->textures.north = NULL;
-    data->textures.south = NULL;
-    data->textures.west = NULL;
-    data->textures.east = NULL;
+    data->textures.path[NO] = NULL;
+    data->textures.path[SO] = NULL;
+    data->textures.path[WE] = NULL;
+    data->textures.path[EA] = NULL;
     data->floor.r = -1;
     data->floor.g = -1;
     data->floor.b = -1;

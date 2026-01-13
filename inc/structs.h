@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/12/30 17:05:59 by zivanov       #+#    #+#                 */
-/*   Updated: 2026/01/13 15:32:28 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/13 15:41:24 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -106,13 +106,13 @@ typedef struct s_level
  *  their width and height (in pixels!) for the raytracing.
 */
 
-/*typedef struct s_textures
+typedef struct s_textures
 {
 	char	*path[4];
 	t_img	mlx_img[4];
 	int		width[4];
 	int		height[4];
-}	t_textures; --> BUG: ALREADY EXISTS IN PARSER*/ 
+}	t_textures;
 
 /*
  * -- RAY STRUCTURE --
@@ -214,14 +214,6 @@ typedef struct s_movement
  *  need the mlx structure for rendering
  *  and a bunch of other stuff.
 */
-
-typedef struct s_textures
-{
-	char	*north;
-	char	*south;
-	char	*west;
-	char	*east;
-}	t_textures;
 
 typedef struct s_map
  {

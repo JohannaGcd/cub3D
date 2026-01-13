@@ -6,7 +6,7 @@
 /*   By: jguacide <jguacide@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:01 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/13 14:22:03 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/13 15:53:38 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,33 +47,33 @@ int validate_texture_files(t_cub3d *data)
 {
     int fd;
 
-    if (!data->textures.north)
+    if (!data->textures.path[NO])
         return (-1);
-    fd = open(data->textures.north, O_RDONLY);
+    fd = open(data->textures.path[NO], O_RDONLY);
     if (fd == -1)
     {
-        printf("Error\nCannot open texture file: %s\n", data->textures.north);
-        return (-1);
-    }
-    close(fd);
-    fd = open(data->textures.south, O_RDONLY);
-    if (fd == -1)
-    {
-        printf("Error\nCannot open texture file: %s\n", data->textures.south);
+        printf("Error\nCannot open texture file: %s\n", data->textures.path[NO]);
         return (-1);
     }
     close(fd);
-    fd = open(data->textures.west, O_RDONLY);
+    fd = open(data->textures.path[SO], O_RDONLY);
     if (fd == -1)
     {
-        printf("Error\nCannot open texture file: %s\n", data->textures.west);
+        printf("Error\nCannot open texture file: %s\n", data->textures.path[SO]);
         return (-1);
     }
     close(fd);
-    fd = open(data->textures.east, O_RDONLY);
+    fd = open(data->textures.path[WE], O_RDONLY);
     if (fd == -1)
     {
-        printf("Error\nCannot open texture file: %s\n", data->textures.east);
+        printf("Error\nCannot open texture file: %s\n", data->textures.path[WE]);
+        return (-1);
+    }
+    close(fd);
+    fd = open(data->textures.path[EA], O_RDONLY);
+    if (fd == -1)
+    {
+        printf("Error\nCannot open texture file: %s\n", data->textures.path[EA]);
         return (-1);
     }
     close(fd);

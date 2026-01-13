@@ -6,7 +6,7 @@
 /*   By: jguacide <jguacide@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:07 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/13 14:22:08 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/13 15:42:51 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -137,22 +137,9 @@ int parse_texture(char *line, t_cub3d *data, t_meta_flags flag, t_dir dir)
     if (!path || ft_strlen(path) == 0)
     {
         printf("Error\nInvalid texture path\n");
-        free(path);
         return (-1);
     }
-    if (dir == NO)
-        data->textures.north = path;
-    else if (dir == SO)
-        data->textures.south = path; 
-    else if (dir == WE)
-        data->textures.west = path;
-    else if (dir == EA)
-        data->textures.east = path;
-    else
-    {
-        free(path);
-        return (-1);
-    }
+    data->textures.path[dir] = path;
     data->metadata_flags |= flag;
     return (0);
 }

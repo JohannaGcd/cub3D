@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   test_image.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/05 11:26:27 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/05 11:28:47 by zivanov          ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   test_image.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: zivanov <zivanov@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/01/05 11:26:27 by zivanov       #+#    #+#                 */
+/*   Updated: 2026/01/13 15:46:16 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,6 +43,6 @@ void	print_textures(t_mlx *m, t_textures *t)
 void	test_image(t_mlx *mlx_data, t_cub3d *cub3d)
 {
 	print_square_on_frame(mlx_data, &mlx_data->frame);
-	print_textures(mlx_data, &cub3d->texture);
+	print_textures(mlx_data, &cub3d->textures);
 	return ;
 }

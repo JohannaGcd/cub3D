@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   init_data.c                                        :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/28 11:09:49 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/09 19:16:50 by zivanov          ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   init_data.c                                        :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: zivanov <zivanov@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/12/28 11:09:49 by zivanov       #+#    #+#                 */
+/*   Updated: 2026/01/13 15:45:24 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -118,7 +118,7 @@ int	init_data(t_mlx *mlx_data, t_cub3d *cub3d)
 		return (-1);
 	}
 	cub3d->mlx_data = mlx_data;
-	if (init_textures(mlx_data, &cub3d->texture) != 0)
+	if (init_textures(mlx_data, &cub3d->textures) != 0)
 	{
 		perror("init_textures failed\n");
 		return (-1);

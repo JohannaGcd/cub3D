@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   render_frame.c                                     :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/07 10:57:15 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/07 14:28:53 by zivanov          ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   render_frame.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: zivanov <zivanov@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/01/07 10:57:15 by zivanov       #+#    #+#                 */
+/*   Updated: 2026/01/13 15:45:59 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,7 @@ void	render_frame(t_cub3d *cub3d, t_mlx *mlx_data)
 	t_img		*frame;
 	t_textures	*tex;
 
-	tex = &cub3d->texture;
+	tex = &cub3d->textures;
 	level = &cub3d->level;
 	frame = &mlx_data->frame;
 	draw_floor_and_ceiling(cub3d, frame);

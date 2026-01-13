@@ -6,7 +6,7 @@
 /*   By: jguacide <jguacide@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:05 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/13 14:22:06 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/13 15:57:18 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -216,14 +216,13 @@ void    free_parser_data(t_cub3d *data)
     
     if (!data)
         return;
-    if (data->textures.north)
-        free(data->textures.north);
-    if (data->textures.south)
-        free(data->textures.south);
-    if (data->textures.west)
-        free(data->textures.west);
-    if (data->textures.east)
-        free(data->textures.east);
+    i = 0;
+    while (i < 4)
+    {
+        free(data->textures.path[i]);
+        data->textures.path[i] = NULL;
+        i++;
+    }
     if (data->map.grid)
     {
         i = 0;
@@ -233,6 +232,6 @@ void    free_parser_data(t_cub3d *data)
             i++;
         }
         free(data->map.grid);
+        data->map.grid = NULL;
     }
-
 }

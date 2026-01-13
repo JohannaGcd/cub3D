@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   mock_parser.c                                      :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/28 13:47:25 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/07 14:29:36 by zivanov          ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   mock_parser.c                                      :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: zivanov <zivanov@student.codam.nl>           +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/12/28 13:47:25 by zivanov       #+#    #+#                 */
+/*   Updated: 2026/01/13 15:46:39 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -172,7 +172,7 @@ void	mock_parser(t_cub3d *data)
 	
 	set_level_values(&data->level);
 	set_floor_ceiling(data);
-	mock_texture_paths(&data->texture);
+	mock_texture_paths(&data->textures);
 	print_map(data->level.map);
 	//shoot_ray_EA_SO_WE_NO(&data->level);
 }

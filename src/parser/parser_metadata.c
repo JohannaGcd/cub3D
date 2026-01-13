@@ -6,7 +6,7 @@
 /*   By: jguacide <jguacide@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:07 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/13 15:42:51 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/13 16:01:28 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,6 @@ static int  parse_rgb_value(char *rgb_str, t_colors *color)
 
 static char *extract_path(char *line, int skip_len)
 {
-    char    *path;
     char    *start;
     char    *trimmed;
 

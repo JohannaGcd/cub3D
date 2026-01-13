@@ -6,7 +6,7 @@
 /*   By: jguacide <jguacide@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:21:58 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/13 14:27:35 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/13 15:10:41 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -178,4 +178,4 @@ int parse_cub_file(char *filename, t_cub3d *data)
 // 4. PUSH TO GITHUB
 // 5. NORMINETTE
 // 6. REPLACE PRINTF:
-// IF IT'S OUR FUNCTION, USE FT_ERROR, OTHERWISE (LIKE OPEN) USE PERROR
+//      IF IT'S OUR FUNCTION, USE FT_ERROR, OTHERWISE (LIKE OPEN) USE PERROR

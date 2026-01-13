@@ -1,0 +1,12 @@
+NO ./textures/cloud.XPM
+SO ./textures/cobble.XPM
+WE ./textures/sun.XPM
+EA ./textures/wood.XPM
+
+F 220,100,0
+C 225,30,0
+
+11001
+10111
+10001
+10101

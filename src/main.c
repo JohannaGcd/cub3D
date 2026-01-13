@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>           +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/12/27 13:57:38 by zivanov       #+#    #+#                 */
-/*   Updated: 2026/01/13 15:08:18 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/13 16:18:57 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	main(void)
 		printf("Error\nUse: ./cub3d <map_file.cub>\n");
 		return (1);
 	}
-	if (parse_cub_file("test_parser.jogcd.cub", &cub3d) == -1) // MODIFY TO ARGV[1]
+	if (parse_cub_file("/home/jguacide/Documents/coreCurriculum/cub3d/test_parser_jogcd.cub", &cub3d) == -1) // MODIFY TO ARGV[1]
 	{
 		free_parser_data(&cub3d);
 		return (1);

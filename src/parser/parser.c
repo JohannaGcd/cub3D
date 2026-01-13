@@ -6,7 +6,7 @@
 /*   By: jguacide <jguacide@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:21:58 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/13 15:51:26 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/13 16:24:19 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,7 @@ static int  read_file_line_by_line(int fd, t_cub3d *data)
                 free(line);
                 return (-1);
             }
+            printf("BACK read_file_line_ny_line BEFORE CHECKING FLAG");
             if (is_metadata_complete(data) && is_map_line(line))
             {
                 map_started = true;

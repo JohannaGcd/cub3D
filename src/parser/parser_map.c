@@ -6,7 +6,7 @@
 /*   By: jguacide <jguacide@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:09 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/13 14:30:34 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/13 16:30:30 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,6 +34,7 @@ bool    is_map_line(char *line)
                 return (false);
         i++;
     }
+    printf("\nRETURN FROM is map line\n");
     return (has_map_char);
 }
 

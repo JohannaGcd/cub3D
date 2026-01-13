@@ -153,6 +153,11 @@ void	draw_walls(t_textures *tex, t_level *level, t_img *frame);
 // relies also on wall collision. Thus considered part of the movement
 // function.s
 
+//General function that moves a player in a certain direction.
+//Can be used by all different move_DIRECTION functions.
+void	move_player(t_level *level, double time_s, double angle_rad);
+
+// All four underlying functions use the move_player function!
 void	move_forward(t_level *level, long time_ms);
 void	move_backward(t_level *level, long time_ms);
 void	move_left(t_level *level, long time_ms);
@@ -160,6 +165,11 @@ void	move_right(t_level *level, long time_ms);
 
 void	rotate_left(t_level *level, long time_ms);
 void	rotate_right(t_level *level, long time_ms);
+
+// Check whether the (new) position is a wall. 
+// used to avoid clipping in to walls when moving.
+int	check_collision(t_level *level, int x, int y);
+
 // -- MATH UTILS --
 
 //Cos() and sin() functions work with radians, humans are known to use degrees

@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        ::::::::            */
+/*   parser_utils.c                                     :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jguacide <jguacide@student.codam.nl>         +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/01/13 14:22:05 by jguacide      #+#    #+#                 */
+/*   Updated: 2026/01/13 14:22:06 by jguacide      ########   odam.nl         */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../../inc/cub3d.h"
 
 // free split? then replace in parse_rgb_value and split string

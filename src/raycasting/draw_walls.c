@@ -21,11 +21,11 @@ void	draw_walls(t_textures *tex, t_level *level, t_img *frame)
 	double		angle_start;
 
 	angle_step = (double) FOV / WINDOWLENGTH;
-	angle_start = level->player_dir_deg - ((double) FOV / 2);
+	angle_start = level->player_dir_deg + ((double) FOV / 2);
 	i = 0;
 	while (i < WINDOWLENGTH)
 	{
-		ray_utils.angle_deg = angle_start + (angle_step * i);
+		ray_utils.angle_deg = angle_start - (angle_step * i);
 		shoot_ray(&ray, &ray_utils, level);
 		draw_textured_line(i, &ray, tex, frame);
 		i++;

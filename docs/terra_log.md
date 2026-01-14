@@ -630,3 +630,7 @@ Another bug to think about is when we are next to the wall; we clip through the 
 I mentioned this earlier I believe but my whole screen is flipped. It had something to do with how I was shooting rays and something mathematical. Okido I think I remember. When I am shooting the rays I count clockwise, but in my map I count counter clockwise. 
 
 Another thing is the 'Trying to print pixel outside of windowsize' when we are clipping (?) through the walls. I'm curious as to how the program even tries to print something outside of the windowsize, so I'm going to try to figure that out
+
+Right! Most bugs seem to have been fixed! I forgot that in our coordinate system our coefficient for deltaY is -sin instead of sin. This was because our Y axis goes down (since the top left corner is considered to be the origin). Normally the unit vector for y goes up, but ours goes down and thus needs to be flipped!
+
+I still have to do the whole flipping of the images for EA and SO (what I described in the log of yesterday). Then I have to do write the cleanup section and finally try to optimize.

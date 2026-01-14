@@ -31,7 +31,6 @@ void	move_player(t_level *level, double time_s, double angle_rad)
 
 	new_x = level->player_pos_x + (cos(angle_rad) * VELOCITY * time_s);
 	new_y = level->player_pos_y + -(sin(angle_rad) * VELOCITY * time_s);
-	print_player_dir(level, angle_rad);
 	if (check_collision(level, (int) new_x, (int) new_y))
 	{
 		printf("WALL COLLISIONS!\n");

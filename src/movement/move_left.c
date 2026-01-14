@@ -18,6 +18,6 @@ void	move_left(t_level *level, long time_ms)
 	double	time_s;
 
 	time_s = time_ms / 1000.0;
-	angle_rad = deg_to_rad(level->player_dir_deg + 270);
+	angle_rad = deg_to_rad(level->player_dir_deg + 90);
 	move_player(level, time_s, angle_rad);
 }

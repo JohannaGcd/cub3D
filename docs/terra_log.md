@@ -628,3 +628,5 @@ Another bug to think about is when we are next to the wall; we clip through the 
 ## 14-01
 
 I mentioned this earlier I believe but my whole screen is flipped. It had something to do with how I was shooting rays and something mathematical. Okido I think I remember. When I am shooting the rays I count clockwise, but in my map I count counter clockwise. 
+
+Another thing is the 'Trying to print pixel outside of windowsize' when we are clipping (?) through the walls. I'm curious as to how the program even tries to print something outside of the windowsize, so I'm going to try to figure that out

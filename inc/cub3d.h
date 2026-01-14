@@ -39,7 +39,7 @@
 # define BLUE     0x0000FF
 # define YELLOW   0xFFFF00
 
-# define VELOCITY 5
+# define VELOCITY 1
 # define ROTATE_SPEED 30
 
 //I like to use an array holding the X and the Y value of something.

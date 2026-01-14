@@ -12,6 +12,12 @@
 
 #include "../../inc/cub3d.h"
 
+void	print_player_dir(t_level *level, double deg_rot)
+{
+	printf("Player dir: %f\n", level->player_dir_deg);
+	printf("Moving angle: %f\n", (deg_rot / M_PI) * 180); 
+}
+
 void	move_player(t_level *level, double time_s, double angle_rad)
 {
 	double	new_x;
@@ -19,6 +25,7 @@ void	move_player(t_level *level, double time_s, double angle_rad)
 
 	new_x = level->player_pos_x + (cos(angle_rad) * VELOCITY * time_s);
 	new_y = level->player_pos_y +  (sin(angle_rad) * VELOCITY * time_s);
+	print_player_dir(level, angle_rad);
 	if (check_collision(level, (int) new_x, (int) new_y))
 	{
 		printf("WALL COLLISIONS!\n");

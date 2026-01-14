@@ -15,7 +15,7 @@
 void	print_player_dir(t_level *level, double deg_rot)
 {
 	printf("Player dir: %f\n", level->player_dir_deg);
-	printf("Moving angle: %f\n", (deg_rot / M_PI) * 180); 
+	printf("Moving angle: %f\n", (deg_rot / M_PI) * 180);
 }
 
 /*

@@ -624,3 +624,7 @@ Whereas the other side will have:
 Another bug to think about is when we are next to the wall; we clip through the wall and thereby try to render textures that are out of bounds. This image sums it up pretty well for myself:
 
 <img width="612" height="499" alt="image" src="https://github.com/user-attachments/assets/98b3531a-43bf-49ed-aad6-cda4c5cb6c24" />
+
+## 14-01
+
+I mentioned this earlier I believe but my whole screen is flipped. It had something to do with how I was shooting rays and something mathematical. Okido I think I remember. When I am shooting the rays I count clockwise, but in my map I count counter clockwise. 

@@ -6,7 +6,7 @@
 /*   By: jguacide <jguacide@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:01 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/16 12:44:08 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/16 12:53:19 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -101,27 +101,27 @@ static int  get_line_width(char *line)
 * Marks cell as visited
 * Calls itself with the next index is all directions (y + 1 and y - 1, same for x);
 */
-static int  flood_fill_recursive(char **map, int **visited, int x, int y, int height)
+static int  flood_fill_recursive(char **map, int **visited, int row, int col, int height)
 {
     int line_width;
 
-    if (x < 0 || x >= height || !map[x])
+    if (row < 0 || row >= height || !map[row])
         return (1);
-    line_width = get_line_width(map[x]);
-    if (y < 0 || y >= line_width)
+    line_width = get_line_width(map[row]);
+    if (col < 0 || col >= line_width)
         return (1);
-    if (visited[x][y] || map[x][y] == '1')
+    if (visited[row][col] || map[row][col] == '1')
         return (0);
-    if (map[x][y] == ' ' || map[x][y] == '\n' || map[x][y] == '\0')
+    if (map[row][col] == ' ' || map[row][col] == '\n' || map[row][col] == '\0')
         return (1);
-    visited[x][y] = 1;
-    if (flood_fill_recursive(map, visited, x, y + 1, height))
+    visited[row][col] = 1;
+    if (flood_fill_recursive(map, visited, row, col + 1, height))
         return (1);
-     if (flood_fill_recursive(map, visited, x, y - 1, height))
+     if (flood_fill_recursive(map, visited, row, col - 1, height))
         return (1); 
-     if (flood_fill_recursive(map, visited, x + 1, y, height))
+     if (flood_fill_recursive(map, visited, row + 1, col, height))
         return (1);
-     if (flood_fill_recursive(map, visited, x - 1, y, height))
+     if (flood_fill_recursive(map, visited, row - 1, col, height))
         return (1);
     return (0);
 }
@@ -158,7 +158,7 @@ int flood_fill_validation(t_cub3d *data)
         x++;
     }
     result = flood_fill_recursive(data->map.grid, visited,
-        data->map.player_x, data->map.player_y, data->map.height);
+        data->map.player_y, data->map.player_x, data->map.height);
     
         x = 0;
     while(x < data->map.height)

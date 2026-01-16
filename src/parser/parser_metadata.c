@@ -6,7 +6,7 @@
 /*   By: jguacide <jguacide@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:07 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/13 16:23:27 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/16 12:16:38 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,7 +139,6 @@ int parse_texture(char *line, t_cub3d *data, t_meta_flags flag, t_dir dir)
         return (-1);
     }
     data->textures.path[dir] = path;
-    printf("in parse_texture: textures.path[%u] is: %s\n", dir, path); // DEBUG
     data->metadata_flags |= flag;
     return (0);
 }

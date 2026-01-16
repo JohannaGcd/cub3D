@@ -6,7 +6,7 @@
 /*   By: jguacide <jguacide@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:09 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/13 16:30:30 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/16 12:21:55 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,6 @@ bool    is_map_line(char *line)
                 return (false);
         i++;
     }
-    printf("\nRETURN FROM is map line\n");
     return (has_map_char);
 }
 
@@ -52,7 +51,6 @@ void    build_map(t_map  *map, char *line)
     if (!map || !line)
         return;
     line_copy = ft_strdup(line);
-    printf("line_copy in build map: %s", line_copy);
     if (!line_copy)
         return;
     if (map->grid == NULL)
@@ -78,7 +76,6 @@ void    build_map(t_map  *map, char *line)
     while (i < map->height)
     {
         new_map[i] = map->grid[i];
-        printf("in loop, new_map[%d] is %s", i, new_map[i]);
         i++;
     }
     new_map[i] = line_copy;

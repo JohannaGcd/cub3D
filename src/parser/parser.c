@@ -6,7 +6,7 @@
 /*   By: jguacide <jguacide@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:21:58 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/16 12:30:02 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/16 15:59:59 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,27 +154,19 @@ int parse_cub_file(char *filename, t_cub3d *data)
     init_cub3d_data(data),
     fd = open(filename, O_RDONLY);
     if (fd == -1)
-    {
-        perror("Error\nCannot open file\n");
-        return (-1);
-    }
+        return (perror("Error\nCannot open file\n"), -1);
     if (read_file_line_by_line(fd, data) == -1)
     {
         close(fd);
-        free_parser_data(data);
-        return (-1);
+        return (free_parser_data(data), -1);
     }
     close(fd);
     if (validate_map(data) == -1)
-    {
-        free_parser_data(data);
-        return (-1);
-    }
+        return (free_parser_data(data), -1);
     return (0);
 }
 
 // TO_DO:
-// 4. PUSH TO GITHUB
 // 5. NORMINETTE
 // 6. REPLACE PRINTF:
 //      IF IT'S OUR FUNCTION, USE FT_ERROR, OTHERWISE (LIKE OPEN) USE PERROR

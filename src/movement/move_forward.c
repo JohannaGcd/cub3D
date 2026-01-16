@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_walls.c                                       :+:      :+:    :+:   */
+/*   move_forward.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/07 13:13:50 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/07 13:15:17 by zivanov          ###   ########.fr       */
+/*   Created: 2026/01/13 15:24:09 by zivanov           #+#    #+#             */
+/*   Updated: 2026/01/13 15:25:55 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-void	draw_walls(t_textures *tex, t_level *level, t_img *frame)
+void	move_forward(t_level *level, long time_ms)
 {
-	int			i;
-	t_ray_utils	ray_utils;
-	t_ray		ray;
-	double		angle_step;
-	double		angle_start;
+	double	angle_rad;
+	double	time_s;
 
-	angle_step = (double) FOV / WINDOWLENGTH;
-	angle_start = level->player_dir_deg + ((double) FOV / 2);
-	i = 0;
-	while (i < WINDOWLENGTH)
-	{
-		ray_utils.angle_deg = angle_start - (angle_step * i);
-		shoot_ray(&ray, &ray_utils, level);
-		draw_textured_line(i, &ray, tex, frame);
-		i++;
-	}
+	time_s = time_ms / 1000.0;
+	angle_rad = deg_to_rad(level->player_dir_deg);
+	move_player(level, time_s, angle_rad);
 }

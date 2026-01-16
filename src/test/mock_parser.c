@@ -78,7 +78,7 @@ static char	**create_square_test_map(int size)
 		if (result[i] == NULL)
 			exit(EXIT_FAILURE);
 	}
-	result[1][5] = result[5][4] = '1';
+	result[2][6] = result[5][4] = '1';
 	return (result);
 }
 
@@ -128,7 +128,7 @@ void	set_level_values(t_level *level)
 	level->y_col = 10;
 	level->player_pos_x = 5.8;
 	level->player_pos_y = 5;
-	level->player_dir_deg = 90.0;
+	level->player_dir_deg = 45.0;
 	set_player_in_map(level->map, level->player_pos_x, level->player_pos_y);
 }
 

@@ -54,13 +54,13 @@ static int	init_mlx(t_mlx *d)
 		mlx_destroy_display(d->instance);
 		return (-1);
 	}
-		return (0);
+	return (0);
 }
 
 void	get_data_addr(t_img *img)
 {
 	img->addr = mlx_get_data_addr(img->instance, &img->bits_per_pixel,
-		&img->line_length, &img->endian);
+			&img->line_length, &img->endian);
 }
 
 /*  * Loading of textures. We will specifically need .xpm files.
@@ -82,7 +82,7 @@ static int	init_textures(t_mlx *mlx, t_textures *t)
 	while (i < 4)
 	{
 		t->mlx_img[i].instance = mlx_xpm_file_to_image(
-			mlx->instance, t->path[i], &t->width[i], &t->height[i]);
+				mlx->instance, t->path[i], &t->width[i], &t->height[i]);
 		if (t->mlx_img[i].instance == NULL)
 			perror("failure in init_textures\n");
 		get_data_addr(&t->mlx_img[i]);

@@ -89,7 +89,11 @@ void	draw_textured_line(int row, t_ray *ray, t_textures *tex, t_img *frame)
 	{
 		tex_y = calc_y(j, ray->pixels, stepsize, tex->height[ray->side]);
 		color = my_mlx_get_pixel_color(&tex->mlx_img[ray->side], tex_x, tex_y);
-		my_mlx_pixel_put(frame, row, (WINDOWHEIGHT / 2) + j, color);
+		if ((WINDOWHEIGHT / 2) + j > WINDOWHEIGHT - 1
+			|| (WINDOWHEIGHT / 2) + j < 0)
+			;
+		else
+			my_mlx_pixel_put(frame, row, (WINDOWHEIGHT / 2) + j, color);
 		j++;
 	}
 }

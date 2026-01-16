@@ -614,8 +614,23 @@ I am going to take a break for the next two days. I hit a wall and need some tim
 Oh the mirroring must be due to a miscommunication in shoot ray and draw_walls! I am drawing the most left column on my screen when shooting the most right ray!
 
 ## 13-01
+
 On the mirroring of the images; I have to remember that my gridline will be from 0 to N but from the other side from N to 0. So I will always have one side mirrored with my current implementation!
 <img width="1111" height="1153" alt="image" src="https://github.com/user-attachments/assets/e4b914e0-8379-4a5a-af5b-1c100e97a14d" />
+
 Whereas the other side will have:
 <img width="1292" height="1331" alt="image" src="https://github.com/user-attachments/assets/6bd14897-e13c-4c93-953a-492979466dfa" />
 
+Another bug to think about is when we are next to the wall; we clip through the wall and thereby try to render textures that are out of bounds. This image sums it up pretty well for myself:
+
+<img width="612" height="499" alt="image" src="https://github.com/user-attachments/assets/98b3531a-43bf-49ed-aad6-cda4c5cb6c24" />
+
+## 14-01
+
+I mentioned this earlier I believe but my whole screen is flipped. It had something to do with how I was shooting rays and something mathematical. Okido I think I remember. When I am shooting the rays I count clockwise, but in my map I count counter clockwise. 
+
+Another thing is the 'Trying to print pixel outside of windowsize' when we are clipping (?) through the walls. I'm curious as to how the program even tries to print something outside of the windowsize, so I'm going to try to figure that out
+
+Right! Most bugs seem to have been fixed! I forgot that in our coordinate system our coefficient for deltaY is -sin instead of sin. This was because our Y axis goes down (since the top left corner is considered to be the origin). Normally the unit vector for y goes up, but ours goes down and thus needs to be flipped!
+
+I still have to do the whole flipping of the images for EA and SO (what I described in the log of yesterday). Then I have to do write the cleanup section and finally try to optimize.

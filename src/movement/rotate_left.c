@@ -1,33 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   draw_walls.c                                       :+:      :+:    :+:   */
+/*   rotate_left.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/07 13:13:50 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/07 13:15:17 by zivanov          ###   ########.fr       */
+/*   Created: 2026/01/13 15:25:03 by zivanov           #+#    #+#             */
+/*   Updated: 2026/01/13 15:26:41 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-void	draw_walls(t_textures *tex, t_level *level, t_img *frame)
+void	rotate_left(t_level *level, long time_ms)
 {
-	int			i;
-	t_ray_utils	ray_utils;
-	t_ray		ray;
-	double		angle_step;
-	double		angle_start;
+	double	new_dir;
 
-	angle_step = (double) FOV / WINDOWLENGTH;
-	angle_start = level->player_dir_deg + ((double) FOV / 2);
-	i = 0;
-	while (i < WINDOWLENGTH)
-	{
-		ray_utils.angle_deg = angle_start - (angle_step * i);
-		shoot_ray(&ray, &ray_utils, level);
-		draw_textured_line(i, &ray, tex, frame);
-		i++;
-	}
+	new_dir = level->player_dir_deg + (ROTATE_SPEED * time_ms / 1000.0);
+	if (new_dir > 360)
+		new_dir = fmod(new_dir, 360);
+	if (new_dir < -360)
+		new_dir = fmod(new_dir, 360);
+	level->player_dir_deg = new_dir;
 }

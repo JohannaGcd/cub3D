@@ -12,30 +12,29 @@
 
 #include "../inc/cub3d.h"
 
-int	main(void)
+int	main(int argc, char **argv)
 {
-	//t_mlx	mlx_data;
+	t_mlx	mlx_data;
 	t_cub3d	cub3d;
-	int argc = 2; // TEMP FOR DEBUGGING
 
 	if (argc != 2)
 	{
 		printf("Error\nUse: ./cub3d <map_file.cub>\n");
 		return (1);
 	}
-	if (parse_cub_file("/home/jguacide/Documents/coreCurriculum/cub3d/test_parser_jogcd.cub", &cub3d) == -1) // MODIFY TO ARGV[1]
+	if (parse_cub_file(argv[1], &cub3d) == -1)
 	{
 		free_parser_data(&cub3d);
 		return (1);
 	}
 	//test_main(&mlx_data, &cub3d);
 	//mock_parser(&cub3d);
-	//if (init_data(&mlx_data, &cub3d) != 0)
-		//return (-1);
-	//hook_events(&mlx_data, &cub3d);
+	if (init_data(&mlx_data, &cub3d) != 0)
+		return (-1);
+	hook_events(&mlx_data, &cub3d);
 
-	//mlx_loop_hook(mlx_data.instance, game_loop, &cub3d);
-	//mlx_loop(mlx_data.instance);
+	mlx_loop_hook(mlx_data.instance, game_loop, &cub3d);
+	mlx_loop(mlx_data.instance);
 	//clean_up();
 	return (0);
 }

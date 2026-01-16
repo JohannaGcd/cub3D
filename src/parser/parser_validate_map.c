@@ -6,7 +6,7 @@
 /*   By: jguacide <jguacide@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:01 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/13 15:53:38 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/16 12:44:08 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -154,7 +154,7 @@ int flood_fill_validation(t_cub3d *data)
             free(visited);
             return (-1);
         }
-        ft_intset(visited[x], 0, sizeof(int) * data->map.width);
+        ft_intset(visited[x], 0, data->map.width);
         x++;
     }
     result = flood_fill_recursive(data->map.grid, visited,

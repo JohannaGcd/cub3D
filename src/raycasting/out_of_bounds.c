@@ -14,7 +14,7 @@
 
 int	out_of_bounds(int x, int y, t_level *level)
 {
-	if (x >= level->x_row || y >= level->y_col)
+	if (x > level->x_row || y > level->y_col)
 		return (1);
 	if (x < 0 || y < 0)
 		return (1);

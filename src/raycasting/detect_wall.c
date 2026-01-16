@@ -25,7 +25,7 @@ int	detect_wall_vert(t_ray_utils *utils, t_level *level)
 	x = (int) utils->pos[X];
 	y = (int) utils->pos[Y];
 	if (out_of_bounds(x, y, level))
-		return (0);
+		return (1);
 	if (utils->delta[X] > 0)
 		return (level->map[y][x] == '1');
 	else
@@ -40,7 +40,7 @@ int	detect_wall_hori(t_ray_utils *utils, t_level *level)
 	x = (int) utils->pos[X];
 	y = (int) utils->pos[Y];
 	if (out_of_bounds(x, y, level))
-		return (0);
+		return (1);
 	if (utils->delta[Y] > 0)
 		return (level->map[y][x] == '1');
 	else

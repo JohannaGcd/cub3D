@@ -58,11 +58,13 @@ static void	set_xy_ds_and_next(t_ray_utils *utils)
 void	shoot_ray(t_ray *ray, t_ray_utils *u, t_level *level)
 {
 	int	i;
+	int	max_iter;
 
+	max_iter = level->x_row * level->y_col * 2;
 	ray->length = 0;
 	set_xy_pos_and_delta(u, level);
-	i = 1;
-	while (++i < 100)
+	i = -1;
+	while (++i < max_iter)
 	{
 		set_xy_ds_and_next(u);
 		if (fabs(u->ds[X]) > fabs(u->ds[Y]))

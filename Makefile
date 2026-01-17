@@ -11,12 +11,12 @@ SRC := \
 	   main.c \
 	   init_data.c \
 	   hook_events.c \
-	   deg_to_rad.c \
-	   create_rgb.c \
-	   render_frame.c \
 	   clean_up.c \
-	   get_time_ms.c \
 	   game_loop.c \
+	   render_frame.c \
+	   utils/deg_to_rad.c \
+	   utils/create_rgb.c \
+	   utils/get_time_ms.c \
 	   test/test_image.c \
 	   test/mock_parser.c \
 	   my_mlx/my_mlx_pixel_put.c \
@@ -65,7 +65,7 @@ $(NAME) : $(MLX) $(OBJ)
 	$(CC) $(OBJ) $(MLX) -o $(NAME) 
 
 clean :
-	rm -rf $(OBJ)
+	rm -rf obj
 	rm -rf $(MLX_PATH)
 
 fclean : clean

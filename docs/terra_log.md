@@ -634,3 +634,21 @@ Another thing is the 'Trying to print pixel outside of windowsize' when we are c
 Right! Most bugs seem to have been fixed! I forgot that in our coordinate system our coefficient for deltaY is -sin instead of sin. This was because our Y axis goes down (since the top left corner is considered to be the origin). Normally the unit vector for y goes up, but ours goes down and thus needs to be flipped!
 
 I still have to do the whole flipping of the images for EA and SO (what I described in the log of yesterday). Then I have to do write the cleanup section and finally try to optimize.
+
+## 17-01
+Not sure how but I forgot to write my log for yesterday. Merged the parsing and execution. Getting close to the final version now. Today I made the clean up and fixed some simple (but game breaking) bugs.
+
+Next few things are tedious, but I'm afraid I will have to do them (sort of). They are in order of priority.
+
+1. Create better wall collision by making the player a square instead of a point.
+2. Clean up in case of failures in init.
+3. Change printf functions to ft_error (if they are indeed errors)
+4. norminette
+
+The ones below are optional;
+
+5. Add fps counter to window.
+6. Optimize game when rendering close to the wall.
+7. Create fast and slow movement by implementing a velocity value that can be changed with `shift` or `LCTRL`.
+8. Create a README.md with instructions and explanations
+

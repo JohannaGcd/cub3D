@@ -73,6 +73,9 @@
 //		and the mlx metadata. See the relevant structures for more explanation.
 int		init_data(t_mlx *data, t_cub3d *cub3d);
 
+//	Clean up program in case of succes. For error another function probably should be used.
+void	clean_up(t_mlx *m, t_cub3d *c);
+
 // -- TEST FUNCTIONS --
 //This is just for Zachaar to develop raytracing before the 
 //parser is (completely) finished and to check whether stuff
@@ -208,6 +211,13 @@ void	my_mlx_create_image(void *mlx, t_img *img, int width, int height);
 unsigned int	my_mlx_get_pixel_color(t_img *data, int x, int y);
 
 /* PARSER FUNCTIONS*/
+
+// Simple function that puts all values from the map structure to the level
+// structure. They are essentially the same. Writing a function as such
+// safes time having to fix/rewrite alot of code. Technically this is
+// bad practice but somewhat inevitable when working together. 
+// Miscommunication is human and I find this a worthy midway.
+void	convert_map_to_level(t_cub3d *cub3d);
 
 int     parse_cub_file(char *filename, t_cub3d *data);
 char    *get_next_line(int fd);

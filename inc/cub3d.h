@@ -171,7 +171,7 @@ void	rotate_right(t_level *level, long time_ms);
 
 // Check whether the (new) position is a wall. 
 // used to avoid clipping in to walls when moving.
-int	check_collision(t_level *level, int x, int y);
+int	check_collision(t_level *level, double x, double y);
 
 // -- MATH UTILS --
 

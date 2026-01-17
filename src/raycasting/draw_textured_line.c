@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/06 15:32:25 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/17 14:16:55 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/17 15:33:38 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,8 +23,8 @@ static void	convert_length_to_pixels(double length, int *pixels)
 	if (length <= 0.0)
 		*pixels = WINDOWHEIGHT;
 	*pixels = WINDOWHEIGHT / length;
-	if (*pixels > WINDOWHEIGHT * 3)
-		*pixels = WINDOWHEIGHT * 3;
+	if (*pixels > WINDOWHEIGHT * 9)
+		*pixels = WINDOWHEIGHT * 9;
 	else if (*pixels < 1)
 		*pixels = 1;
 }

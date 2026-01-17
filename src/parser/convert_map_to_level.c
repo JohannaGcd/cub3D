@@ -6,7 +6,7 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/17 12:32:20 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/17 12:35:59 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/17 14:06:57 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,8 @@ void	convert_map_to_level(t_cub3d *cub3d)
 	l = &cub3d->level;
 	m = &cub3d->map;
 	l->map = m->grid;
-	l->y_col = m->width;
-	l->x_row = m->height;
+	l->y_col = m->height;
+	l->x_row = m->width;
 	l->player_pos_x = m->player_x;
 	l->player_pos_y = m->player_y;
 	if (m->player_dir == 'N')

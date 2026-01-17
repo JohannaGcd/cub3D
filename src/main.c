@@ -12,28 +12,6 @@
 
 #include "../inc/cub3d.h"
 
-void	convert_map_to_level(t_cub3d *cub3d)
-{
-	t_level	*l;
-	t_map	*m;
-
-	l = &cub3d->level;
-	m = &cub3d->map;
-	l->map = m->grid;
-	l->y_col = m->width;
-	l->x_row = m->height;
-	l->player_pos_x = m->player_x;
-	l->player_pos_y = m->player_y;
-	if (m->player_dir == 'N')
-		l->player_dir_deg = 90.0;
-	if (m->player_dir == 'E')
-		l->player_dir_deg = 0.0;
-	if (m->player_dir == 'S')
-		l->player_dir_deg = 270.0;
-	if (m->player_dir == 'W')
-		l->player_dir_deg = 180.0;
-}
-
 void	print_level_val(t_level *l)
 {
 	printf("x: %i, y: %i\n", l->x_row, l->y_col);
@@ -50,8 +28,7 @@ void	print_level_val(t_level *l)
 			printf("%c", l->map[j][i]);
 		printf("\n");
 	}
-
-}
+} 
 
 int	main(int argc, char **argv)
 {
@@ -76,6 +53,6 @@ int	main(int argc, char **argv)
 
 	mlx_loop_hook(mlx_data.instance, game_loop, &cub3d);
 	mlx_loop(mlx_data.instance);
-	//clean_up();
+	clean_up(&mlx_data, &cub3d);
 	return (0);
 }

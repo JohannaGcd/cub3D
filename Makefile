@@ -17,8 +17,6 @@ SRC := \
 	   utils/deg_to_rad.c \
 	   utils/create_rgb.c \
 	   utils/get_time_ms.c \
-	   test/test_image.c \
-	   test/mock_parser.c \
 	   my_mlx/my_mlx_pixel_put.c \
 	   my_mlx/my_mlx_create_image.c \
 	   my_mlx/my_mlx_get_pixel_color.c \

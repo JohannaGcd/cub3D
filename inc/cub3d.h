@@ -76,16 +76,6 @@ int		init_data(t_mlx *data, t_cub3d *cub3d);
 //	Clean up program in case of succes. For error another function probably should be used.
 void	clean_up(t_mlx *m, t_cub3d *c);
 
-// -- TEST FUNCTIONS --
-//This is just for Zachaar to develop raytracing before the 
-//parser is (completely) finished and to check whether stuff
-//works as expected. The idea is that all functions below
-//are in the /test/ folder and can be deleted for the final
-//version of the program.
-void	mock_parser(t_cub3d *cub3d);
-void	test_image(t_mlx *mlx_data, t_cub3d *cub3d);
-// -- END OF TEST FUNCTIONS! -- 
-
 //MLX works with colors by usage of
 //0x00RRGGBB. Thus we convert our three different
 //color values to one RGB value that we can pass

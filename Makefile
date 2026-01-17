@@ -14,6 +14,7 @@ SRC := \
 	   deg_to_rad.c \
 	   create_rgb.c \
 	   render_frame.c \
+	   clean_up.c \
 	   get_time_ms.c \
 	   game_loop.c \
 	   test/test_image.c \
@@ -42,7 +43,7 @@ SRC := \
 	   parser/parser_metadata.c \
 	   parser/parser_map.c \
 	   parser/parser_file_reader.c \
-
+	   parser/convert_map_to_level.c
 
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 

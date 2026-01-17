@@ -1,22 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_time_ms.c                                      :+:      :+:    :+:   */
+/*   create_rgb.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/09 16:45:38 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/09 16:47:03 by zivanov          ###   ########.fr       */
+/*   Created: 2026/01/07 14:04:55 by zivanov           #+#    #+#             */
+/*   Updated: 2026/01/07 14:16:36 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../inc/cub3d.h"
+#include "../../inc/cub3d.h"
 
-long	get_time_ms(void)
+int	create_rgb(int r, int g, int b)
 {
-	struct timeval	tv;
+	int	result;
 
-	if (gettimeofday(&tv, NULL) == -1)
-		perror("gettimeofday");
-	return ((tv.tv_sec * (long)1000) + (tv.tv_usec) / (long)1000);
+	r = r & 0xFF;
+	g = g & 0xFF;
+	b = b & 0xFF;
+	result = (r << 16) | (g << 8) | b;
+	return (result);
 }

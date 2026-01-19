@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:01 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/19 17:40:20 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/19 17:52:44 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,19 +52,23 @@ int	validate_texture_files(t_cub3d *data)
 		return (-1);
 	fd = open(data->textures.path[NO], O_RDONLY);
 	if (fd == -1)
-		return (ft_error_detail("Cannot open texture file", data->textures.path[NO]));
+		return (ft_error_detail("Cannot open texture file",
+				data->textures.path[NO]));
 	close(fd);
 	fd = open(data->textures.path[SO], O_RDONLY);
 	if (fd == -1)
-		return (ft_error_detail("Cannot open texture file", data->textures.path[SO]));
+		return (ft_error_detail("Cannot open texture file",
+				data->textures.path[SO]));
 	close(fd);
 	fd = open(data->textures.path[WE], O_RDONLY);
 	if (fd == -1)
-		return (ft_error_detail("Cannot open texture file", data->textures.path[WE]));
+		return (ft_error_detail("Cannot open texture file",
+				data->textures.path[WE]));
 	close(fd);
 	fd = open(data->textures.path[EA], O_RDONLY);
 	if (fd == -1)
-		return (ft_error_detail("Cannot open texture file", data->textures.path[EA]));
+		return (ft_error_detail("Cannot open texture file",
+				data->textures.path[EA]));
 	close(fd);
 	return (0);
 }
@@ -123,21 +127,13 @@ int	flood_fill_validation(t_cub3d *data)
 	{
 		visited[x] = malloc(sizeof(int) * data->map.width);
 		if (!visited[x])
-		{
-			while (x-- > 0)
-				free(visited[x]);
-			free(visited);
-			return (-1);
-		}
+			return (free_dbl_ptr(visited, x), -1);
 		ft_intset(visited[x], 0, data->map.width);
 		x++;
 	}
 	result = flood_fill_recursive(data->map.grid, visited, data->map.player_y,
 			data->map.player_x, data->map.height);
-	x = 0;
-	while (x < data->map.height)
-		free(visited[x++]);
-	free(visited);
+	free_dbl_ptr(visited, data->map.height);
 	if (result)
 		return (ft_error("Map is not properly enclosed by walls"));
 	return (0);

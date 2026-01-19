@@ -121,6 +121,7 @@ int	init_data(t_mlx *mlx_data, t_cub3d *cub3d)
 	if (init_textures(mlx_data, &cub3d->textures) != 0)
 	{
 		perror("init_textures failed\n");
+		clean_up(mlx_data, cub3d); //TODO
 		return (-1);
 	}
 	init_movement(&cub3d->movement);

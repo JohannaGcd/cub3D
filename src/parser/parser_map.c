@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:09 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/19 14:29:22 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/19 14:47:09 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -37,6 +37,20 @@ bool	is_map_line(char *line)
 	return (has_map_char);
 }
 
+void	allocate_first_grid(t_map *map, char *line_copy)
+{
+	map->grid = malloc(sizeof(char *) * 2);
+	if (!map->grid)
+	{
+		free(line_copy);
+		return ;
+	}
+	map->grid[0] = line_copy;
+	map->grid[1] = NULL;
+	map->height = 1;
+	return;
+}
+
 /*
  * Grows map array by adding a new line at each pass.
  * - First line: initialises map array with size 2 (for the line and NULL);
@@ -53,17 +67,9 @@ void	build_map(t_map *map, char *line)
 	line_copy = ft_strdup(line);
 	if (!line_copy)
 		return ;
-	if (map->grid == NULL)
+	if (!map->grid)
 	{
-		map->grid = malloc(sizeof(char *) * 2);
-		if (!map->grid)
-		{
-			free(line_copy);
-			return ;
-		}
-		map->grid[0] = line_copy;
-		map->grid[1] = NULL;
-		map->height = 1;
+		allocate_first_grid(map, line_copy);
 		return ;
 	}
 	new_map = malloc(sizeof(char *) * (map->height + 2));

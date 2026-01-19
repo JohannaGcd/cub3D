@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/12/28 11:07:29 by zivanov       #+#    #+#                 */
-/*   Updated: 2026/01/19 14:49:20 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/19 14:57:40 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -221,6 +221,8 @@ int				parse_texture(char *line, t_cub3d *data, t_meta_flags flag,
 					t_dir dir);
 bool			is_map_line(char *line);
 void			allocate_first_grid(t_map *map, char *line_copy);
+void			copy_old_map_to_new_map(t_map *map, char **new_map,
+					char *line_copy);
 void			build_map(t_map *map, char *line);
 void			calculate_map_dimensions(t_map *map);
 int				find_player_position(t_cub3d *data);

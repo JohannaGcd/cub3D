@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:09 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/19 14:47:09 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/19 14:58:00 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,22 @@ bool	is_map_line(char *line)
 	}
 	return (has_map_char);
 }
+void	copy_old_map_to_new_map(t_map *map, char **new_map, char *line_copy)
+{
+	int i;
 
+	i = 0;
+	while (i < map->height)
+	{
+		new_map[i] = map->grid[i];
+		i++;
+	}
+	new_map[i] = line_copy;
+	new_map[i + 1] = NULL;
+	free(map->grid);
+	map->grid = new_map;
+	map->height++;
+}
 void	allocate_first_grid(t_map *map, char *line_copy)
 {
 	map->grid = malloc(sizeof(char *) * 2);
@@ -59,7 +74,6 @@ void	allocate_first_grid(t_map *map, char *line_copy)
 void	build_map(t_map *map, char *line)
 {
 	char	**new_map;
-	int		i;
 	char	*line_copy;
 
 	if (!map || !line)
@@ -78,17 +92,7 @@ void	build_map(t_map *map, char *line)
 		free(line_copy);
 		return ;
 	}
-	i = 0;
-	while (i < map->height)
-	{
-		new_map[i] = map->grid[i];
-		i++;
-	}
-	new_map[i] = line_copy;
-	new_map[i + 1] = NULL;
-	free(map->grid);
-	map->grid = new_map;
-	map->height++;
+	copy_old_map_to_new_map(map, new_map, line_copy);
 }
 
 void	calculate_map_dimensions(t_map *map)

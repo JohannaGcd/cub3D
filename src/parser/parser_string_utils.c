@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:05 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/19 17:27:08 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/19 17:31:21 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,11 +55,11 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 
 void	free_split(char **str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str || !(*str))
-		return;
+		return ;
 	while (str[i])
 	{
 		free(str[i]);

@@ -6,11 +6,11 @@
 /*   By: jguacide <jguacide@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/19 14:12:57 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/19 14:20:09 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/19 17:32:31 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
-# include "../../inc/cub3d.h"
+#include "../../inc/cub3d.h"
 
 static size_t	ft_strlcpy(char *dest, const char *src, size_t size)
 {

@@ -6,15 +6,11 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:05 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/19 14:16:55 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/19 17:27:08 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
-
-// free split? then replace in parse_rgb_value and split string
-// ft_memcpy
-// ft_strdup
 
 char	*ft_strdup(const char *s1)
 {
@@ -57,53 +53,20 @@ int	ft_strncmp(const char *s1, const char *s2, size_t n)
 	return ((unsigned char)s1[i] - (unsigned char)s2[i]);
 }
 
-// char	**split_string(char *str, char delimiter)
-// {
-// 	char	**result;
-// 	int		count;
-// 	int		i;
-// 	int		start;
+void	free_split(char **str)
+{
+	int i;
 
-// 	if (!str)
-// 		return (NULL);
-// 	count = 1;
-// 	i = 0;
-// 	while (str[i])
-// 	{
-// 		if (str[i] == delimiter)
-// 			count++;
-// 		i++;
-// 	}
-// 	result = malloc(sizeof(char *) * (count + 1));
-// 	if (!result)
-// 		return (NULL);
-// 	i = 0;
-// 	start = 0;
-// 	count = 0;
-// 	while (1)
-// 	{
-// 		if (str[i] == delimiter || str[i] == '\0')
-// 		{
-// 			result[count] = malloc(sizeof(char) * (i - start + 1));
-// 			if (!result[count])
-// 			{
-// 				while (count-- > 0)
-// 					free(result[count]);
-// 				free(result);
-// 				return (NULL);
-// 			}
-// 			ft_memcpy(result[count], str + start, i - start);
-// 			result[count][i - start] = '\0';
-// 			count++;
-// 			start = i + 1;
-// 			if (str[i] == '\0')
-// 				break ;
-// 		}
-// 		i++;
-// 	}
-// 	result[count] = NULL;
-// 	return (result);
-// }
+	i = 0;
+	if (!str || !(*str))
+		return;
+	while (str[i])
+	{
+		free(str[i]);
+		i++;
+	}
+	free(str);
+}
 
 char	*trim_whitespace(char *str)
 {

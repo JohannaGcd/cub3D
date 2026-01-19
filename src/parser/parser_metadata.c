@@ -6,7 +6,7 @@
 /*   By: jguacide <jguacide@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:07 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/19 14:04:53 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/19 17:29:39 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,6 @@ bool	is_metadata_complete(t_cub3d *data)
 static int	parse_rgb_value(char *rgb_str, t_colors *color)
 {
 	char	**parts;
-	int		i;
 	int		r;
 	int		g;
 	int		b;
@@ -35,35 +34,21 @@ static int	parse_rgb_value(char *rgb_str, t_colors *color)
 	if (!parts || !parts[0] || !parts[1] || !parts[2] || parts[3])
 	{
 		if (parts)
-		{
-			i = 0;
-			while (parts[i])
-				free(parts[i++]);
-			free(parts);
-		}
-		printf("Error\nInvalid RGB format. Expected: R,G,B\n");
-		return (-1);
+			free_split(parts);
+		return (ft_error("Invalid RGB format. Expected: R,G,B"));
 	}
 	r = ft_atoi(parts[0]);
 	g = ft_atoi(parts[1]);
 	b = ft_atoi(parts[2]);
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
 	{
-		i = 0;
-		while (parts[i])
-			free(parts[i++]);
-		free(parts);
-		printf("Error\nRGB values must be between 0 and 255\n");
-		return (-1);
+		free_split(parts);
+		return (ft_error("RGB values must be between 0 and 255"));
 	}
 	color->r = r;
 	color->g = g;
 	color->b = b;
-	i = 0;
-	while (parts[i])
-		free(parts[i++]);
-	free(parts);
-	return (0);
+	return (free_split(parts), 0);
 }
 
 static char	*extract_path(char *line, int skip_len)
@@ -138,45 +123,24 @@ int	parse_texture(char *line, t_cub3d *data, t_meta_flags flag, t_dir dir)
 
 int	parse_metadata_line(char *line, t_cub3d *data, int line_num)
 {
-    char    *trimmed;
+	char	*trimmed;
 
 	trimmed = trim_whitespace(line);
 	if (!trimmed || is_empty_line(trimmed))
-	{
-		free(trimmed);
-		return (0);
-	}
+		return (free(trimmed), 0);
 	if (ft_strncmp(trimmed, "NO ", 3) == 0)
-	{
-		free(trimmed);
-		return (parse_texture(line, data, META_NO, NO));
-	}
+		return (free(trimmed), parse_texture(line, data, META_NO, NO));
 	else if (ft_strncmp(trimmed, "SO ", 3) == 0)
-	{
-		free(trimmed);
-		return (parse_texture(line, data, META_SO, SO));
-	}
+		return (free(trimmed), parse_texture(line, data, META_SO, SO));
 	else if (ft_strncmp(trimmed, "WE ", 3) == 0)
-	{
-		free(trimmed);
-		return (parse_texture(line, data, META_WE, WE));
-	}
+		return (free(trimmed), parse_texture(line, data, META_WE, WE));
 	else if (ft_strncmp(trimmed, "EA ", 3) == 0)
-	{
-		free(trimmed);
-		return (parse_texture(line, data, META_EA, EA));
-	}
+		return (free(trimmed), parse_texture(line, data, META_EA, EA));
 	else if (ft_strncmp(trimmed, "F ", 2) == 0)
-	{
-		free(trimmed);
-		return (parse_color(line, data, META_F));
-	}
+		return (free(trimmed), parse_color(line, data, META_F));
 	else if (ft_strncmp(trimmed, "C ", 2) == 0)
-	{
-		free(trimmed);
-		return (parse_color(line, data, META_C));
-	}
-	free(trimmed);
+		return (free(trimmed), parse_color(line, data, META_C));
 	printf("Error\nInvalid metadata at line %d\n", line_num);
+	free(trimmed);
 	return (-1);
 }

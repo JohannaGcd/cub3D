@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:21:58 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/19 13:59:06 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/19 14:07:08 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -143,7 +143,6 @@ int	parse_cub_file(char *filename, t_cub3d *data)
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 		return (perror("Error\nCannot open file\n"), -1);
-
 	if (read_file_line_by_line(fd, data) == -1)
 	{
 		close(fd);

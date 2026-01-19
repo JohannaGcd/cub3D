@@ -39,6 +39,7 @@ SRC := \
 	   parser/parser_validate_map.c \
 	   parser/parser_misc_utils.c \
 	   parser/parser_string_utils.c \
+	   parser/parser_string_utils2.c \
 	   parser/parser_map_utils.c \
 	   parser/parser_metadata.c \
 	   parser/parser_map.c \

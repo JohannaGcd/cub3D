@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/12/28 11:07:29 by zivanov       #+#    #+#                 */
-/*   Updated: 2026/01/19 13:52:19 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/19 14:18:28 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -230,7 +230,7 @@ char			*trim_whitespace(char *str);
 bool			is_valid_map_char(char c);
 int				ft_atoi(const char *str);
 void			ft_intset(int *array, int value, int len);
-char			**split_string(char *str, char delimiter);
+char			**split_string(char const *s, char c);
 void			*ft_memcpy(void *dest, const void *src, size_t len);
 char			*ft_strdup(const char *s1);
 size_t			ft_strlen(const char *s);

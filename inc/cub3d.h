@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/12/28 11:07:29 by zivanov       #+#    #+#                 */
-/*   Updated: 2026/01/19 17:30:00 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/19 17:38:54 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -240,6 +240,7 @@ char			*ft_strdup(const char *s1);
 size_t			ft_strlen(const char *s);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_error(char *error_str);
+int				ft_error_detail(char *error_str, char *detail);
 void			free_parser_data(t_cub3d *data);
 int				get_line_width(char *line);
 

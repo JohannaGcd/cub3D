@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:01 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/19 13:55:55 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/19 17:40:20 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,35 +52,19 @@ int	validate_texture_files(t_cub3d *data)
 		return (-1);
 	fd = open(data->textures.path[NO], O_RDONLY);
 	if (fd == -1)
-	{
-		printf("Error\nCannot open texture file: %s\n",
-			data->textures.path[NO]);
-		return (-1);
-	}
+		return (ft_error_detail("Cannot open texture file", data->textures.path[NO]));
 	close(fd);
 	fd = open(data->textures.path[SO], O_RDONLY);
 	if (fd == -1)
-	{
-		printf("Error\nCannot open texture file: %s\n",
-			data->textures.path[SO]);
-		return (-1);
-	}
+		return (ft_error_detail("Cannot open texture file", data->textures.path[SO]));
 	close(fd);
 	fd = open(data->textures.path[WE], O_RDONLY);
 	if (fd == -1)
-	{
-		printf("Error\nCannot open texture file: %s\n",
-			data->textures.path[WE]);
-		return (-1);
-	}
+		return (ft_error_detail("Cannot open texture file", data->textures.path[WE]));
 	close(fd);
 	fd = open(data->textures.path[EA], O_RDONLY);
 	if (fd == -1)
-	{
-		printf("Error\nCannot open texture file: %s\n",
-			data->textures.path[EA]);
-		return (-1);
-	}
+		return (ft_error_detail("Cannot open texture file", data->textures.path[EA]));
 	close(fd);
 	return (0);
 }

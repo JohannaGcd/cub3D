@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/18 13:10:18 by jojo          #+#    #+#                 */
-/*   Updated: 2026/01/19 13:52:26 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/19 17:36:54 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -71,5 +71,11 @@ void	*ft_memcpy(void *dest, const void *src, size_t len)
 int	ft_error(char *error_str)
 {
 	printf("Error\n%s\n", error_str);
+	return (-1);
+}
+
+int	ft_error_detail(char *error_str, char *detail)
+{
+	printf("Error\n%s: %s\n", error_str, detail);
 	return (-1);
 }

@@ -84,7 +84,10 @@ static int	init_textures(t_mlx *mlx, t_textures *t)
 		t->mlx_img[i].instance = mlx_xpm_file_to_image(
 				mlx->instance, t->path[i], &t->width[i], &t->height[i]);
 		if (t->mlx_img[i].instance == NULL)
+		{
+			//TODO
 			perror("failure in init_textures\n");
+		}
 		get_data_addr(&t->mlx_img[i]);
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:09 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/19 13:51:00 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/19 14:29:22 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -105,6 +105,17 @@ void	calculate_map_dimensions(t_map *map)
 	map->width = max_width;
 }
 
+static void	set_player_coordinates(t_cub3d *data, int x, int y,
+		int *player_count)
+{
+	data->map.player_x = x + 0.5;
+	data->map.player_y = y + 0.5;
+	data->map.player_dir = data->map.grid[y][x];
+	data->map.grid[y][x] = '0';
+	(*player_count)++;
+	return ;
+}
+
 /*
  * Finds player's starting position in the map.
  * - Scans the entire map for N,S,E,W characters
@@ -133,11 +144,7 @@ int	find_player_position(t_cub3d *data)
 			{
 				if (player_count == 1)
 					return (ft_error("Multiple player positions found"));
-				data->map.player_x = x + 0.5;
-				data->map.player_y = y + 0.5;
-				data->map.player_dir = data->map.grid[y][x];
-				data->map.grid[y][x] = '0';
-				player_count++;
+				set_player_coordinates(data, x, y, &player_count);
 			}
 			x++;
 		}

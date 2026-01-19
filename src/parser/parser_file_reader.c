@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parser_file_reader.c                               :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jojo <jojo@student.42.fr>                  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/13 14:22:12 by jguacide          #+#    #+#             */
-/*   Updated: 2026/01/18 13:19:04 by jojo             ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parser_file_reader.c                               :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jojo <jojo@student.42.fr>                    +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/01/13 14:22:12 by jguacide      #+#    #+#                 */
+/*   Updated: 2026/01/19 13:13:53 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,7 @@ static char	*read_buffer(int fd, char *buffer, int *bytes_read)
 	buffer[*bytes_read] = '\0';
 	return (buffer);
 }
+
 /*
  * Extract a complete line from buffer:
  * Advances *pos until after the '\n'
@@ -63,10 +64,10 @@ static char	*extract_line(char *buffer, int *pos)
  */
 char	*get_next_line(int fd)
 {
-	static char buffer[BUFFER_SIZE + 1];
-	static int pos = 0;
-	static int bytes_read = 0;
-	char *line;
+	static char	buffer[BUFFER_SIZE + 1];
+	static int	pos = 0;
+	static int	bytes_read = 0;
+	char		*line;
 
 	if (fd < 0)
 		return (NULL);

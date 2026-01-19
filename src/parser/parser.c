@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parser.c                                           :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jojo <jojo@student.42.fr>                  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/13 14:21:58 by jguacide          #+#    #+#             */
-/*   Updated: 2026/01/18 13:04:38 by jojo             ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parser.c                                           :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jojo <jojo@student.42.fr>                    +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/01/13 14:21:58 by jguacide      #+#    #+#                 */
+/*   Updated: 2026/01/19 13:17:17 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,12 +52,10 @@ static bool	has_cub_extension(const char *filename)
  * - tracks completion with bit flags
  * - transitions to map when ALL_METADATA flag is set and a map line is detected
  * Phase 2: Map parsing
- *
-* - detects map start (first line with valid map chars after ALL_METADATA is set)
-* - dynamically grows map array as lines are read
-* - skips empty lines in map section
-*
-* calculates dimensions and finds player position after all lines have been read
+ * - detects map start
+ * - dynamically grows map array as lines are read
+ * - skips empty lines in map section
+ * - calculates dimensions and finds player position
  */
 static int	read_file_line_by_line(int fd, t_cub3d *data)
 {
@@ -155,7 +153,7 @@ int	parse_cub_file(char *filename, t_cub3d *data)
 		return (-1);
 	}
 	init_cub3d_data(data);
-    fd = open(filename, O_RDONLY);
+	fd = open(filename, O_RDONLY);
 	if (fd == -1)
 	{
 		perror("Error\nCannot open file\n");

@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parser_validate_map.c                              :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jojo <jojo@student.42.fr>                  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/13 14:22:01 by jguacide          #+#    #+#             */
-/*   Updated: 2026/01/18 13:15:15 by jojo             ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parser_validate_map.c                              :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jojo <jojo@student.42.fr>                    +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/01/13 14:22:01 by jguacide      #+#    #+#                 */
+/*   Updated: 2026/01/19 12:51:50 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,8 +29,8 @@ int	validate_characters(t_cub3d *data)
 		{
 			if (!is_valid_map_char(data->map.grid[y][x]))
 			{
-				printf("Error\nInvalidate character '%c' at position (%d,
-					%d)\n", data->map.grid[y][x], y, x);
+				printf("Error\nInvalid character '%c' at position (%d,%d)\n",
+					data->map.grid[y][x], y, x);
 				return (-1);
 			}
 			x++;

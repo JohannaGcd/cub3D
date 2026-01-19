@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:01 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/19 17:52:44 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/19 18:06:46 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,28 +80,30 @@ int	validate_texture_files(t_cub3d *data)
  * Calls itself with the next index is all directions (y + 1 and y - 1,
 	same for x);
  */
-static int	flood_fill_recursive(char **map, int **visited, int row, int col,
-		int height)
+static int	flood_fill_recursive(t_cub3d *data, int **visited, int row, int col)
 {
 	int	line_width;
 
-	if (row < 0 || row >= height || !map[row])
+	if (!data || !visited || row < 0 || row >= data->map.height)
 		return (1);
-	line_width = get_line_width(map[row]);
+	if (!data->map.grid[row])
+		return (1);
+	line_width = get_line_width(data->map.grid[row]);
 	if (col < 0 || col >= line_width)
 		return (1);
-	if (visited[row][col] || map[row][col] == '1')
+	if (visited[row][col] || data->map.grid[row][col] == '1')
 		return (0);
-	if (map[row][col] == ' ' || map[row][col] == '\n' || map[row][col] == '\0')
+	if (data->map.grid[row][col] == ' ' || data->map.grid[row][col] == '\n'
+		|| data->map.grid[row][col] == '\0')
 		return (1);
 	visited[row][col] = 1;
-	if (flood_fill_recursive(map, visited, row, col + 1, height))
+	if (flood_fill_recursive(data, visited, row, col + 1))
 		return (1);
-	if (flood_fill_recursive(map, visited, row, col - 1, height))
+	if (flood_fill_recursive(data, visited, row, col - 1))
 		return (1);
-	if (flood_fill_recursive(map, visited, row + 1, col, height))
+	if (flood_fill_recursive(data, visited, row + 1, col))
 		return (1);
-	if (flood_fill_recursive(map, visited, row - 1, col, height))
+	if (flood_fill_recursive(data, visited, row - 1, col))
 		return (1);
 	return (0);
 }
@@ -131,8 +133,8 @@ int	flood_fill_validation(t_cub3d *data)
 		ft_intset(visited[x], 0, data->map.width);
 		x++;
 	}
-	result = flood_fill_recursive(data->map.grid, visited, data->map.player_y,
-			data->map.player_x, data->map.height);
+	result = flood_fill_recursive(data, visited, data->map.player_y,
+			data->map.player_x);
 	free_dbl_ptr(visited, data->map.height);
 	if (result)
 		return (ft_error("Map is not properly enclosed by walls"));

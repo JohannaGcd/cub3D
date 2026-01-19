@@ -37,7 +37,9 @@ SRC := \
 	   raycasting/out_of_bounds.c \
 	   parser/parser.c \
 	   parser/parser_validate_map.c \
-	   parser/parser_utils.c \
+	   parser/parser_misc_utils.c \
+	   parser/parser_string_utils.c \
+	   parser/parser_map_utils.c \
 	   parser/parser_metadata.c \
 	   parser/parser_map.c \
 	   parser/parser_file_reader.c \

@@ -1,0 +1,82 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parser_misc_utils.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jojo <jojo@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/18 13:10:18 by jojo              #+#    #+#             */
+/*   Updated: 2026/01/18 13:13:18 by jojo             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "../../inc/cub3d.h"
+
+int	ft_atoi(const char *str)
+{
+	int	sign;
+	int	result;
+
+	sign = 1;
+	result = 0;
+	while (*str == ' ' || (*str >= 9 && *str <= 13))
+		str++;
+	if (*str == '-' || *str == '+')
+	{
+		if (*str == '-')
+			sign = -1;
+		str++;
+	}
+	while (*str >= '0' && *str <= '9')
+	{
+		result = result * 10 + (*str - '0');
+		str++;
+	}
+	return (result * sign);
+}
+
+void	ft_intset(int *array, int value, int len)
+{
+	int	i;
+
+	i = 0;
+	while (i < len)
+	{
+		array[i] = value;
+		i++;
+	}
+}
+
+bool	is_empty_line(char *line)
+{
+	if (!line)
+		return (true);
+	while (*line)
+	{
+		if (*line != ' ' && *line != '\t' && *line != '\n')
+			return (false);
+		line++;
+	}
+	return (true);
+}
+
+void	skip_spaces(char **line)
+{
+	if (!line || !*line)
+		return ;
+	while (**line == ' ' || **line == '\t')
+		(*line)++;
+}
+
+void	*ft_memcpy(void *dest, const void *src, size_t len)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < len)
+	{
+		((char *)dest)[i] = ((char *)src)[i];
+		i++;
+	}
+	return (dest);
+}

@@ -73,15 +73,8 @@
 //		and the mlx metadata. See the relevant structures for more explanation.
 int		init_data(t_mlx *data, t_cub3d *cub3d);
 
-// -- TEST FUNCTIONS --
-//This is just for Zachaar to develop raytracing before the 
-//parser is (completely) finished and to check whether stuff
-//works as expected. The idea is that all functions below
-//are in the /test/ folder and can be deleted for the final
-//version of the program.
-void	mock_parser(t_cub3d *cub3d);
-void	test_image(t_mlx *mlx_data, t_cub3d *cub3d);
-// -- END OF TEST FUNCTIONS! -- 
+//	Clean up program in case of succes. For error another function probably should be used.
+void	clean_up(t_mlx *m, t_cub3d *c);
 
 //MLX works with colors by usage of
 //0x00RRGGBB. Thus we convert our three different
@@ -168,7 +161,7 @@ void	rotate_right(t_level *level, long time_ms);
 
 // Check whether the (new) position is a wall. 
 // used to avoid clipping in to walls when moving.
-int	check_collision(t_level *level, int x, int y);
+int	check_collision(t_level *level, double x, double y);
 
 // -- MATH UTILS --
 
@@ -208,6 +201,13 @@ void	my_mlx_create_image(void *mlx, t_img *img, int width, int height);
 unsigned int	my_mlx_get_pixel_color(t_img *data, int x, int y);
 
 /* PARSER FUNCTIONS*/
+
+// Simple function that puts all values from the map structure to the level
+// structure. They are essentially the same. Writing a function as such
+// safes time having to fix/rewrite alot of code. Technically this is
+// bad practice but somewhat inevitable when working together. 
+// Miscommunication is human and I find this a worthy midway.
+void	convert_map_to_level(t_cub3d *cub3d);
 
 int     parse_cub_file(char *filename, t_cub3d *data);
 char    *get_next_line(int fd);

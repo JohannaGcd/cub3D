@@ -110,6 +110,8 @@ void    calculate_map_dimensions(t_map *map)
 * - Scans the entire map for N,S,E,W characters
 * - Records coordinates and direction. 
 * - Adds '+ (1 / 2)' to place the player in the center of the square
+*   (NB: (1 / 2) = 0 cause they are integers. 1.0 / 2.0 returns 0.5
+*   Writing 0.5 avoids this easily overlooked flaw)
 * - Replaces player char with '0' in map
 * - Validate that there is exactly one player
 */
@@ -134,8 +136,8 @@ int find_player_position(t_cub3d *data)
                     printf("Error\nMultiple player positions found\n");
                     return (-1);
                 }
-                data->map.player_x = x + (1 / 2);
-                data->map.player_y = y + (1 / 2);
+                data->map.player_x = x + 0.5;
+                data->map.player_y = y + 0.5;
                 data->map.player_dir = data->map.grid[y][x];
                 data->map.grid[y][x] = '0';
                 player_count++;

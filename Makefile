@@ -11,13 +11,12 @@ SRC := \
 	   main.c \
 	   init_data.c \
 	   hook_events.c \
-	   deg_to_rad.c \
-	   create_rgb.c \
-	   render_frame.c \
-	   get_time_ms.c \
+	   clean_up.c \
 	   game_loop.c \
-	   test/test_image.c \
-	   test/mock_parser.c \
+	   render_frame.c \
+	   utils/deg_to_rad.c \
+	   utils/create_rgb.c \
+	   utils/get_time_ms.c \
 	   my_mlx/my_mlx_pixel_put.c \
 	   my_mlx/my_mlx_create_image.c \
 	   my_mlx/my_mlx_get_pixel_color.c \
@@ -42,7 +41,7 @@ SRC := \
 	   parser/parser_metadata.c \
 	   parser/parser_map.c \
 	   parser/parser_file_reader.c \
-
+	   parser/convert_map_to_level.c
 
 OBJ = $(addprefix obj/, $(SRC:.c=.o))
 
@@ -64,7 +63,7 @@ $(NAME) : $(MLX) $(OBJ)
 	$(CC) $(OBJ) $(MLX) -o $(NAME) 
 
 clean :
-	rm -rf $(OBJ)
+	rm -rf obj
 	rm -rf $(MLX_PATH)
 
 fclean : clean

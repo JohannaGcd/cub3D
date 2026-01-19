@@ -12,6 +12,24 @@
 
 #include "../inc/cub3d.h"
 
+void	print_level_val(t_level *l)
+{
+	printf("x: %i, y: %i\n", l->x_row, l->y_col);
+	printf("player dir: %f\n", l->player_dir_deg);
+	printf("playerPos (%f, %f)\n", l->player_pos_x, l->player_pos_y);
+	int	i;
+	int	j;
+
+	j = -1;
+	while (l->map[++j])
+	{
+		i = -1;
+		while (l->map[j][++i])
+			printf("%c", l->map[j][i]);
+		printf("\n");
+	}
+} 
+
 int	main(int argc, char **argv)
 {
 	t_mlx	mlx_data;
@@ -27,14 +45,14 @@ int	main(int argc, char **argv)
 		free_parser_data(&cub3d);
 		return (1);
 	}
-	//test_main(&mlx_data, &cub3d);
-	//mock_parser(&cub3d);
 	if (init_data(&mlx_data, &cub3d) != 0)
 		return (-1);
+	convert_map_to_level(&cub3d);
+	print_level_val(&cub3d.level);
 	hook_events(&mlx_data, &cub3d);
 
 	mlx_loop_hook(mlx_data.instance, game_loop, &cub3d);
 	mlx_loop(mlx_data.instance);
-	//clean_up();
+	clean_up(&mlx_data, &cub3d);
 	return (0);
 }

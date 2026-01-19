@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/18 13:13:47 by jojo          #+#    #+#                 */
-/*   Updated: 2026/01/19 13:14:28 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/19 13:42:51 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,4 +58,17 @@ void	free_parser_data(t_cub3d *data)
 		free(data->map.grid);
 		data->map.grid = NULL;
 	}
+}
+
+bool	is_empty_line(char *line)
+{
+	if (!line)
+		return (true);
+	while (*line)
+	{
+		if (*line != ' ' && *line != '\t' && *line != '\n')
+			return (false);
+		line++;
+	}
+	return (true);
 }

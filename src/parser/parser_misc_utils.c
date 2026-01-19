@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parser_misc_utils.c                                :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jojo <jojo@student.42.fr>                  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/18 13:10:18 by jojo              #+#    #+#             */
-/*   Updated: 2026/01/18 13:13:18 by jojo             ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parser_misc_utils.c                                :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jojo <jojo@student.42.fr>                    +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/01/18 13:10:18 by jojo          #+#    #+#                 */
+/*   Updated: 2026/01/19 13:52:26 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,19 +47,6 @@ void	ft_intset(int *array, int value, int len)
 	}
 }
 
-bool	is_empty_line(char *line)
-{
-	if (!line)
-		return (true);
-	while (*line)
-	{
-		if (*line != ' ' && *line != '\t' && *line != '\n')
-			return (false);
-		line++;
-	}
-	return (true);
-}
-
 void	skip_spaces(char **line)
 {
 	if (!line || !*line)
@@ -79,4 +66,10 @@ void	*ft_memcpy(void *dest, const void *src, size_t len)
 		i++;
 	}
 	return (dest);
+}
+
+int	ft_error(char *error_str)
+{
+	printf("Error\n%s\n", error_str);
+	return (-1);
 }

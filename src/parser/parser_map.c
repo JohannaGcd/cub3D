@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   parser_map.c                                       :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jojo <jojo@student.42.fr>                  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2026/01/13 14:22:09 by jguacide          #+#    #+#             */
-/*   Updated: 2026/01/18 13:16:56 by jojo             ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   parser_map.c                                       :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jojo <jojo@student.42.fr>                    +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2026/01/13 14:22:09 by jguacide      #+#    #+#                 */
+/*   Updated: 2026/01/19 13:51:00 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -132,10 +132,7 @@ int	find_player_position(t_cub3d *data)
 				|| data->map.grid[y][x] == 'E' || data->map.grid[y][x] == 'W')
 			{
 				if (player_count == 1)
-				{
-					printf("Error\nMultiple player positions found\n");
-					return (-1);
-				}
+					return (ft_error("Multiple player positions found"));
 				data->map.player_x = x + 0.5;
 				data->map.player_y = y + 0.5;
 				data->map.player_dir = data->map.grid[y][x];
@@ -147,9 +144,6 @@ int	find_player_position(t_cub3d *data)
 		y++;
 	}
 	if (player_count == 0)
-	{
-		printf("Error\nNo player position found\n");
-		return (-1);
-	}
+		return (ft_error("No player position found"));
 	return (0);
 }

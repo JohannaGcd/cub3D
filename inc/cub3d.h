@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   cub3d.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jojo <jojo@student.42.fr>                  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/28 11:07:29 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/18 13:16:22 by jojo             ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   cub3d.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jojo <jojo@student.42.fr>                    +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/12/28 11:07:29 by zivanov       #+#    #+#                 */
+/*   Updated: 2026/01/19 13:52:19 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -235,6 +235,7 @@ void			*ft_memcpy(void *dest, const void *src, size_t len);
 char			*ft_strdup(const char *s1);
 size_t			ft_strlen(const char *s);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
+int				ft_error(char *error_str);
 void			free_parser_data(t_cub3d *data);
 int				get_line_width(char *line);
 

@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:01 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/19 12:51:50 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/19 13:55:55 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,10 +133,7 @@ int	flood_fill_validation(t_cub3d *data)
 
 	visited = malloc(sizeof(int *) * data->map.height);
 	if (!visited)
-	{
-		printf("Error\nMemory allocation failed\n");
-		return (-1);
-	}
+		return (ft_error("Memory allocation failed"));
 	x = 0;
 	while (x < data->map.height)
 	{
@@ -158,10 +155,7 @@ int	flood_fill_validation(t_cub3d *data)
 		free(visited[x++]);
 	free(visited);
 	if (result)
-	{
-		printf("Error\nMap is not properly enclosed by walls\n");
-		return (-1);
-	}
+		return (ft_error("Map is not properly enclosed by walls"));
 	return (0);
 }
 

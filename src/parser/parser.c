@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:21:58 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/19 13:20:50 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/19 13:59:06 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,8 +102,7 @@ static int	read_file_line_by_line(int fd, t_cub3d *data)
 			else
 			{
 				free(line);
-				printf("Error\nIvalid character in map\n");
-				return (-1);
+				return (ft_error("Invalid character in map"));
 			}
 		}
 		free(line);
@@ -111,15 +110,9 @@ static int	read_file_line_by_line(int fd, t_cub3d *data)
 		line_num++;
 	}
 	if (!is_metadata_complete(data))
-	{
-		printf("Error\nMetadata is incomplete.\n");
-		return (-1);
-	}
+		return (ft_error("Metadata is incomplete"));
 	if (!map_started || data->map.height == 0)
-	{
-		printf("Error\nMap not found or empty.\n");
-		return (-1);
-	}
+		return (ft_error("Map not found or empty"));
 	calculate_map_dimensions(&data->map);
 	return (find_player_position(data));
 }
@@ -143,22 +136,14 @@ int	parse_cub_file(char *filename, t_cub3d *data)
 	int	fd;
 
 	if (!filename || !data)
-	{
-		printf("Error\nInvalid arguments\n");
-		return (-1);
-	}
+		return (ft_error("Invalid arguments"));
 	if (!has_cub_extension(filename))
-	{
-		printf("Error\nFile must have .cub extension\n");
-		return (-1);
-	}
+		return (ft_error("File must have .cub extension"));
 	init_cub3d_data(data);
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)
-	{
-		perror("Error\nCannot open file\n");
-		return (-1);
-	}
+		return (perror("Error\nCannot open file\n"), -1);
+
 	if (read_file_line_by_line(fd, data) == -1)
 	{
 		close(fd);

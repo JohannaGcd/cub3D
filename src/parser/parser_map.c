@@ -6,39 +6,15 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:09 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/19 14:58:00 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/19 14:59:56 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-/*
- * Detects if a line is a valid map line, ie:
- * Contains valid map characters (0,1,N,S,E,W) or whitespaces
- */
-bool	is_map_line(char *line)
-{
-	int		i;
-	bool	has_map_char;
-
-	if (!line)
-		return (false);
-	i = 0;
-	has_map_char = false;
-	while (line[i] && line[i] != '\n')
-	{
-		if (line[i] == '0' || line[i] == '1' || line[i] == 'N' || line[i] == 'S'
-			|| line[i] == 'E' || line[i] == 'W')
-			has_map_char = true;
-		else if (line[i] != ' ' && line[i] != '\t')
-			return (false);
-		i++;
-	}
-	return (has_map_char);
-}
 void	copy_old_map_to_new_map(t_map *map, char **new_map, char *line_copy)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	while (i < map->height)
@@ -52,6 +28,7 @@ void	copy_old_map_to_new_map(t_map *map, char **new_map, char *line_copy)
 	map->grid = new_map;
 	map->height++;
 }
+
 void	allocate_first_grid(t_map *map, char *line_copy)
 {
 	map->grid = malloc(sizeof(char *) * 2);
@@ -63,7 +40,7 @@ void	allocate_first_grid(t_map *map, char *line_copy)
 	map->grid[0] = line_copy;
 	map->grid[1] = NULL;
 	map->height = 1;
-	return;
+	return ;
 }
 
 /*
@@ -93,26 +70,6 @@ void	build_map(t_map *map, char *line)
 		return ;
 	}
 	copy_old_map_to_new_map(map, new_map, line_copy);
-}
-
-void	calculate_map_dimensions(t_map *map)
-{
-	int	max_width;
-	int	i;
-	int	len;
-
-	max_width = 0;
-	i = 0;
-	while (map->grid[i])
-	{
-		len = ft_strlen(map->grid[i]);
-		if (map->grid[i][len - 1] == '\n')
-			len--;
-		if (len > max_width)
-			max_width = len;
-		i++;
-	}
-	map->width = max_width;
 }
 
 static void	set_player_coordinates(t_cub3d *data, int x, int y,

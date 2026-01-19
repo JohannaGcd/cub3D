@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/18 13:10:18 by jojo          #+#    #+#                 */
-/*   Updated: 2026/01/19 17:47:25 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/19 18:08:05 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,13 +47,13 @@ void	ft_intset(int *array, int value, int len)
 	}
 }
 
-void	free_dbl_ptr(int	**arr, int count)
+void	free_dbl_ptr(int **arr, int count)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!arr)
-		return;
+		return ;
 	while (i < count)
 	{
 		free(arr[i]);

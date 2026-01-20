@@ -176,6 +176,11 @@ double			deg_to_rad(double degree);
 // -- MY MLX FUNCTIONS --
 // Functions to either make working with the mlx library easy or functional.
 
+//	A simple function setting all relevant pointers to NULL. This makes
+//	cleaning up easier since we don't have to worry about freeing un-
+//	-allocated memmory.
+void			my_mlx_memset(t_mlx *m, t_textures *t);
+
 // The infamous pixel_put function from Harm Smits' github! What does
 // this function do? Well, from what I understand, this is primarily
 // an optimization technique. Instead of pushing every pixel to the

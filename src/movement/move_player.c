@@ -6,17 +6,11 @@
 /*   By: zivanov <zivanov@student.codam.nl>         +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/10 12:35:26 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/17 15:30:06 by zivanov          ###   ########.fr       */
+/*   Updated: 2026/01/20 10:27:40 by zivanov          ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
-
-void	print_player_dir(t_level *level, double deg_rot)
-{
-	printf("Player dir: %f\n", level->player_dir_deg);
-	printf("Moving angle: %f\n", (deg_rot / M_PI) * 180);
-}
 
 /*
  * Note that because we consider the point (0.0) to be in the

@@ -88,6 +88,7 @@ typedef struct s_level
 	double	player_pos_x;
 	double	player_pos_y;
 	double	player_dir_deg;
+	int		max_iter;
 }	t_level;
 
 /*

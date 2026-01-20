@@ -85,8 +85,8 @@ static int	init_textures(t_mlx *mlx, t_textures *t)
 				mlx->instance, t->path[i], &t->width[i], &t->height[i]);
 		if (t->mlx_img[i].instance == NULL)
 		{
-			//TODO
 			perror("failure in init_textures\n");
+			return (-1);
 		}
 		get_data_addr(&t->mlx_img[i]);
 		i++;
@@ -115,6 +115,7 @@ void	init_movement(t_movement *m)
 
 int	init_data(t_mlx *mlx_data, t_cub3d *cub3d)
 {
+	my_mlx_memset(mlx_data, &cub3d->textures);
 	if (init_mlx(mlx_data) != 0)
 	{
 		perror("init_mlx failed\n");
@@ -122,11 +123,7 @@ int	init_data(t_mlx *mlx_data, t_cub3d *cub3d)
 	}
 	cub3d->mlx_data = mlx_data;
 	if (init_textures(mlx_data, &cub3d->textures) != 0)
-	{
-		perror("init_textures failed\n");
-		clean_up(mlx_data, cub3d); //TODO
 		return (-1);
-	}
 	init_movement(&cub3d->movement);
 	return (0);
 }

@@ -119,5 +119,6 @@ int	init_data(t_mlx *mlx_data, t_cub3d *cub3d)
 	if (init_textures(mlx_data, &cub3d->textures) != 0)
 		return (-1);
 	init_movement(&cub3d->movement);
+	convert_map_to_level(cub3d);
 	return (0);
 }

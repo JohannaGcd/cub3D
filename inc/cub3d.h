@@ -209,6 +209,12 @@ void			my_mlx_create_image(void *mlx, t_img *img, int width,
 // on a pixel position, it retrieves the color value of a pixel position.
 unsigned int	my_mlx_get_pixel_color(t_img *data, int x, int y);
 
+// MY_MLX_DESTROY functions
+// Basically the mlx_destroy functions but they check for NULL
+// and set to NULL after freeing to avoid double freeing.
+void			my_mlx_destroy_window(t_mlx *m);
+void			my_mlx_destroy_display(t_mlx *m);
+void			my_mlx_destroy_image(t_mlx *m, t_img *img);
 /* PARSER FUNCTIONS*/
 
 // Simple function that puts all values from the map structure to the level

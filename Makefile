@@ -19,6 +19,7 @@ SRC := \
 	   utils/get_time_ms.c \
 	   my_mlx/my_mlx_pixel_put.c \
 	   my_mlx/my_mlx_memset.c \
+	   my_mlx/my_mlx_destroy.c \
 	   my_mlx/my_mlx_create_image.c \
 	   my_mlx/my_mlx_get_pixel_color.c \
 	   movement/move_player.c \

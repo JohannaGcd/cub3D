@@ -44,6 +44,8 @@ static int	init_mlx(t_mlx *d)
 	{
 		perror("mlx_new_window failed\n");
 		mlx_destroy_display(d->instance);
+		free(d->instance);
+		d->instance = NULL;
 		return (-1);
 	}
 	my_mlx_create_image(d->instance, &d->frame, WINDOWLENGTH, WINDOWHEIGHT);
@@ -51,7 +53,10 @@ static int	init_mlx(t_mlx *d)
 	{
 		perror("my_mlx_create_image(frame) failed\n");
 		mlx_destroy_window(d->instance, d->window);
+		d->window = NULL;
 		mlx_destroy_display(d->instance);
+		free(d->instance);
+		d->instance = NULL;
 		return (-1);
 	}
 	return (0);

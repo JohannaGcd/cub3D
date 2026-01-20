@@ -37,7 +37,7 @@ int	main(int argc, char **argv)
 
 	if (argc != 2)
 	{
-		printf("Error\nUse: ./cub3d <map_file.cub>\n");
+		ft_error("Error\nUse: ./cub3d <map_file.cub>\n");
 		return (1);
 	}
 	if (parse_cub_file(argv[1], &cub3d) == -1)

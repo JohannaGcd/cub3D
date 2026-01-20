@@ -85,12 +85,16 @@ void	*ft_memcpy(void *dest, const void *src, size_t len)
 
 int	ft_error(char *error_str)
 {
-	printf("Error\n%s\n", error_str);
+	size_t	str_len;
+
+	str_len = ft_strlen(error_str);
+	write(STDERR_FILENO, error_str, str_len);
 	return (-1);
 }
 
 int	ft_error_detail(char *error_str, char *detail)
 {
-	printf("Error\n%s: %s\n", error_str, detail);
+	ft_error(error_str);
+	ft_error(detail);
 	return (-1);
 }

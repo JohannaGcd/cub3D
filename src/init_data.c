@@ -43,20 +43,15 @@ static int	init_mlx(t_mlx *d)
 	if (d->window == NULL)
 	{
 		perror("mlx_new_window failed\n");
-		mlx_destroy_display(d->instance);
-		free(d->instance);
-		d->instance = NULL;
+		my_mlx_destroy_display(d);
 		return (-1);
 	}
 	my_mlx_create_image(d->instance, &d->frame, WINDOWLENGTH, WINDOWHEIGHT);
 	if (d->frame.instance == NULL)
 	{
 		perror("my_mlx_create_image(frame) failed\n");
-		mlx_destroy_window(d->instance, d->window);
-		d->window = NULL;
-		mlx_destroy_display(d->instance);
-		free(d->instance);
-		d->instance = NULL;
+		my_mlx_destroy_window(d);
+		my_mlx_destroy_display(d);
 		return (-1);
 	}
 	return (0);
@@ -70,13 +65,7 @@ void	get_data_addr(t_img *img)
 
 /*  * Loading of textures. We will specifically need .xpm files.
  *
- * TODO
- * It is currently uncertain whether failure of loading a 
- * texture is considered an error. It probably is, but we
- * can also try to use a color if no texture exists.
- * This means that in the rendering, we check whether the
- * instance for texture->img exists and if not, we simply
- * draw the side with a simple color.
+ * 
 */
 
 static int	init_textures(t_mlx *mlx, t_textures *t)

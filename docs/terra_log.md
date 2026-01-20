@@ -652,3 +652,7 @@ The ones below are optional;
 7. Create fast and slow movement by implementing a velocity value that can be changed with `shift` or `LCTRL`.
 8. Create a README.md with instructions and explanations
 
+## 20-01
+Clean up in case of failure and wall collision have been implemented. Norminette is also "fixed" (I'm not completely happy with the current layout but it follows the rules)
+
+Still have to add an ft_error function to print to STD_ERROR and then we are good to go!

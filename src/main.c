@@ -46,7 +46,10 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	if (init_data(&mlx_data, &cub3d) != 0)
+	{
+		clean_up(&mlx_data, &cub3d);
 		return (-1);
+	}
 	convert_map_to_level(&cub3d);
 	print_level_val(&cub3d.level);
 	hook_events(&mlx_data, &cub3d);

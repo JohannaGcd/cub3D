@@ -14,12 +14,12 @@
 
 void	print_level_val(t_level *l)
 {
-	printf("x: %i, y: %i\n", l->x_row, l->y_col);
-	printf("player dir: %f\n", l->player_dir_deg);
-	printf("playerPos (%f, %f)\n", l->player_pos_x, l->player_pos_y);
 	int	i;
 	int	j;
 
+	printf("x: %i, y: %i\n", l->x_row, l->y_col);
+	printf("player dir: %f\n", l->player_dir_deg);
+	printf("playerPos (%f, %f)\n", l->player_pos_x, l->player_pos_y);
 	j = -1;
 	while (l->map[++j])
 	{
@@ -28,7 +28,7 @@ void	print_level_val(t_level *l)
 			printf("%c", l->map[j][i]);
 		printf("\n");
 	}
-} 
+}
 
 int	main(int argc, char **argv)
 {
@@ -50,10 +50,8 @@ int	main(int argc, char **argv)
 		clean_up(&mlx_data, &cub3d);
 		return (-1);
 	}
-	convert_map_to_level(&cub3d);
 	print_level_val(&cub3d.level);
 	hook_events(&mlx_data, &cub3d);
-
 	mlx_loop_hook(mlx_data.instance, game_loop, &cub3d);
 	mlx_loop(mlx_data.instance);
 	clean_up(&mlx_data, &cub3d);

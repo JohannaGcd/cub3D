@@ -37,8 +37,6 @@ int	key_press_handler(int keynum, t_cub3d *cub3d)
 		cub3d->movement.rotate_left = 1;
 	else if (keynum == KEY_RIGHT_ARROW)
 		cub3d->movement.rotate_right = 1;
-	else
-		printf("keynum: %i\n", keynum);
 	return (0);
 }
 

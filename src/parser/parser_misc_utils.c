@@ -89,6 +89,7 @@ int	ft_error(char *error_str)
 
 	str_len = ft_strlen(error_str);
 	write(STDERR_FILENO, error_str, str_len);
+	write(STDERR_FILENO, "\n", 1);
 	return (-1);
 }
 

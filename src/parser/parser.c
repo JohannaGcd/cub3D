@@ -117,6 +117,19 @@ static int	read_file_line_by_line(int fd, t_cub3d *data)
 	return (find_player_position(data));
 }
 
+int	is_directory(char *filename)
+{
+	int	fd;
+
+	fd = open(filename, O_DIRECTORY);
+	if (fd >= 0)
+	{
+		close (fd);
+		return (1);
+	}
+	return (0);
+}
+
 /*
 * Main parser function - entry point for parsing .cub files.
 * Orchestrates the 4 steps of the parsing process:
@@ -131,6 +144,7 @@ static int	read_file_line_by_line(int fd, t_cub3d *data)
 * On error, frees all allocated memory before returning.
 */
 
+
 int	parse_cub_file(char *filename, t_cub3d *data)
 {
 	int	fd;
@@ -139,6 +153,8 @@ int	parse_cub_file(char *filename, t_cub3d *data)
 		return (ft_error("Invalid arguments"));
 	if (!has_cub_extension(filename))
 		return (ft_error("File must have .cub extension"));
+	if (is_directory(filename))
+		return (ft_error("File is a directory"));
 	init_cub3d_data(data);
 	fd = open(filename, O_RDONLY);
 	if (fd == -1)

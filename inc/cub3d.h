@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/12/28 11:07:29 by zivanov       #+#    #+#                 */
-/*   Updated: 2026/01/21 14:30:44 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/21 15:04:46 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -226,7 +226,7 @@ void			convert_map_to_level(t_cub3d *cub3d);
 
 int				parse_cub_file(char *filename, t_cub3d *data);
 char			*get_next_line(int fd);
-int				parse_metadata_line(char *line, t_cub3d *data, int line_num);
+int				parse_metadata_line(char *line, t_cub3d *data);
 bool			is_metadata_complete(t_cub3d *data);
 int				parse_texture(char *line, t_cub3d *data, t_meta_flags flag,
 					t_dir dir);

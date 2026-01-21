@@ -6,7 +6,7 @@
 /*   By: jguacide <jguacide@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:07 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/21 14:44:18 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/21 15:03:40 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -116,7 +116,7 @@ int	parse_texture(char *line, t_cub3d *data, t_meta_flags flag, t_dir dir)
 	return (0);
 }
 
-int	parse_metadata_line(char *line, t_cub3d *data, int line_num)
+int	parse_metadata_line(char *line, t_cub3d *data)
 {
 	char	*trimmed;
 
@@ -135,7 +135,6 @@ int	parse_metadata_line(char *line, t_cub3d *data, int line_num)
 		return (free(trimmed), parse_color(line, data, META_F));
 	else if (ft_strncmp(trimmed, "C ", 2) == 0)
 		return (free(trimmed), parse_color(line, data, META_C));
-	printf("Error\nInvalid metadata at line %d\n", line_num);
 	free(trimmed);
-	return (-1);
+	return (ft_error("Invalid metadata"));
 }

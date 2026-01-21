@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:21:58 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/21 14:33:12 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/21 15:05:53 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
  * - parses texture and color lines, tracking completion with bit flags
  * - transitions to map when ALL_METADATA flag is set and a map line is detected
  */
-static int	handle_metadata_line(t_cub3d *data, char *line, int line_num)
+static int	handle_metadata_line(t_cub3d *data, char *line)
 {
 	if (is_empty_line(line))
 		return (0);
@@ -27,7 +27,7 @@ static int	handle_metadata_line(t_cub3d *data, char *line, int line_num)
 		build_map(&data->map, line);
 		return (1);
 	}
-	if (parse_metadata_line(line, data, line_num) == -1)
+	if (parse_metadata_line(line, data) == -1)
 		return (-1);
 	return (0);
 }
@@ -78,7 +78,7 @@ static int	read_file_line_by_line(int fd, t_cub3d *data)
 	while (line)
 	{
 		if (!map_started)
-			res = handle_metadata_line(data, line, line_num);
+			res = handle_metadata_line(data, line);
 		else
 			res = handle_map_line(data, line);
 		free(line);

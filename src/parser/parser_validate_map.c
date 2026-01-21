@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:01 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/19 18:06:46 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/21 14:56:31 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ static int	flood_fill_recursive(t_cub3d *data, int **visited, int row, int col)
 }
 
 /*
- * Flood fill tutorial: https://www.youtube.com/watch?v=RjO-HDjRMpM
  * Create a visited array to track positions
  * which have already been checked (avoids infinite loop)
  * Start flood fill from player position:

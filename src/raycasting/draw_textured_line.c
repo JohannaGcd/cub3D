@@ -54,6 +54,20 @@ static int	calc_y(int j, int pixels, double stepsize, int max_pixels)
 	return (result);
 }
 
+static int	calc_x(t_textures *tex, t_ray *ray)
+{
+	int	tex_x;
+
+	tex_x = ray->pos_wall_hit * tex->width[ray->side];
+	if (ray->side == EA || ray->side == SO)
+		tex_x = tex->width[ray->side] - 1 - tex_x;
+	if (tex_x >= tex->width[ray->side])
+		tex_x = tex->width[ray->side] - 1;
+	if (tex_x < 0)
+		tex_x = 0;
+	return (tex_x);
+}
+
 /*
  * Some weird stuff is happening here.
  * We have to think on how we count in our
@@ -81,9 +95,7 @@ void	draw_textured_line(int row, t_ray *ray, t_textures *tex, t_img *frame)
 	if (ray->pixels <= 0)
 		return ;
 	j = -(ray->pixels / 2);
-	tex_x = ray->pos_wall_hit * tex->width[ray->side];
-	if (tex_x >= tex->width[ray->side])
-		tex_x = tex->width[ray->side] - 1;
+	tex_x = calc_x(tex, ray);
 	stepsize = (double) tex->height[ray->side] / ray->pixels;
 	while (j < (ray->pixels / 2))
 	{

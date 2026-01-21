@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:21:58 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/21 15:05:53 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/21 15:53:54 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,3 +134,6 @@ int	parse_cub_file(char *filename, t_cub3d *data)
 	}
 	return (0);
 }
+/* TODO FIX PARSER
+- NO EMPTY LINES IN MAP
+- NO CHAR IN COLORS */

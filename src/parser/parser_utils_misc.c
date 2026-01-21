@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/18 13:10:18 by jojo          #+#    #+#                 */
-/*   Updated: 2026/01/21 15:06:25 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/21 17:41:44 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,4 +66,19 @@ void	*ft_memcpy(void *dest, const void *src, size_t len)
 		i++;
 	}
 	return (dest);
+}
+int	ft_isdigit(char *str)
+{
+	int i;
+
+	i = 0;
+	if (!str)
+		return (0);
+	while (str[i])
+	{
+		if (str[i] <= '0' || str[i] >= '9')
+			return (1);
+		i++;
+	}
+	return (0);
 }

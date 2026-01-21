@@ -6,7 +6,7 @@
 /*   By: jguacide <jguacide@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:07 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/21 15:03:40 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/21 17:40:37 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,14 +32,15 @@ static int	parse_rgb_value(char *rgb_str, t_colors *color)
 			free_split(parts);
 		return (ft_error("Invalid RGB format. Expected: R,G,B"));
 	}
+	if (ft_isdigit(parts[0]) != 0 || ft_isdigit(parts[1]) != 0
+		|| ft_isdigit(parts[2]) != 0)
+		return (ft_error("RGB values must be between 0 and 255"));
 	r = ft_atoi(parts[0]);
 	g = ft_atoi(parts[1]);
 	b = ft_atoi(parts[2]);
 	if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255)
-	{
-		free_split(parts);
-		return (ft_error("RGB values must be between 0 and 255"));
-	}
+		return (free_split(parts),
+			ft_error("RGB values must be between 0 and 255"));
 	color->r = r;
 	color->g = g;
 	color->b = b;

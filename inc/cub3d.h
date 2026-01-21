@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/12/28 11:07:29 by zivanov       #+#    #+#                 */
-/*   Updated: 2026/01/21 15:04:46 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/21 17:32:39 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -246,6 +246,7 @@ void			skip_spaces(char **line);
 char			*trim_whitespace(char *str);
 bool			is_valid_map_char(char c);
 int				ft_atoi(const char *str);
+int				ft_isdigit(char *str);
 void			ft_intset(int *array, int value, int len);
 char			**split_string(char const *s, char c);
 void			free_dbl_ptr(int **arr, int count);

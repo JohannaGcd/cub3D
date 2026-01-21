@@ -217,14 +217,14 @@ typedef struct s_movement
 */
 
 typedef struct s_map
- {
+{
 	char	**grid;
 	int		width;
 	int		height;
 	double	player_x;
 	double	player_y;
 	char	player_dir;
- }	t_map;
+}	t_map;
 
 typedef struct s_cub3d
 {

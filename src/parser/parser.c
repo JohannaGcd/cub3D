@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:21:58 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/19 14:07:08 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/21 13:26:59 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,56 +57,30 @@ static bool	has_cub_extension(const char *filename)
  * - skips empty lines in map section
  * - calculates dimensions and finds player position
  */
+
 static int	read_file_line_by_line(int fd, t_cub3d *data)
 {
 	char	*line;
 	int		line_num;
-	bool	map_started;
+	int		map_started;
 
 	line_num = 1;
-	map_started = false;
-	line = get_next_line(fd);
-	while (line)
+	map_started = 0;
+	while ((line = get_next_line(fd)))
 	{
-		if (!map_started)
-		{
-			if (is_empty_line(line))
-			{
-				free(line);
-				line = get_next_line(fd);
-				line_num++;
-				continue ;
-			}
-			if (is_metadata_complete(data) && is_map_line(line))
-			{
-				map_started = true;
-				build_map(&data->map, line);
-				free(line);
-				line = get_next_line(fd);
-				line_num++;
-				continue ;
-			}
-			if (parse_metadata_line(line, data, line_num) == -1)
-			{
-				free(line);
-				return (-1);
-			}
-		}
-		else
-		{
-			if (is_map_line(line) || is_empty_line(line))
-			{
-				if (!is_empty_line(line))
-					build_map(&data->map, line);
-			}
-			else
-			{
-				free(line);
-				return (ft_error("Invalid character in map"));
-			}
-		}
+		if (!map_started && is_empty_line(line))
+			;
+		else if (!map_started && is_metadata_complete(data)
+			&& is_map_line(line))
+			map_started = (build_map(&data->map, line), 1);
+		else if (!map_started && parse_metadata_line(line, data, line_num) ==
+			-1)
+			return (free(line), -1);
+		else if (map_started && (is_map_line(line) || is_empty_line(line)))
+			(is_empty_line(line) ? 0 : build_map(&data->map, line));
+		else if (map_started)
+			return (free(line), ft_error("Invalid char in map"));
 		free(line);
-		line = get_next_line(fd);
 		line_num++;
 	}
 	if (!is_metadata_complete(data))
@@ -124,7 +98,7 @@ int	is_directory(char *filename)
 	fd = open(filename, O_DIRECTORY);
 	if (fd >= 0)
 	{
-		close (fd);
+		close(fd);
 		return (1);
 	}
 	return (0);
@@ -143,7 +117,6 @@ int	is_directory(char *filename)
 * -1 on error (with error messages printed)
 * On error, frees all allocated memory before returning.
 */
-
 
 int	parse_cub_file(char *filename, t_cub3d *data)
 {

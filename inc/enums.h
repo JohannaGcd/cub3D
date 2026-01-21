@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        :::      ::::::::   */
-/*   enums.h                                            :+:      :+:    :+:   */
-/*                                                    +:+ +:+         +:+     */
-/*   By: jojo <jojo@student.42.fr>                  +#+  +:+       +#+        */
-/*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/12/30 17:07:04 by zivanov           #+#    #+#             */
-/*   Updated: 2026/01/12 20:02:32 by jojo             ###   ########.fr       */
+/*                                                        ::::::::            */
+/*   enums.h                                            :+:    :+:            */
+/*                                                     +:+                    */
+/*   By: jojo <jojo@student.42.fr>                    +#+                     */
+/*                                                   +#+                      */
+/*   Created: 2025/12/30 17:07:04 by zivanov       #+#    #+#                 */
+/*   Updated: 2026/01/21 13:26:17 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,10 +19,10 @@
 
 /*
  * X11 Masking events. (very difficult and somewhat beyond the scope)
- * These enums are used with 
+ * These enums are used with
  * bit operators to specify what device we are getting input from.
  * In essence, this can be the keyboard or the mouse.
- * 
+ *
  * There is an important destinction between KEY_PRESS and KEY_RELEASE:
  * When holding down a key, we will first send a single
  * key press and after half a second start spamming this key.
@@ -33,7 +33,7 @@
  *
  * Thus we need to combine both KEYPRESS and a KEYRELEASE event;
  * one to start the movement and one to stop it.
-*/
+ */
 
 typedef enum e_mask
 {
@@ -46,13 +46,13 @@ typedef enum e_mask
 
 /*
  * X11 Events with their corresponding values.
- * In addition to the masking, these enums are used to 
- * identify what kind of event is triggered in 
+ * In addition to the masking, these enums are used to
+ * identify what kind of event is triggered in
  * the mlx_hook() function.
  * (see hook_events.c)
  * for more documentation see:
  * https://harm-smits.github.io/42docs/libs/minilibx/events.html
-*/
+ */
 
 typedef enum e_events
 {
@@ -65,10 +65,10 @@ typedef enum e_events
 /*
  * X11 Key codes. This is for readability.
  * When a key is pressed we don't have
- * to memorize the keycode. 
+ * to memorize the keycode.
  * WASD are for movement, ESC for exiting
  * and LEFT and RIGHT for rotating.
-*/
+ */
 
 typedef enum e_keynums
 {
@@ -87,7 +87,7 @@ typedef enum e_keynums
  * which side of the cube we are talking about.
  * Usage would be:
  * cub3d->textures.paths[NO];
-*/
+ */
 
 typedef enum e_dir
 {
@@ -98,12 +98,12 @@ typedef enum e_dir
 }	t_dir;
 
 /*
-* Metadata flags used by the parser to track
-* which required elements have been encountered so far.
-* These are bit flags (one bit inside an integer
-* which we use as an "on/off switch") 
-* They can be combined into an integer, ALL_METADATA
-*/
+ * Metadata flags used by the parser to track
+ * which required elements have been encountered so far.
+ * These are bit flags (one bit inside an integer
+ * which we use as an "on/off switch")
+ * They can be combined into an integer, ALL_METADATA
+ */
 typedef enum e_metadata_flags
 {
 	META_NO = (1 << 0),
@@ -114,6 +114,9 @@ typedef enum e_metadata_flags
 	META_C = (1 << 5)
 }	t_meta_flags;
 
-# define ALL_METADATA (META_NO | META_SO | META_WE | META_EA | META_F | META_C)
+enum
+{
+	ALL_METADATA = META_NO | META_SO | META_WE | META_EA | META_F | META_C
+};
 
 #endif

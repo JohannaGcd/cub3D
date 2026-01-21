@@ -6,13 +6,39 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:12 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/19 13:13:53 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/21 14:21:09 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
 #define BUFFER_SIZE 1024
+
+int	handle_metadata_line(t_cub3d *data, char *line, int line_num)
+{
+	if (is_empty_line(line))
+		return (0);
+	if (is_metadata_complete(data) && is_map_line(line))
+	{
+		build_map(&data->map, line);
+		return (1);
+	}
+	if (parse_metadata_line(line, data, line_num) == -1)
+		return (-1);
+	return (0);
+}
+
+int	handle_map_line(t_cub3d *data, char *line)
+{
+	if (is_empty_line(line))
+		return (0);
+	if (is_map_line(line))
+	{
+		build_map(&data->map, line);
+		return (0);
+	}
+	return (ft_error("Invalid char in map"));
+}
 
 /*
  * Reads from file descriptor and writes into buffer:

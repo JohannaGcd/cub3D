@@ -6,102 +6,91 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:21:58 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/21 13:26:59 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/21 14:33:12 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
 
-static void	init_cub3d_data(t_cub3d *data)
+/*
+ * Implements step 1 of read_file_line_by_line: Metadata Parsing
+ * - skips empty lines
+ * - parses texture and color lines, tracking completion with bit flags
+ * - transitions to map when ALL_METADATA flag is set and a map line is detected
+ */
+static int	handle_metadata_line(t_cub3d *data, char *line, int line_num)
 {
-	data->textures.path[NO] = NULL;
-	data->textures.path[SO] = NULL;
-	data->textures.path[WE] = NULL;
-	data->textures.path[EA] = NULL;
-	data->floor.r = -1;
-	data->floor.g = -1;
-	data->floor.b = -1;
-	data->ceiling.r = -1;
-	data->ceiling.g = -1;
-	data->ceiling.b = -1;
-	data->map.grid = NULL;
-	data->map.width = 0;
-	data->map.height = 0;
-	data->map.player_x = -1;
-	data->map.player_y = -1;
-	data->map.player_dir = '\0';
-	data->metadata_flags = 0;
+	if (is_empty_line(line))
+		return (0);
+	if (is_metadata_complete(data) && is_map_line(line))
+	{
+		build_map(&data->map, line);
+		return (1);
+	}
+	if (parse_metadata_line(line, data, line_num) == -1)
+		return (-1);
+	return (0);
 }
 
-static bool	has_cub_extension(const char *filename)
+/* Implements step 2 of read_file_line_by_line: Map Parsing
+ * - skips empty lines and detects map start
+ * - dynamically grows map array as lines are read
+ * - skips empty lines in map section
+ */
+static int	handle_map_line(t_cub3d *data, char *line)
 {
-	size_t	len;
+	if (is_empty_line(line))
+		return (0);
+	if (is_map_line(line))
+	{
+		build_map(&data->map, line);
+		return (0);
+	}
+	return (ft_error("Invalid char in map"));
+}
 
-	len = ft_strlen(filename);
-	if (len < 4)
-		return (false);
-	return (ft_strncmp(&filename[len - 4], ".cub", 4) == 0);
+static int	check_for_parsing_err(t_cub3d *data, int map_started)
+{
+	if (!is_metadata_complete(data))
+		return (ft_error("Metadata is incomplete"));
+	if (!map_started || data->map.height == 0)
+		return (ft_error("Map not found or empty"));
+	return (0);
 }
 
 /*
  * Reads file line-by-line and processes metadata (textures, colors) and map.
  * Implements the parsing in two steps:
  * Phase 1: Metadata parsing
- * - skips empty lines
- * - parses texture and color lines
- * - tracks completion with bit flags
- * - transitions to map when ALL_METADATA flag is set and a map line is detected
  * Phase 2: Map parsing
- * - detects map start
- * - dynamically grows map array as lines are read
- * - skips empty lines in map section
- * - calculates dimensions and finds player position
+ * Finally, calculates dimensions and finds player position
  */
-
 static int	read_file_line_by_line(int fd, t_cub3d *data)
 {
 	char	*line;
 	int		line_num;
 	int		map_started;
+	int		res;
 
 	line_num = 1;
 	map_started = 0;
-	while ((line = get_next_line(fd)))
+	line = get_next_line(fd);
+	while (line)
 	{
-		if (!map_started && is_empty_line(line))
-			;
-		else if (!map_started && is_metadata_complete(data)
-			&& is_map_line(line))
-			map_started = (build_map(&data->map, line), 1);
-		else if (!map_started && parse_metadata_line(line, data, line_num) ==
-			-1)
-			return (free(line), -1);
-		else if (map_started && (is_map_line(line) || is_empty_line(line)))
-			(is_empty_line(line) ? 0 : build_map(&data->map, line));
-		else if (map_started)
-			return (free(line), ft_error("Invalid char in map"));
+		if (!map_started)
+			res = handle_metadata_line(data, line, line_num);
+		else
+			res = handle_map_line(data, line);
 		free(line);
+		if (res != 0 && interpret_res(res, &map_started) == -1)
+			return (-1);
+		line = get_next_line(fd);
 		line_num++;
 	}
-	if (!is_metadata_complete(data))
-		return (ft_error("Metadata is incomplete"));
-	if (!map_started || data->map.height == 0)
-		return (ft_error("Map not found or empty"));
+	if (check_for_parsing_err(data, map_started) == -1)
+		return (-1);
 	calculate_map_dimensions(&data->map);
 	return (find_player_position(data));
-}
-
-int	is_directory(char *filename)
-{
-	int	fd;
-
-	fd = open(filename, O_DIRECTORY);
-	if (fd >= 0)
-	{
-		close(fd);
-		return (1);
-	}
-	return (0);
 }
 
 /*
@@ -110,14 +99,13 @@ int	is_directory(char *filename)
 * 1. File reading (opens file, uses get_next_line)
 * 2. Metadata parsing (parses textures and colors with bit flags)
 * 3. Map parsing (dynamically grows map array)
-* 4. Map validation (validates final map using flood fille)
+* 4. Map validation (validates final map using flood fill)
 
 * Returns:
 * 0 on success
 * -1 on error (with error messages printed)
 * On error, frees all allocated memory before returning.
 */
-
 int	parse_cub_file(char *filename, t_cub3d *data)
 {
 	int	fd;
@@ -146,8 +134,3 @@ int	parse_cub_file(char *filename, t_cub3d *data)
 	}
 	return (0);
 }
-
-// TO_DO:
-// 5. NORMINETTE
-// 6. REPLACE PRINTF:
-//      IF IT'S OUR FUNCTION, USE FT_ERROR, OTHERWISE (LIKE OPEN) USE PERROR

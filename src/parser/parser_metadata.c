@@ -6,16 +6,11 @@
 /*   By: jguacide <jguacide@student.codam.nl>         +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:22:07 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/19 17:29:39 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/21 14:44:18 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../../inc/cub3d.h"
-
-bool	is_metadata_complete(t_cub3d *data)
-{
-	return (data->metadata_flags == ALL_METADATA);
-}
 
 /*
  * Parses RGB values from string format "R,G,B"

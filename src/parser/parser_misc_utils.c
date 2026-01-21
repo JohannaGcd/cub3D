@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/18 13:10:18 by jojo          #+#    #+#                 */
-/*   Updated: 2026/01/19 18:08:05 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/21 14:43:14 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,21 +47,6 @@ void	ft_intset(int *array, int value, int len)
 	}
 }
 
-void	free_dbl_ptr(int **arr, int count)
-{
-	int	i;
-
-	i = 0;
-	if (!arr)
-		return ;
-	while (i < count)
-	{
-		free(arr[i]);
-		i++;
-	}
-	free(arr);
-}
-
 void	skip_spaces(char **line)
 {
 	if (!line || !*line)
@@ -81,21 +66,4 @@ void	*ft_memcpy(void *dest, const void *src, size_t len)
 		i++;
 	}
 	return (dest);
-}
-
-int	ft_error(char *error_str)
-{
-	size_t	str_len;
-
-	str_len = ft_strlen(error_str);
-	write(STDERR_FILENO, error_str, str_len);
-	write(STDERR_FILENO, "\n", 1);
-	return (-1);
-}
-
-int	ft_error_detail(char *error_str, char *detail)
-{
-	ft_error(error_str);
-	ft_error(detail);
-	return (-1);
 }

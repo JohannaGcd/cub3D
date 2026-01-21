@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2025/12/28 11:07:29 by zivanov       #+#    #+#                 */
-/*   Updated: 2026/01/19 17:47:41 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/21 14:30:44 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -234,7 +234,10 @@ bool			is_map_line(char *line);
 void			allocate_first_grid(t_map *map, char *line_copy);
 void			copy_old_map_to_new_map(t_map *map, char **new_map,
 					char *line_copy);
+bool			is_metadata_complete(t_cub3d *data);
+int				is_directory(char *filename);
 void			build_map(t_map *map, char *line);
+void			init_cub3d_data(t_cub3d *data);
 void			calculate_map_dimensions(t_map *map);
 int				find_player_position(t_cub3d *data);
 int				validate_map(t_cub3d *data);
@@ -253,6 +256,8 @@ size_t			ft_strlen(const char *s);
 int				ft_strncmp(const char *s1, const char *s2, size_t n);
 int				ft_error(char *error_str);
 int				ft_error_detail(char *error_str, char *detail);
+bool			has_cub_extension(const char *filename);
+int				interpret_res(int result, int *map_started);
 void			free_parser_data(t_cub3d *data);
 int				get_line_width(char *line);
 

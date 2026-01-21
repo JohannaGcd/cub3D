@@ -6,7 +6,7 @@
 /*   By: jojo <jojo@student.42.fr>                    +#+                     */
 /*                                                   +#+                      */
 /*   Created: 2026/01/13 14:21:58 by jguacide      #+#    #+#                 */
-/*   Updated: 2026/01/21 15:53:54 by jguacide      ########   odam.nl         */
+/*   Updated: 2026/01/21 18:22:28 by jguacide      ########   odam.nl         */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,7 +40,7 @@ static int	handle_metadata_line(t_cub3d *data, char *line)
 static int	handle_map_line(t_cub3d *data, char *line)
 {
 	if (is_empty_line(line))
-		return (0);
+		return (ft_error("Empty line in map"), -1);
 	if (is_map_line(line))
 	{
 		build_map(&data->map, line);
@@ -135,5 +135,4 @@ int	parse_cub_file(char *filename, t_cub3d *data)
 	return (0);
 }
 /* TODO FIX PARSER
-- NO EMPTY LINES IN MAP
-- NO CHAR IN COLORS */
+- NO EMPTY LINES IN MAP */

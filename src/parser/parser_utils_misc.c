@@ -1,12 +1,12 @@
 /* ************************************************************************** */
 /*                                                                            */
-/*                                                        ::::::::            */
-/*   parser_utils_misc.c                                :+:    :+:            */
-/*                                                     +:+                    */
-/*   By: jojo <jojo@student.42.fr>                    +#+                     */
-/*                                                   +#+                      */
-/*   Created: 2026/01/18 13:10:18 by jojo          #+#    #+#                 */
-/*   Updated: 2026/01/21 18:27:57 by jguacide      ########   odam.nl         */
+/*                                                        :::      ::::::::   */
+/*   parser_utils_misc.c                                :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: jojo <jojo@student.42.fr>                  +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/18 13:10:18 by jojo              #+#    #+#             */
+/*   Updated: 2026/01/22 14:03:52 by jojo             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,9 +67,10 @@ void	*ft_memcpy(void *dest, const void *src, size_t len)
 	}
 	return (dest);
 }
+
 int	ft_isdigit(char *str)
 {
-	int i;
+	int	i;
 
 	i = 0;
 	if (!str)
